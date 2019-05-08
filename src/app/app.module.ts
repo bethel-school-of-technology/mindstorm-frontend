@@ -4,10 +4,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CharcterPostComponent } from './components/charcter-post/charcter-post.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CharcterPostComponent
   ],
   imports: [
     BrowserModule,
