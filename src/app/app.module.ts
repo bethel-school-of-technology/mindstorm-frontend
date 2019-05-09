@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CharacterPostComponent } from './components/character-post/character-post.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
