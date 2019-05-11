@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CharacterPostComponent } from './components/character-post/character-post.component';
 import { CharacterListComponent } from './components/character-list/character-list.component';
 import { HeaderComponent } from './components/header/header.component';
+import { FormsModule } from '@angular/forms'
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { HeaderComponent } from './components/header/header.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
