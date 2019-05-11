@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./character-post.component.css']
 })
 export class CharacterPostComponent implements OnInit {
-  characterName = '';
+ 
   constructor() { }
 
   ngOnInit() {

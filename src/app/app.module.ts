@@ -7,7 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CharacterPostComponent } from './components/character-post/character-post.component';
 import { CharacterListComponent } from './components/character-list/character-list.component';
 import { HeaderComponent } from './components/header/header.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { MatInputModule, MatCardModule, MatButtonModule, MatToolbarModule } from '@angular/material';
+
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { FormsModule } from '@angular/forms'
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    MatInputModule, MatCardModule, MatButtonModule, MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
