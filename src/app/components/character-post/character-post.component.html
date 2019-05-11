@@ -1,8 +1,15 @@
-<div>
 
-  <label>Character Name: </label>
-  <input type="text" [(ngModel)]="characterName" placeholder="ex. Kyrune">
-  <!-- need a bit more clairification of inputs and how they will work. Will each input get its own button or will a whole form need to be completed? -->
-  <!-- <p>{{ characterName }}</p> -->
-  <button [disabled]="characterName === ''">Add Name</button>
-</div>
+<mat-card>
+  <form (submit)="onSaveCharacter(characterForm)" #characterForm="ngForm">
+    <mat-form-field>
+      <input matInput type="text" name="title" [ngModel]="character?.title" required placeholder="character title" #title="ngModel" >
+      <mat-error *ngIf="title.invalid">Please Enter Character title</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput type="text" name="detail" [ngModel]="character?.detail" placeholder="post details..." #detail="ngModel" >
+      </textarea>
+    </mat-form-field>
+    <button type="submit">Save Character trait</button>
+
+  </form>
+</mat-card>
