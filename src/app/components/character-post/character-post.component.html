@@ -2,14 +2,13 @@
 <mat-card>
   <form (submit)="onSaveCharacter(characterForm)" #characterForm="ngForm">
     <mat-form-field>
-      <input matInput type="text" name="title" [ngModel]="character?.title" required placeholder="character title" #title="ngModel" >
-      <mat-error *ngIf="title.invalid">Please Enter Character title</mat-error>
+      <input matInput type="text" name="title" [ngModel]="character?.title" required minlength="3" placeholder="Post Trait..." #title="ngModel" >
+      <mat-error *ngIf="title.invalid">Please Enter a Character Trait</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput type="text" name="detail" [ngModel]="character?.detail" placeholder="post details..." #detail="ngModel" >
+      <textarea matInput type="text" name="detail" rows="4" [ngModel]="character?.detail" placeholder="Post Details..." #detail="ngModel" >
       </textarea>
     </mat-form-field>
-    <button type="submit">Save Character trait</button>
-
+    <button mat-button color="primary" type="submit">Save Character Trait</button>
   </form>
 </mat-card>

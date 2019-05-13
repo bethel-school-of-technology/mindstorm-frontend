@@ -8,7 +8,16 @@ import { CharacterPostComponent } from './components/character-post/character-po
 import { CharacterListComponent } from './components/character-list/character-list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FormsModule } from '@angular/forms';
-import { MatInputModule, MatCardModule, MatButtonModule, MatToolbarModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
+import {
+  MatInputModule,
+  MatCardModule,
+  MatButtonModule,
+  MatToolbarModule,
+  MatExpansionModule,
+  MatDividerModule,
+  MatListModule
+} from '@angular/material';
 
 
 
@@ -24,7 +33,14 @@ import { MatInputModule, MatCardModule, MatButtonModule, MatToolbarModule } from
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatInputModule, MatCardModule, MatButtonModule, MatToolbarModule,
+    HttpClientModule,
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatExpansionModule,
+    MatDividerModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

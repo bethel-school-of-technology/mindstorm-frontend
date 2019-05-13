@@ -4,9 +4,6 @@ import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Character } from './character.model';
-import { stringify } from '@angular/core/src/util';
-
-
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +11,25 @@ import { stringify } from '@angular/core/src/util';
 export class CharacterService {
   private characters: Character[] = [];
   private charactersUpdated = new Subject<Character[]>();
+
   constructor(private http: HttpClient, private router: Router) { }
 
+  getCharacters() {
+    this.http.get<{ message: string; characters: any }>('http://localhost:3000/api/characters')
+      .pipe(map(characterData => {
+        return characterData.characters.map(character => {
+          return {
+            title: character.title,
+            detail: character.detail,
+            id: character._id
+          };
+        });
+      }))
+      .subscribe(formedCharacters => {
+        this.characters = formedCharacters;
+        this.charactersUpdated.next([...this.characters]);
+      });
+  }
   getCharacterUpdateListener() {
     return this.charactersUpdated.asObservable();
   }
@@ -23,8 +37,8 @@ export class CharacterService {
     return this.http.get<{
       _id: string;
       title: string;
-      detail: string;
-    }>('http://localhost:3000/api/characters' + id);
+      detail: string
+    }>('http://localhost:3000/api/characters/' + id);
   }
 
   addCharacter(title: string, detail: string) {
@@ -50,18 +64,7 @@ export class CharacterService {
         this.router.navigate(['/']);
       });
   }
-  getCharacters() {
-    this.http.get<{ message: string; characters: any }>('http://localhost:3000/api/characters')
-      .pipe(map(characterData => {
-        return characterData.characters.map(character => {
-          return { title: character.title, detail: character.detail, id: character._id };
-        });
-      }))
-      .subscribe(formedCharacters => {
-        this.characters = formedCharacters;
-        this.charactersUpdated.next([...this.characters]);
-      });
-  }
+
   deleteCharacter(characterId: string) {
     this.http.delete('http://localhost:3000/api/characters/' + characterId)
       .subscribe(() => {
