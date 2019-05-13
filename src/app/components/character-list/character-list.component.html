@@ -1,14 +1,20 @@
-<mat-accordian multi="true" *ngIf="characters.length > 0">
-  <mat-expansion-panel *ngFor="let character of characters">
-    <mat-expansion-panel-header>
-      {{ character.title }}
-    </mat-expansion-panel-header>
-    <p>
-      {{ character.detail }}
-    </p>
+<mat-card *ngIf="characters.length > 0">
+  <mat-list *ngFor="let character of characters">
+    <mat-list-item>
+      <h3>
+        {{ character.title }}
+      </h3>
+    </mat-list-item>
+    <mat-list-item>
+      <p>
+        {{ character.detail }}
+      </p>
+    </mat-list-item>
     <mat-action-row>
-      <a mat-button [routerLink] = "['/edit', character.id]">Edit Character Trait</a>
+      <a mat-button color="primary" [routerLink] = "['/edit', character.id]">Edit Character Trait</a>
       <button mat-button color="warn" (click)="onDelete(character.id)">Delete Character Trait</button>
-    </mat-action-row> 
-  </mat-expansion-panel>
-</mat-accordian>
+    </mat-action-row>
+    <hr />
+  </mat-list>
+</mat-card>
+<p class="info-text mat-body-1" *ngIf="characters.length <= 0">No character traits added yet!</p>

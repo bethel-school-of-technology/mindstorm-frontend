@@ -8,7 +8,7 @@ import { CharacterService } from '../../shared/character.service';
   templateUrl: './character-list.component.html',
   styleUrls: ['./character-list.component.css']
 })
-export class CharacterListComponent implements OnInit {
+export class CharacterListComponent implements OnInit, OnDestroy {
   characters: Character[] = [];
   private characterSub: Subscription;
 
@@ -24,6 +24,7 @@ export class CharacterListComponent implements OnInit {
   onDelete(characterId: string) {
     this.characterService.deleteCharacter(characterId);
   }
+
   ngOnDestroy() {
     this.characterSub.unsubscribe();
   }

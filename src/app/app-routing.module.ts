@@ -6,16 +6,16 @@ import { CharacterListComponent } from './components/character-list/character-li
 
 const routes: Routes = [
   {
-    path: 'create',
-    component: CharacterPostComponent,
-  },
-  {
     path: '',
     component: CharacterListComponent,
   },
   {
-    path: 'edit/:characterId',
+    path: 'create',
     component: CharacterPostComponent,
+  },
+  {
+    path: 'edit/:characterId',
+    component: CharacterPostComponent
   }
 ];
 
