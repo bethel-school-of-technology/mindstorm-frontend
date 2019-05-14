@@ -9,6 +9,7 @@ import { CharacterListComponent } from './components/character-list/character-li
 import { HeaderComponent } from './components/header/header.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
 import {
   MatInputModule,
   MatCardModule,
@@ -18,6 +19,7 @@ import {
   MatDividerModule,
   MatListModule
 } from '@angular/material';
+import { StoryPostComponent } from './components/story-post/story-post.component';
 
 
 
@@ -26,7 +28,8 @@ import {
     AppComponent,
     CharacterPostComponent,
     CharacterListComponent,
-    HeaderComponent
+    HeaderComponent,
+    StoryPostComponent
   ],
   imports: [
     BrowserModule,
