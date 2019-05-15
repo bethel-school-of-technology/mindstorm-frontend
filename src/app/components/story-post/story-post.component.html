@@ -1,3 +1,17 @@
-<p>
-  story-post works!
-</p>
+<!--Looking into texteditor found this but it doesn't seem to be working-->
+
+<!-- <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script> -->
+
+<mat-card>
+  <form (submit)="onSaveStory(storyForm)" #storyForm="ngForm">
+    <mat-form-field>
+      <input mat-input type="text" name="title" [ngModel]="story?.title" required minlegnth="1" placeholder="Story Title" #title="ngModel">
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matNativeControl type="text" name="story" rows="4" [ngModel]="story?.text" placeholder="Write your story here..." #text="ngModel" >
+      </textarea>
+    </mat-form-field>
+    <button mat-button color="primary" type="submit">Save Story</button>
+  </form>
+</mat-card>

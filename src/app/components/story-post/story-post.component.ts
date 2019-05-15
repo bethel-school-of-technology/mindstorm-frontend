@@ -11,10 +11,37 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./story-post.component.css']
 })
 export class StoryPostComponent implements OnInit {
+  storyTitle = '';
+  storyBody = '';
+  story: Story;
+  private mode = 'createStory';
+  private storyId: string;
 
-  constructor() { }
-
+  constructor(public storyService: StoryService, public route: ActivatedRoute) { }
+//working on this
   ngOnInit() {
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      if (paramMap.has('storyId')) {
+        this.mode = 'edit';
+        this.storyId = paramMap.get('storyId');
+        //can't get his .getStory to work
+        this.storyService.getStory(this.storyId).subscribe(storyData => {
+          this.story = {id: storyData._id, storyTitle: storyData.storyTitle, storyBody: storyData.storyBody};
+        });
+      } else { this.mode = 'createStory'; this.storyId = null; }
+    });
+  }
+
+  onSaveStory(form:NgForm) {
+    if (form.invalid) {
+      return;
+    }
+    if (this.mode === 'createStory') {
+      this.storyService.addStory(form.value.storyTitle, form.value.storyBody);
+    } else {
+      this.storyService.updateStory(this.storyId, form.value.storyTitle, form.value.storyBody);
+    }
+    form.resetForm();
   }
 
 }
