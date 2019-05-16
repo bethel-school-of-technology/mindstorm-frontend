@@ -41,4 +41,35 @@ export class StoryService {
         this.storiesUpdated.next([...this.stories]);
       });
   }
+
+  getStory(id: string) {
+    return this.http.get<{
+      _id: string;
+      storyTitle: string;
+      storyBody: string;
+    }>('http://localhost:3000/api/stories/' + id);
+}
+
+  addStory(storyTitle: string, storyBody: string) {
+    const story: Story = { id: null, storyTitle, storyBody };
+    this.http.post<{ message: string; storyId: string}>('http://localhost:3000/api/stories', story)
+    .subscribe(responseData => {
+      const id = responseData.storyId;
+      story.id = id;
+      this.stories.push(story);
+      this.storiesUpdated.next([...this.stories]);
+      this.router.navigate(['/']);
+    });
+  }
+  updateStory(id: string, storyTitle: string, storyBody: string) {
+    const story: Story = { id, storyTitle, storyBody };
+    this.http.put('http://localhost:3000/api/stories' + id, story)
+    .subscribe(response => {
+      const updatedStories = [...this.stories];
+      const oldStoriesIndex = updatedStories.findIndex(c => c.id === story.id);
+      updatedStories[oldStoriesIndex] = story;
+      this.storiesUpdated.next([...this.stories]);
+      this.router.navigate(['/']);
+    });
+  }
 }
