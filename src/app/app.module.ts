@@ -20,6 +20,7 @@ import {
   MatListModule
 } from '@angular/material';
 import { StoryPostComponent } from './components/story-post/story-post.component';
+import { StoryListComponent } from './components/story-list/story-list.component';
 
 
 
@@ -29,7 +30,8 @@ import { StoryPostComponent } from './components/story-post/story-post.component
     CharacterPostComponent,
     CharacterListComponent,
     HeaderComponent,
-    StoryPostComponent
+    StoryPostComponent,
+    StoryListComponent
   ],
   imports: [
     BrowserModule,

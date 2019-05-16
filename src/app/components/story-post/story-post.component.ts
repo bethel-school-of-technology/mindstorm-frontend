@@ -18,13 +18,12 @@ export class StoryPostComponent implements OnInit {
   private storyId: string;
 
   constructor(public storyService: StoryService, public route: ActivatedRoute) { }
-//working on this
+
   ngOnInit() {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('storyId')) {
         this.mode = 'edit';
         this.storyId = paramMap.get('storyId');
-        //can't get his .getStory to work
         this.storyService.getStory(this.storyId).subscribe(storyData => {
           this.story = {id: storyData._id, storyTitle: storyData.storyTitle, storyBody: storyData.storyBody};
         });
@@ -32,7 +31,7 @@ export class StoryPostComponent implements OnInit {
     });
   }
 
-  onSaveStory(form:NgForm) {
+  onSaveStory(form: NgForm) {
     if (form.invalid) {
       return;
     }
@@ -43,5 +42,5 @@ export class StoryPostComponent implements OnInit {
     }
     form.resetForm();
   }
-
 }
+

@@ -6,10 +6,10 @@
 <mat-card>
   <form (submit)="onSaveStory(storyForm)" #storyForm="ngForm">
     <mat-form-field>
-      <input mat-input type="text" name="title" [ngModel]="story?.title" required minlegnth="1" placeholder="Story Title" #title="ngModel">
+      <input mat-input type="text" name="storyTitle" [ngModel]="story?.storyTitle" required minlegnth="1" placeholder="Story Title" #storyTitle="ngModel">
     </mat-form-field>
     <mat-form-field>
-      <textarea matNativeControl type="text" name="story" rows="4" [ngModel]="story?.text" placeholder="Write your story here..." #text="ngModel" >
+      <textarea matNativeControl type="text" name="storyBody" rows="4" [ngModel]="story?.storyBody" placeholder="Write your story here..." #storyBody="ngModel" >
       </textarea>
     </mat-form-field>
     <button mat-button color="primary" type="submit">Save Story</button>
