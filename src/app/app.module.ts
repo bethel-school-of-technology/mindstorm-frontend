@@ -31,7 +31,6 @@ import {
     HeaderComponent,
     StoryPostComponent,
     StoryListComponent,
-    CommentPostComponent
   ],
   imports: [
     BrowserModule,
