@@ -19,8 +19,8 @@ export class StoryService {
       .pipe(map(storyData => {
         return storyData.stories.map(story => {
           return {
-            storyTitle: story.storytitle,
-            storyBody: story.storybody,
+            storyTitle: story.storyTitle,
+            storyBody: story.storyBody,
             id: story._id
           };
         });
@@ -63,10 +63,10 @@ export class StoryService {
   }
   updateStory(id: string, storyTitle: string, storyBody: string) {
     const story: Story = { id, storyTitle, storyBody };
-    this.http.put('http://localhost:3000/api/stories' + id, story)
+    this.http.put('http://localhost:3000/api/stories/' + id, story)
     .subscribe(response => {
       const updatedStories = [...this.stories];
-      const oldStoriesIndex = updatedStories.findIndex(c => c.id === story.id);
+      const oldStoriesIndex = updatedStories.findIndex(s => s.id === story.id);
       updatedStories[oldStoriesIndex] = story;
       this.storiesUpdated.next([...this.stories]);
       this.router.navigate(['/']);
