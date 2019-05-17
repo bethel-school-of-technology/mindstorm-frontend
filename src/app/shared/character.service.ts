@@ -49,7 +49,7 @@ export class CharacterService {
         character.id = id;
         this.characters.push(character);
         this.charactersUpdated.next([...this.characters]);
-        this.router.navigate(['/']);
+        this.router.navigate(['/getChar']);
       });
   }
 
@@ -61,7 +61,7 @@ export class CharacterService {
         const oldCharacterIndex = updatedCharacters.findIndex(c => c.id === character.id);
         updatedCharacters[oldCharacterIndex] = character;
         this.charactersUpdated.next([...this.characters]);
-        this.router.navigate(['/']);
+        this.router.navigate(['/getChar']);
       });
   }
 
