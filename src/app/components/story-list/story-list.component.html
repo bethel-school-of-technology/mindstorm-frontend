@@ -1,20 +1,20 @@
 <mat-card *ngIf="stories.length > 0">
-  <mat-list *ngFor="let story of stories">
-    <mat-list-item>story
+  <div *ngFor="let story of stories">
+    <div>
       <h3>
         {{ story.storyTitle }}
       </h3>
-    </mat-list-item>
-    <mat-list-item>
+    </div>
+    <div>
       <p>
         {{ story.storyBody }}
       </p>
-    </mat-list-item>
-    <mat-action-row>
-      <a mat-button color="primary" [routerLink] = "['/editstory', story.id]">Edit Story</a>
+    </div>
+    <div>
+      <a mat-button color="primary" [routerLink] = "['/editStory', story.id]">Edit Story</a>
       <button mat-button color="warn" (click)="onDelete(story.id)">Delete Story</button>
-    </mat-action-row>
+    </div>
     <hr />
-  </mat-list>
+  </div>
 </mat-card>
 <p class="info-text mat-body-1" *ngIf="stories.length <= 0">No Story added yet!</p>

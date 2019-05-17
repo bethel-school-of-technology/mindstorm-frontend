@@ -22,7 +22,7 @@ export class StoryPostComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('storyId')) {
-        this.mode = 'edit';
+        this.mode = 'editStory';
         this.storyId = paramMap.get('storyId');
         this.storyService.getStory(this.storyId).subscribe(storyData => {
           this.story = {id: storyData._id, storyTitle: storyData.storyTitle, storyBody: storyData.storyBody};
