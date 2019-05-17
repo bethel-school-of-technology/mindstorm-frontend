@@ -21,6 +21,7 @@ import {
 } from '@angular/material';
 import { StoryPostComponent } from './components/story-post/story-post.component';
 import { StoryListComponent } from './components/story-list/story-list.component';
+import { CommentListComponent } from './components/comment-list/comment-list.component';
 
 
 
@@ -31,7 +32,8 @@ import { StoryListComponent } from './components/story-list/story-list.component
     CharacterListComponent,
     HeaderComponent,
     StoryPostComponent,
-    StoryListComponent
+    StoryListComponent,
+    CommentListComponent
   ],
   imports: [
     BrowserModule,
