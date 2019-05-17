@@ -10,6 +10,7 @@ import { CharacterPostComponent } from './components/character-post/character-po
 import { CharacterListComponent } from './components/character-list/character-list.component';
 import { StoryPostComponent } from './components/story-post/story-post.component';
 import { StoryListComponent } from './components/story-list/story-list.component';
+import { CommentPostComponent } from './components/comment-post/comment-post.component';
 import { HeaderComponent } from './components/header/header.component';
 
 import {
@@ -22,8 +23,6 @@ import {
   MatListModule
 } from '@angular/material';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +30,8 @@ import {
     CharacterListComponent,
     HeaderComponent,
     StoryPostComponent,
-    StoryListComponent
+    StoryListComponent,
+    CommentPostComponent
   ],
   imports: [
     BrowserModule,
