@@ -4,6 +4,7 @@ import { CharacterPostComponent } from './components/character-post/character-po
 import { CharacterListComponent } from './components/character-list/character-list.component';
 import { StoryPostComponent } from './components/story-post/story-post.component';
 import { StoryListComponent } from './components/story-list/story-list.component';
+import { CommentListComponent } from './components/comment-list/comment-list.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,7 @@ const routes: Routes = [
     component: StoryListComponent
   },
   {
-    path: 'getChar',
+    path: 'characters',
     component: CharacterListComponent,
   },
   {
@@ -30,7 +31,11 @@ const routes: Routes = [
   {
     path: 'editStory/:storyId',
     component: StoryPostComponent
-  }
+  },
+  {
+    path: 'comments',
+    component: CommentListComponent
+  },
 ];
 
 @NgModule({
