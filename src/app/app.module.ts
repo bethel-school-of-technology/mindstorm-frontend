@@ -11,6 +11,7 @@ import { CharacterListComponent } from './components/character-list/character-li
 import { StoryPostComponent } from './components/story-post/story-post.component';
 import { StoryListComponent } from './components/story-list/story-list.component';
 import { CommentPostComponent } from './components/comment-post/comment-post.component';
+import { CommentListComponent } from './components/comment-list/comment-list.component';
 import { HeaderComponent } from './components/header/header.component';
 
 import {
@@ -31,6 +32,7 @@ import {
     HeaderComponent,
     StoryPostComponent,
     StoryListComponent,
+    CommentListComponent,
   ],
   imports: [
     BrowserModule,
