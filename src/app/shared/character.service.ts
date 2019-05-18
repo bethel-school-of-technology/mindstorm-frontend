@@ -4,6 +4,9 @@ import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Character } from './character.model';
+import { environment } from '../../environments/environment';
+
+const backendURL = environment.apiURL + '/characters/';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +18,7 @@ export class CharacterService {
   constructor(private http: HttpClient, private router: Router) { }
 
   getCharacters() {
-    this.http.get<{ message: string; characters: any }>('http://localhost:3000/api/characters')
+    this.http.get<{ message: string; characters: any }>(backendURL)
       .pipe(map(characterData => {
         return characterData.characters.map(character => {
           return {
@@ -38,35 +41,35 @@ export class CharacterService {
       _id: string;
       title: string;
       detail: string
-    }>('http://localhost:3000/api/characters/' + id);
+    }>(backendURL + id);
   }
 
   addCharacter(title: string, detail: string) {
     const character: Character = { id: null, title, detail };
-    this.http.post<{ message: string; characterId: string }>('http://localhost:3000/api/characters', character)
+    this.http.post<{ message: string; characterId: string }>(backendURL, character)
       .subscribe(responseData => {
         const id = responseData.characterId;
         character.id = id;
         this.characters.push(character);
         this.charactersUpdated.next([...this.characters]);
-        this.router.navigate(['/']);
+        this.router.navigate(['/characters']);
       });
   }
 
   updateCharacter(id: string, title: string, detail: string) {
     const character: Character = { id, title, detail };
-    this.http.put('http://localhost:3000/api/characters/' + id, character)
+    this.http.put(backendURL + id, character)
       .subscribe(response => {
         const updatedCharacters = [...this.characters];
         const oldCharacterIndex = updatedCharacters.findIndex(c => c.id === character.id);
         updatedCharacters[oldCharacterIndex] = character;
         this.charactersUpdated.next([...this.characters]);
-        this.router.navigate(['/']);
+        this.router.navigate(['/characters']);
       });
   }
 
   deleteCharacter(characterId: string) {
-    this.http.delete('http://localhost:3000/api/characters/' + characterId)
+    this.http.delete(backendURL + characterId)
       .subscribe(() => {
         const updatedCharacters = this.characters.filter(character => character.id !== characterId);
         this.characters = updatedCharacters;
