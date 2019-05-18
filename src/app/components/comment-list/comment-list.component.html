@@ -1,3 +1,20 @@
-<p>
-  comment-list works!
-</p>
+<mat-card *ngIf="comments.length > 0">
+  <div *ngFor="let comment of comments">
+    <div>
+      <h3>
+        {{ comment.postTitle }}
+      </h3>
+    </div>
+    <div>
+      <p>
+        {{ comment.postBody }}
+      </p>
+    </div>
+    <div>
+      <!-- <a mat-button color="primary" [routerLink] = "['/editStory', story.id]">Edit Story</a> -->
+      <button mat-button color="warn" (click)="onDelete(comment.id)">Delete Comment</button>
+    </div>
+    <hr />
+  </div>
+</mat-card>
+<p class="info-text mat-body-1" *ngIf="comments.length <= 0">No comments added yet!</p>
