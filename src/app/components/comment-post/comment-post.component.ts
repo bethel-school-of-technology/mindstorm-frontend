@@ -24,7 +24,7 @@ export class CommentPostComponent implements OnInit {
         this.mode = 'editComment';
         this.commentId = paramMap.get('commentId');
         this.commentService.getComment(this.commentId).subscribe(commentData => {
-          this.comment = {id: commentData._id, title: commentData.title, detail: commentData.detail};
+          this.comment = {id: commentData._id, postTitle: commentData.postTitle, postBody: commentData.postBody};
         });
       } else { this.mode = 'createComment'; this.commentId = null; }
     });
