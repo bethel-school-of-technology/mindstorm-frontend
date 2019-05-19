@@ -30,6 +30,7 @@ export class StoryService {
         this.storiesUpdated.next([...this.stories]);
       });
   }
+
   getStoryUpdateListener() {
     return this.storiesUpdated.asObservable();
   }
