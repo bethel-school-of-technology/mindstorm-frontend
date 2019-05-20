@@ -16,7 +16,7 @@ export class CommentService {
   private commentsUpdated = new Subject<Comment[]>();
 
   constructor(private http: HttpClient, private router: Router) { }
-  
+
   // This will grab comments from database
   getComments() {
     this.http.get<{ message: string; comments: any }>(backendURL)
@@ -55,7 +55,7 @@ export class CommentService {
       postBody: string
     }>(backendURL + id);
   }
-  // This will create comment 
+  // This will create comment
   addComment(postTitle: string, postBody: string) {
     const comment: Comment = { id: null, postTitle, postBody };
     this.http.post<{ message: string; commentId: string }>(backendURL, comment)

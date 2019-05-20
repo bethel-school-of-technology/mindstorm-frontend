@@ -1,0 +1,8 @@
+.spacer {
+  flex: .5 0 auto;
+}
+
+p {
+  white-space: pre-line;
+  text-align: left;
+}

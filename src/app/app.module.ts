@@ -33,6 +33,7 @@ import {
     StoryPostComponent,
     StoryListComponent,
     CommentListComponent,
+    CommentPostComponent
   ],
   imports: [
     BrowserModule,
