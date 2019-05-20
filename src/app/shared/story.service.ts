@@ -4,6 +4,9 @@ import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Story } from './story.model';
+import { environment } from '../../environments/environment';
+
+const backendURL = environment.apiURL + '/stories/';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +18,7 @@ export class StoryService {
   constructor(private http: HttpClient, private router: Router) { }
 
   getStories() {
-    this.http.get<{ message: string; stories: any }>('http://localhost:3000/api/stories')
+    this.http.get<{ message: string; stories: any }>(backendURL)
       .pipe(map(storyData => {
         return storyData.stories.map(story => {
           return {
@@ -35,7 +38,7 @@ export class StoryService {
     return this.storiesUpdated.asObservable();
   }
   deleteStory(storyId: string) {
-    this.http.delete('http://localhost:3000/api/stories/' + storyId)
+    this.http.delete(backendURL + storyId)
       .subscribe(() => {
         const updatedStories = this.stories.filter(story => story.id !== storyId);
         this.stories = updatedStories;
@@ -48,12 +51,12 @@ export class StoryService {
       _id: string;
       storyTitle: string;
       storyBody: string;
-    }>('http://localhost:3000/api/stories/' + id);
+    }>(backendURL + id);
 }
 
   addStory(storyTitle: string, storyBody: string) {
     const story: Story = { id: null, storyTitle, storyBody };
-    this.http.post<{ message: string; storyId: string}>('http://localhost:3000/api/stories', story)
+    this.http.post<{ message: string; storyId: string}>(backendURL, story)
     .subscribe(responseData => {
       const id = responseData.storyId;
       story.id = id;
@@ -64,7 +67,7 @@ export class StoryService {
   }
   updateStory(id: string, storyTitle: string, storyBody: string) {
     const story: Story = { id, storyTitle, storyBody };
-    this.http.put('http://localhost:3000/api/stories/' + id, story)
+    this.http.put(backendURL + id, story)
     .subscribe(response => {
       const updatedStories = [...this.stories];
       const oldStoriesIndex = updatedStories.findIndex(s => s.id === story.id);

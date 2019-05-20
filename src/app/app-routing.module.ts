@@ -5,6 +5,7 @@ import { CharacterListComponent } from './components/character-list/character-li
 import { StoryPostComponent } from './components/story-post/story-post.component';
 import { StoryListComponent } from './components/story-list/story-list.component';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
+import { CommentPostComponent } from './components/comment-post/comment-post.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,14 @@ const routes: Routes = [
     path: 'comments',
     component: CommentListComponent
   },
+  {
+    path: 'createComment',
+    component: CommentPostComponent
+  },
+  {
+    path: 'editComment/:commentId',
+    component: CommentPostComponent
+  }
 ];
 
 @NgModule({

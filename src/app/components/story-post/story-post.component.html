@@ -4,7 +4,7 @@
 <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script> -->
 
 <mat-card>
-  <form (submit)="onSaveStory(storyForm)" #storyForm="ngForm">
+  <form (submit)="onSaveStory(storyForm)" #storyForm="ngForm" (keydown.enter)="$event.stopPropagation()">
     <mat-form-field>
       <input matInput type="text" name="storyTitle" [ngModel]="story?.storyTitle" required minlegnth="3" placeholder="Story Title" #storyTitle="ngModel">
     </mat-form-field>

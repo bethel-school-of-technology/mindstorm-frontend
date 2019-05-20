@@ -4,7 +4,6 @@ import { ActivatedRoute, ParamMap} from '@angular/router';
 import { CharacterService } from '../../shared/character.service';
 import { Character } from '../../shared/character.model';
 
-
 @Component({
   selector: 'app-character-post',
   templateUrl: './character-post.component.html',

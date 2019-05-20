@@ -10,8 +10,8 @@ import { Comment } from '../../shared/comment.model';
   styleUrls: ['./comment-post.component.css']
 })
 export class CommentPostComponent implements OnInit {
-  commentTitle = '';
-  commentBody = '';
+  postTitle = '';
+  postBody = '';
   comment: Comment;
   private mode = 'createComment';
   private commentId: string;
@@ -34,9 +34,9 @@ export class CommentPostComponent implements OnInit {
       return;
     }
     if (this.mode === 'createComment') {
-      this.commentService.addComment(form.value.title, form.value.detail);
+      this.commentService.addComment(form.value.postTitle, form.value.postBody);
     } else {
-      this.commentService.updateComment(this.commentId, form.value.title, form.value.detail);
+      this.commentService.updateComment(this.commentId, form.value.postTitle, form.value.postBody);
     }
     form.resetForm();
   }
