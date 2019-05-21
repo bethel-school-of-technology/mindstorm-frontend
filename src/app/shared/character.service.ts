@@ -6,17 +6,36 @@ import { Router } from '@angular/router';
 import { Character } from './character.model';
 import { environment } from '../../environments/environment';
 
+/**
+ * This variable connects the frontend to the backend api route.
+ */
 const backendURL = environment.apiURL + '/characters/';
-
+/**
+ * Character service for character-list and character-post components.
+ * See {@link Character} for class model.
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class CharacterService {
+  /**
+   * characters property used to get an array of character data.
+   */
   private characters: Character[] = [];
+  /**
+   * charactersUpdated property used to get a new Subject and Character array.
+   */
   private charactersUpdated = new Subject<Character[]>();
 
+  /**
+   * @ignore
+   */
   constructor(private http: HttpClient, private router: Router) { }
 
+  /**
+   * This function is used to retrieve a list of character traits from the database using
+   * the http GET method.
+   */
   getCharacters() {
     this.http.get<{ message: string; characters: any }>(backendURL)
       .pipe(map(characterData => {
@@ -33,9 +52,19 @@ export class CharacterService {
         this.charactersUpdated.next([...this.characters]);
       });
   }
+
+  /**
+   * This function is used to return the charactersUpdated property and update
+   * the character trait list.
+   */
   getCharacterUpdateListener() {
     return this.charactersUpdated.asObservable();
   }
+
+  /**
+   * This function is used to get a character trait by its id using the http GET method.
+   * @param id of type string
+   */
   getCharacter(id: string) {
     return this.http.get<{
       _id: string;
@@ -44,6 +73,11 @@ export class CharacterService {
     }>(backendURL + id);
   }
 
+  /**
+   * This function creates a new character trait using the http POST method.
+   * @param title of type string.
+   * @param detail of type string.
+   */
   addCharacter(title: string, detail: string) {
     const character: Character = { id: null, title, detail };
     this.http.post<{ message: string; characterId: string }>(backendURL, character)
@@ -56,6 +90,12 @@ export class CharacterService {
       });
   }
 
+  /**
+   * This function updates a character trait using the http PUT method.
+   * @param id of type string.
+   * @param title of type string.
+   * @param detail of type string.
+   */
   updateCharacter(id: string, title: string, detail: string) {
     const character: Character = { id, title, detail };
     this.http.put(backendURL + id, character)
@@ -68,6 +108,10 @@ export class CharacterService {
       });
   }
 
+  /**
+   * This function deletes a character trait using the http DELETE method.
+   * @param characterId of type string.
+   */
   deleteCharacter(characterId: string) {
     this.http.delete(backendURL + characterId)
       .subscribe(() => {
