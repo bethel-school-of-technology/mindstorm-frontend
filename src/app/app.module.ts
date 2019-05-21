@@ -24,6 +24,7 @@ import {
   MatListModule
 } from '@angular/material';
 import { SignUpComponent } from './components/user/sign-up/sign-up.component';
+import { LoginComponent } from './components/user/login/login.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { SignUpComponent } from './components/user/sign-up/sign-up.component';
     StoryListComponent,
     CommentListComponent,
     CommentPostComponent,
-    SignUpComponent
+    SignUpComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
