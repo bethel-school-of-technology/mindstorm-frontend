@@ -23,6 +23,7 @@ import {
   MatDividerModule,
   MatListModule
 } from '@angular/material';
+import { SignUpComponent } from './components/user/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {
     StoryPostComponent,
     StoryListComponent,
     CommentListComponent,
-    CommentPostComponent
+    CommentPostComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
