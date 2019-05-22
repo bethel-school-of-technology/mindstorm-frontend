@@ -6,6 +6,7 @@ import { StoryPostComponent } from './components/story-post/story-post.component
 import { StoryListComponent } from './components/story-list/story-list.component';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
 import { CommentPostComponent } from './components/comment-post/comment-post.component';
+import { LoginComponent } from './components/user/login/login.component';
 
 
 const routes: Routes = [
@@ -44,6 +45,10 @@ const routes: Routes = [
   {
     path: 'editComment/:commentId',
     component: CommentPostComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,7 @@ import { StoryListComponent } from './components/story-list/story-list.component
 import { CommentPostComponent } from './components/comment-post/comment-post.component';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
 import { HeaderComponent } from './components/header/header.component';
+import { Interceptor } from './components/user/interceptors'
 
 import {
   MatInputModule,
@@ -53,7 +54,7 @@ import { LoginComponent } from './components/user/login/login.component';
     MatDividerModule,
     MatListModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
