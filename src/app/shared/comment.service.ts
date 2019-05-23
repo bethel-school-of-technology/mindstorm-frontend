@@ -67,7 +67,7 @@ export class CommentService {
         this.router.navigate(['/comments']);
       });
   }
-// This will update comment
+  // This will update comment
   updateComment(id: string, postTitle: string, postBody: string) {
     const comment: Comment = { id, postTitle, postBody };
     this.http.put(backendURL + id, comment)

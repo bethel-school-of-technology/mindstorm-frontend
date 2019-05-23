@@ -6,7 +6,8 @@ import { Subject } from 'rxjs';
 import { User } from '../../shared/user.model';
 
 @Injectable({
-  providedIn: 'root' })
+  providedIn: 'root'
+})
 export class AuthServiceService {
   private isAuthenticated = false;
   private token: string;
@@ -14,6 +15,18 @@ export class AuthServiceService {
   private authStatusListener = new Subject<boolean>();
 
   constructor(private http: HttpClient, private router: Router) { }
+
+  getToken() {
+    return this.token;
+  }
+
+  getIsAuth() {
+    return this.isAuthenticated;
+  }
+
+  getAuthStatusListener() {
+    return this.authStatusListener.asObservable();
+  }
 
   login(email: string, password: string) {
     const user: User = { email: email, password: password };
@@ -37,6 +50,18 @@ export class AuthServiceService {
           this.router.navigate(['/login']);
         }
       });
+  }
+  autoAuthUser() {
+    const authInformation = this.getAuthData();
+    if (!authInformation) { return; }
+    const now = new Date();
+    const expiresIn = authInformation.expirationDate.getTime() - now.getTime();
+    if (expiresIn > 0) {
+      this.token = authInformation.token;
+      this.isAuthenticated = true;
+      this.setAuthTimer(expiresIn / 1000);
+      this.authStatusListener.next(true);
+    }
   }
 
   logout() {
@@ -85,29 +110,4 @@ export class AuthServiceService {
       console.log(response);
     });
   }
-  getToken() {
-    return this.token;
-  }
-  getIsAuth() {
-    return this.isAuthenticated;
-  }
-  getAuthStatusListener() {
-    return this.authStatusListener.asObservable();
-  }
-  autoAuthUser() {
-    const authInformation = this.getAuthData();
-    if (!authInformation) {
-        return;
-      }
-    const now = new Date();
-    const expiresIn = authInformation.expirationDate.getTime() - now.getTime();
-    if (expiresIn > 0) {
-      this.token = authInformation.token;
-      this.isAuthenticated = true;
-      this.setAuthTimer(expiresIn / 1000);
-      this.authStatusListener.next(true);
-    }
-  }
-
 }
-
