@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { AuthServiceService } from '../auth-service.service';
 
 /**
- * The Login Component
+ * The Login Component.
  */
 @Component({
   selector: 'app-login',
@@ -18,14 +18,14 @@ export class LoginComponent implements OnInit {
   constructor(public authService: AuthServiceService) { }
 
   /**
-  *  Empty ngOnInit
-  */
+   * Empty ngOnInit.
+   */
   ngOnInit() {
   }
 
   /**
-   * This function performs a login method
-   * @param form of type ng Form
+   * This function performs a login method.
+   * @param form of type ng Form.
    */
   onLogin(form: NgForm) {
     if (form.invalid) {

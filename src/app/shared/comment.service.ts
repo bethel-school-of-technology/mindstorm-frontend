@@ -6,18 +6,36 @@ import { Router } from '@angular/router';
 import { Comment } from './comment.model';
 import { environment } from '../../environments/environment';
 
+/**
+ * This variable connects the frontend to the backend's api route.
+ */
 const backendURL = environment.apiURL + '/comments/';
 
+/**
+ * Comment service for comment-list and comment-post components.
+ * See {@link Comment} for class model.
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
+  /**
+   * comments property used to reference an array of Comment data.
+   */
   private comments: Comment[] = [];
+  /**
+   * commentsUpdated property used to reference a new Subject and Comment array.
+   */
   private commentsUpdated = new Subject<Comment[]>();
 
+  /**
+   * @ignore
+   */
   constructor(private http: HttpClient, private router: Router) { }
 
-  // This will grab comments from database
+  /**
+   * This function performs a GET method to retrieve a list of comments from the database.
+   */
   getComments() {
     this.http.get<{ message: string; comments: any }>(backendURL)
       .pipe(map(commentData => {
@@ -34,11 +52,18 @@ export class CommentService {
         this.commentsUpdated.next([...this.comments]);
       });
   }
-  // This will get Comments and return them to be seen on webpage
+
+  /**
+   * This function returns the commentsUpdated property to update the list of comments.
+   */
   getCommentUpdateListener() {
     return this.commentsUpdated.asObservable();
   }
-  // This will delete comments from the webpage and database
+
+  /**
+   * This function performs an http DELETE method for deleting a comment by its id.
+   * @param commentId of type string.
+   */
   deleteComment(commentId: string) {
     this.http.delete(backendURL + commentId)
       .subscribe(() => {
@@ -47,7 +72,11 @@ export class CommentService {
         this.commentsUpdated.next([...this.comments]);
       });
   }
-  // This will get comment by ID
+
+  /**
+   * This function performs an http GET method to get a single comment by its id.
+   * @param id of type string.
+   */
   getComment(id: string) {
     return this.http.get<{
       _id: string;
@@ -55,7 +84,12 @@ export class CommentService {
       postBody: string
     }>(backendURL + id);
   }
-  // This will create comment
+
+  /**
+   * This function performs an http POST method for creating a new comment.
+   * @param postTitle of type string.
+   * @param postBody of type string.
+   */
   addComment(postTitle: string, postBody: string) {
     const comment: Comment = { id: null, postTitle, postBody };
     this.http.post<{ message: string; commentId: string }>(backendURL, comment)
@@ -67,7 +101,13 @@ export class CommentService {
         this.router.navigate(['/comments']);
       });
   }
-// This will update comment
+
+  /**
+   * This function performs an http PUT method for editing a comment by its id.
+   * @param id of type string.
+   * @param postTitle of type string.
+   * @param postBody of type string.
+   */
   updateComment(id: string, postTitle: string, postBody: string) {
     const comment: Comment = { id, postTitle, postBody };
     this.http.put(backendURL + id, comment)
