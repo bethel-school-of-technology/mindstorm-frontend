@@ -99,7 +99,15 @@ export class AuthServiceService {
     return {
       token: token,
       expirationDate: new Date(expirationDate)
-    }
+    };
+  }
+  // SignIn Methods
+  createUser(email: string, password: string) {
+    const user: User = { email: email, password: password };
+    this.http
+    .post('http://localhost:3000/api/user/signup', user)
+    .subscribe(response => {
+      console.log(response);
+    });
   }
 }
-
