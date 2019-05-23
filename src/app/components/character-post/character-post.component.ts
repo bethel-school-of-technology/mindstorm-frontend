@@ -5,7 +5,7 @@ import { CharacterService } from '../../shared/character.service';
 import { Character } from '../../shared/character.model';
 
 /**
- * Character-post component uses an html form to GET by id, POST, PUT character
+ * Character-post component uses an html form to GET by id, POST, and PUT character
  * traits to the database.
  */
 @Component({
@@ -23,7 +23,7 @@ export class CharacterPostComponent implements OnInit {
    */
   characterDetail = '';
   /**
-   * character property with type Character.
+   * Local reference of Character.
    */
   character: Character;
   /**
@@ -41,7 +41,7 @@ export class CharacterPostComponent implements OnInit {
   constructor(public characterService: CharacterService, public route: ActivatedRoute) { }
 
   /**
-   * Performs a GET by id function from the character service, getting a single
+   * Performs a GET by id function from the characterService, getting a single
    * character trait. Routes to edit or create mode, depending on the existence of an id.
    */
   ngOnInit() {
@@ -56,8 +56,7 @@ export class CharacterPostComponent implements OnInit {
     });
   }
   /**
-   * Performs POST and PUT functions from the character service and resets
-   * the form.
+   * Performs POST and PUT functions from the characterService and resets the form.
    * @param form of type NgForm.
    */
   onSaveCharacter(form: NgForm) {

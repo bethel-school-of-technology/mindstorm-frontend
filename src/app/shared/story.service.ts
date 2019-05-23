@@ -6,17 +6,36 @@ import { Router } from '@angular/router';
 import { Story } from './story.model';
 import { environment } from '../../environments/environment';
 
+/**
+ * This variable connects the frontend to the backend's api route.
+ */
 const backendURL = environment.apiURL + '/stories/';
 
+/**
+ * Story service for story-list and story-post components.
+ * See {@link Story} for class model.
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class StoryService {
+  /**
+   * stories property used to reference an array of Story data.
+   */
   private stories: Story[] = [];
+  /**
+   * storiesUpdated property used to reference a new Subject and Story array.
+   */
   private storiesUpdated = new Subject<Story[]>();
 
+  /**
+   * @ignore
+   */
   constructor(private http: HttpClient, private router: Router) { }
 
+  /**
+   * This function performs a GET method to get a list of stories from the database.
+   */
   getStories() {
     this.http.get<{ message: string; stories: any }>(backendURL)
       .pipe(map(storyData => {
@@ -34,9 +53,17 @@ export class StoryService {
       });
   }
 
+  /**
+   * This function returns the storiesUpdated property to update the list of stories.
+   */
   getStoryUpdateListener() {
     return this.storiesUpdated.asObservable();
   }
+
+  /**
+   * This function performs an http DELETE method for deleting a story by its id.
+   * @param storyId of type string.
+   */
   deleteStory(storyId: string) {
     this.http.delete(backendURL + storyId)
       .subscribe(() => {
@@ -46,6 +73,10 @@ export class StoryService {
       });
   }
 
+  /**
+   * This function performs an http GET method to get a single story by its id.
+   * @param id of type string.
+   */
   getStory(id: string) {
     return this.http.get<{
       _id: string;
@@ -54,6 +85,11 @@ export class StoryService {
     }>(backendURL + id);
   }
 
+  /**
+   * This function performs an http POST method for creating a new story.
+   * @param storyTitle of type string.
+   * @param storyBody of type string.
+   */
   addStory(storyTitle: string, storyBody: string) {
     const story: Story = { id: null, storyTitle, storyBody };
     this.http.post<{ message: string; storyId: string }>(backendURL, story)
@@ -65,6 +101,13 @@ export class StoryService {
         this.router.navigate(['/']);
       });
   }
+
+  /**
+   * This function performs an http PUT method for editing a story by its id.
+   * @param id of type string.
+   * @param storyTitle of type string.
+   * @param storyBody of type string.
+   */
   updateStory(id: string, storyTitle: string, storyBody: string) {
     const story: Story = { id, storyTitle, storyBody };
     this.http.put(backendURL + id, story)
