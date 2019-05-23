@@ -74,7 +74,40 @@ export class AuthServiceService {
     return {
       token: token,
       expirationDate: new Date(expirationDate)
+    };
+  }
+  // SignIn Methods
+  createUser(email: string, password: string) {
+    const user: User = { email: email, password: password };
+    this.http
+    .post('http://localhost:3000/api/user/signup', user)
+    .subscribe(response => {
+      console.log(response);
+    });
+  }
+  getToken() {
+    return this.token;
+  }
+  getIsAuth() {
+    return this.isAuthenticated;
+  }
+  getAuthStatusListener() {
+    return this.authStatusListener.asObservable();
+  }
+  autoAuthUser() {
+    const authInformation = this.getAuthData();
+    if (!authInformation) {
+        return;
+      }
+    const now = new Date();
+    const expiresIn = authInformation.expirationDate.getTime() - now.getTime();
+    if (expiresIn > 0) {
+      this.token = authInformation.token;
+      this.isAuthenticated = true;
+      this.setAuthTimer(expiresIn / 1000);
+      this.authStatusListener.next(true);
     }
   }
+
 }
 
