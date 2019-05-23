@@ -92,14 +92,14 @@ export class StoryService {
    */
   addStory(storyTitle: string, storyBody: string) {
     const story: Story = { id: null, storyTitle, storyBody };
-    this.http.post<{ message: string; storyId: string}>(backendURL, story)
-    .subscribe(responseData => {
-      const id = responseData.storyId;
-      story.id = id;
-      this.stories.push(story);
-      this.storiesUpdated.next([...this.stories]);
-      this.router.navigate(['/']);
-    });
+    this.http.post<{ message: string; storyId: string }>(backendURL, story)
+      .subscribe(responseData => {
+        const id = responseData.storyId;
+        story.id = id;
+        this.stories.push(story);
+        this.storiesUpdated.next([...this.stories]);
+        this.router.navigate(['/']);
+      });
   }
 
   /**
@@ -111,12 +111,12 @@ export class StoryService {
   updateStory(id: string, storyTitle: string, storyBody: string) {
     const story: Story = { id, storyTitle, storyBody };
     this.http.put(backendURL + id, story)
-    .subscribe(response => {
-      const updatedStories = [...this.stories];
-      const oldStoriesIndex = updatedStories.findIndex(s => s.id === story.id);
-      updatedStories[oldStoriesIndex] = story;
-      this.storiesUpdated.next([...this.stories]);
-      this.router.navigate(['/']);
-    });
+      .subscribe(response => {
+        const updatedStories = [...this.stories];
+        const oldStoriesIndex = updatedStories.findIndex(s => s.id === story.id);
+        updatedStories[oldStoriesIndex] = story;
+        this.storiesUpdated.next([...this.stories]);
+        this.router.navigate(['/']);
+      });
   }
 }

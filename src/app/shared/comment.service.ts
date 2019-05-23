@@ -108,6 +108,7 @@ export class CommentService {
    * @param postTitle of type string.
    * @param postBody of type string.
    */
+
   updateComment(id: string, postTitle: string, postBody: string) {
     const comment: Comment = { id, postTitle, postBody };
     this.http.put(backendURL + id, comment)
