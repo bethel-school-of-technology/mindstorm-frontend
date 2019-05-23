@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   /**
    * This function performs a login method.
-   * @param form of type ng Form.
+   * @param form of type NgForm.
    */
   onLogin(form: NgForm) {
     if (form.invalid) {
