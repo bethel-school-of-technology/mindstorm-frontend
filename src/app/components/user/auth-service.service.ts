@@ -4,6 +4,12 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
 import { User } from '../../shared/user.model';
+import { environment } from '../../../environments/environment';
+
+/**
+ * This variable connects the frontend to the backend's api route.
+ */
+const backendURL = environment.apiURL + '/user/';
 
 @Injectable({
   providedIn: 'root'
@@ -28,12 +34,20 @@ export class AuthServiceService {
     return this.authStatusListener.asObservable();
   }
 
+  createUser(email: string, password: string) {
+    const user: User = { email, password };
+    this.http
+    .post(backendURL + 'signup', user)
+    .subscribe(() => {
+      this.router.navigate(['/']);
+    });
+  }
+
   login(email: string, password: string) {
-    const user: User = { email: email, password: password };
+    const user: User = { email, password };
     this.http
       .post<{ token: string; expiresIn: number }>(
-        'http://localhost:3000/api/user/login',
-        user
+        backendURL + 'login', user
       )
       .subscribe(response => {
         const token = response.token;
@@ -47,7 +61,7 @@ export class AuthServiceService {
           const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
           console.log(expirationDate);
           this.saveAuthData(token, expirationDate);
-          this.router.navigate(['/login']);
+          this.router.navigate(['/']);
         }
       });
   }
@@ -97,17 +111,8 @@ export class AuthServiceService {
       return;
     }
     return {
-      token: token,
+      token,
       expirationDate: new Date(expirationDate)
     };
-  }
-  // SignIn Methods
-  createUser(email: string, password: string) {
-    const user: User = { email: email, password: password };
-    this.http
-    .post('http://localhost:3000/api/user/signup', user)
-    .subscribe(response => {
-      console.log(response);
-    });
   }
 }

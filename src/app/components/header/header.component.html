@@ -1,10 +1,25 @@
 <mat-toolbar>
   <span>
-    <a routerLink='/'>MindStorm</a>
+    <a routerLink="/">MindStorm</a>
   </span>
   <span>
-    <a mat-button routerLink="/create">Build a Character</a>
-    <a mat-button routerLink="/characters">List of Character Traits</a>
-    <a mat-button routerLink="/createStory">Create a Story</a>
+    <span>
+      <a mat-button routerLink="characters/create" routerLinkActive="mat-primary">Build a Character</a>
+    </span>
+    <span>
+      <a mat-button routerLink="/characters" routerLinkActive="mat-primary">List of Character Traits</a>
+    </span>
+    <span>
+      <a mat-button routerLink="/createStory" routerLinkActive="mat-primary">Create a Story</a>
+    </span>
+    <span *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/login" routerLinkActive="mat-primary">Login</a>
+    </span>
+    <span *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/signup" routerLinkActive="mat-primary">Signup</a>
+    </span>
+    <span *ngIf="userIsAuthenticated">
+      <button mat-button (click)="onLogout()">Logout</button>
+    </span>
   </span>
 </mat-toolbar>

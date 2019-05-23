@@ -29,7 +29,7 @@ export class CharacterPostComponent implements OnInit {
   /**
    * mode property routes to create.
    */
-  private mode = 'create';
+  private mode = 'characters/create';
   /**
    * characterId property with type string.
    */
@@ -47,12 +47,12 @@ export class CharacterPostComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('characterId')) {
-        this.mode = 'edit';
+        this.mode = 'characters/edit';
         this.characterId = paramMap.get('characterId');
         this.characterService.getCharacter(this.characterId).subscribe(characterData => {
           this.character = {id: characterData._id, title: characterData.title, detail: characterData.detail};
         });
-      } else { this.mode = 'create'; this.characterId = null; }
+      } else { this.mode = 'characters/create'; this.characterId = null; }
     });
   }
   /**
@@ -63,7 +63,7 @@ export class CharacterPostComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    if (this.mode === 'create') {
+    if (this.mode === 'characters/create') {
       this.characterService.addCharacter(form.value.title, form.value.detail);
     } else {
       this.characterService.updateCharacter(this.characterId, form.value.title, form.value.detail);
