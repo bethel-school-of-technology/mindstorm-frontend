@@ -4,7 +4,7 @@ import { Character } from '../../shared/character.model';
 import { CharacterService } from '../../shared/character.service';
 
 /**
- * Character-list component gets a list of character traits fromt the database.
+ * Character-list component gets a list of character traits from the database.
  */
 @Component({
   selector: 'app-character-list',
@@ -13,10 +13,9 @@ import { CharacterService } from '../../shared/character.service';
 })
 export class CharacterListComponent implements OnInit, OnDestroy {
   /**
-   * characters property used to get an array of character data.
+   * characters property used to reference an array of character data.
    */
   characters: Character[] = [];
-
   /**
    * characterSub property with a type of Subscription from rxjs library.
    * Unsubscribes in ngOnDestroy function.
@@ -41,7 +40,7 @@ export class CharacterListComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Performs a delete function on a button click.
+   * Performs a delete function from the characterService on a button click.
    * @param characterId of type string.
    */
   onDelete(characterId: string) {

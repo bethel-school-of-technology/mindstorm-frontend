@@ -7,6 +7,7 @@ import { StoryListComponent } from './components/story-list/story-list.component
 import { CommentListComponent } from './components/comment-list/comment-list.component';
 import { CommentPostComponent } from './components/comment-post/comment-post.component';
 import { LoginComponent } from './components/user/login/login.component';
+import { SignUpComponent } from './components/user/sign-up/sign-up.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,7 @@ const routes: Routes = [
     component: CharacterPostComponent,
   },
   {
-    path: 'edit/:characterId',
+    path: 'characters/edit/:characterId',
     component: CharacterPostComponent
   },
   {
@@ -49,6 +50,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'signup',
+    component: SignUpComponent
   }
 ];
 

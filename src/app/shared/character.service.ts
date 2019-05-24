@@ -7,7 +7,7 @@ import { Character } from './character.model';
 import { environment } from '../../environments/environment';
 
 /**
- * This variable connects the frontend to the backend api route.
+ * This variable connects the frontend to the backend's api route.
  */
 const backendURL = environment.apiURL + '/characters/';
 /**
@@ -19,11 +19,11 @@ const backendURL = environment.apiURL + '/characters/';
 })
 export class CharacterService {
   /**
-   * characters property used to get an array of character data.
+   * characters property used to reference an array of character data.
    */
   private characters: Character[] = [];
   /**
-   * charactersUpdated property used to get a new Subject and Character array.
+   * charactersUpdated property used to reference a new Subject and Character array.
    */
   private charactersUpdated = new Subject<Character[]>();
 
@@ -63,7 +63,7 @@ export class CharacterService {
 
   /**
    * This function is used to get a character trait by its id using the http GET method.
-   * @param id of type string
+   * @param id of type string.
    */
   getCharacter(id: string) {
     return this.http.get<{
