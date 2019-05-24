@@ -5,6 +5,7 @@ import { AuthServiceService } from '../auth-service.service';
 /**
  * The SignIn Component
  */
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -12,17 +13,21 @@ import { AuthServiceService } from '../auth-service.service';
 })
 export class SignUpComponent implements OnInit {
 
+/**
+ * @Ignore
+ */
   constructor(public authService: AuthServiceService) {}
 
-  /**
-   * Empty ngOnInIt
-   */
+/**
+ * Empty ngOnInIt
+ */
+
   ngOnInit() {
   }
 
 /**
  *
- * @param form
+ * @param form of type NgForm
  *
  * This function performs a signin method and tells them that the app is loading and checks
  *
@@ -33,6 +38,9 @@ export class SignUpComponent implements OnInit {
     if (form.invalid) {
       return;
     }
+/**
+ * Uses authService and createUser and checks values.
+ */
     this.authService.createUser(form.value.email, form.value.password);
   }
 
