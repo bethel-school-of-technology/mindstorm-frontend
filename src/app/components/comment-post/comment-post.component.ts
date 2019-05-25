@@ -28,7 +28,7 @@ export class CommentPostComponent implements OnInit {
   /**
    * mode property set to createComment route.
    */
-  private mode = 'createComment';
+  private mode = 'comment/create';
   /**
    * commentId property of type string.
    */
@@ -46,12 +46,12 @@ export class CommentPostComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('commentId')) {
-        this.mode = 'editComment';
+        this.mode = 'comment/edit';
         this.commentId = paramMap.get('commentId');
         this.commentService.getComment(this.commentId).subscribe(commentData => {
           this.comment = {id: commentData._id, postTitle: commentData.postTitle, postBody: commentData.postBody};
         });
-      } else { this.mode = 'createComment'; this.commentId = null; }
+      } else { this.mode = 'comment/create'; this.commentId = null; }
     });
   }
 
@@ -63,7 +63,7 @@ export class CommentPostComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    if (this.mode === 'createComment') {
+    if (this.mode === 'comment/create') {
       this.commentService.addComment(form.value.postTitle, form.value.postBody);
     } else {
       this.commentService.updateComment(this.commentId, form.value.postTitle, form.value.postBody);
