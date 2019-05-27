@@ -43,7 +43,8 @@ export class CommentService {
           return {
             postTitle: comment.postTitle,
             postBody: comment.postBody,
-            id: comment._id
+            id: comment._id,
+            creator: comment.creator
           };
         });
       }))
@@ -81,7 +82,8 @@ export class CommentService {
     return this.http.get<{
       _id: string;
       postTitle: string;
-      postBody: string
+      postBody: string;
+      creator: string;
     }>(backendURL + id);
   }
 
@@ -90,8 +92,8 @@ export class CommentService {
    * @param postTitle of type string.
    * @param postBody of type string.
    */
-  addComment(postTitle: string, postBody: string) {
-    const comment: Comment = { id: null, postTitle, postBody };
+  addComment(postTitle: string, postBody: string, creator: string) {
+    const comment: Comment = { id: null, postTitle, postBody, creator };
     this.http.post<{ message: string; commentId: string }>(backendURL, comment)
       .subscribe(responseData => {
         const id = responseData.commentId;
@@ -109,8 +111,8 @@ export class CommentService {
    * @param postBody of type string.
    */
 
-  updateComment(id: string, postTitle: string, postBody: string) {
-    const comment: Comment = { id, postTitle, postBody };
+  updateComment(id: string, postTitle: string, postBody: string, creator: string) {
+    const comment: Comment = { id, postTitle, postBody, creator };
     this.http.put(backendURL + id, comment)
       .subscribe(response => {
         const updatedComments = [...this.comments];

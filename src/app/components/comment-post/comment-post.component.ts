@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute, ParamMap} from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { CommentService } from '../../shared/comment.service';
 import { Comment } from '../../shared/comment.model';
 
@@ -49,7 +49,12 @@ export class CommentPostComponent implements OnInit {
         this.mode = 'comment/edit';
         this.commentId = paramMap.get('commentId');
         this.commentService.getComment(this.commentId).subscribe(commentData => {
-          this.comment = {id: commentData._id, postTitle: commentData.postTitle, postBody: commentData.postBody};
+          this.comment = {
+            id: commentData._id,
+            postTitle: commentData.postTitle,
+            postBody: commentData.postBody,
+            creator: commentData.creator
+          };
         });
       } else { this.mode = 'comment/create'; this.commentId = null; }
     });
@@ -64,9 +69,13 @@ export class CommentPostComponent implements OnInit {
       return;
     }
     if (this.mode === 'comment/create') {
-      this.commentService.addComment(form.value.postTitle, form.value.postBody);
+      this.commentService.addComment(form.value.postTitle, form.value.postBody,
+        form.value
+      );
     } else {
-      this.commentService.updateComment(this.commentId, form.value.postTitle, form.value.postBody);
+      this.commentService.updateComment(this.commentId, form.value.postTitle, form.value.postBody,
+        form.value
+      );
     }
     form.resetForm();
   }
