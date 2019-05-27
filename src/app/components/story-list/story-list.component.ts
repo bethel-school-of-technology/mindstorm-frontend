@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Story } from '../../shared/story.model';
 import { StoryService } from '../../shared/story.service';
+import { AuthServiceService } from '../user/auth-service.service';
 
 /**
  * Story-list component gets a list of stories from the database.
@@ -21,20 +22,35 @@ export class StoryListComponent implements OnInit, OnDestroy {
    * Unsubscribes in the ngOnDestroy function.
    */
   private storySub: Subscription;
+  userId: string;
+  userIsAuthenticated = false;
+  private authStatusSub: Subscription;
+
 
   /**
    *  @ignore
    */
-  constructor(public storyService: StoryService) { }
+  constructor(
+    public storyService: StoryService,
+    private authService: AuthServiceService
+    ) { }
 
   /**
    * This function performs a GET request from the StoryService for a list of stories from the database.
    */
   ngOnInit() {
     this.storyService.getStories();
+    this.userId = this.authService.getUserId();
     this.storySub = this.storyService.getStoryUpdateListener()
       .subscribe((stories: Story[]) => {
         this.stories = stories;
+      });
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authStatusSub = this.authService
+      .getAuthStatusListener()
+      .subscribe(isAuthenticated => {
+        this.userIsAuthenticated = isAuthenticated;
+        this.userId = this.authService.getUserId();
       });
   }
 
@@ -51,5 +67,6 @@ export class StoryListComponent implements OnInit, OnDestroy {
    */
   ngOnDestroy() {
     this.storySub.unsubscribe();
+    this.authStatusSub.unsubscribe();
   }
 }
