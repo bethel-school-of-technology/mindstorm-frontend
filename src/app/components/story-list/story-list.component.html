@@ -8,11 +8,11 @@
         {{ story.storyBody }}
       </p>
     <mat-action-row>
-      <a mat-button color="primary" [routerLink] = "['/editStory', story.id]">Edit Story</a>
+      <a mat-button color="primary" [routerLink] = "['/story/edit', story.id]">Edit Story</a>
       <button mat-button color="warn" (click)="onDelete(story.id)">Delete Story</button>
     </mat-action-row>
     <mat-action-row>
-      <a mat-raised-button routerLink="/createComment">Give Feedback</a>
+      <a mat-raised-button routerLink="/comment/create">Give Feedback</a>
       <a mat-raised-button routerLink="/comments">View Comments</a>
     </mat-action-row>
   </mat-expansion-panel>

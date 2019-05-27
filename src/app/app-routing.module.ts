@@ -20,19 +20,19 @@ const routes: Routes = [
     component: CharacterListComponent,
   },
   {
-    path: 'create',
+    path: 'character/create',
     component: CharacterPostComponent,
   },
   {
-    path: 'characters/edit/:characterId',
+    path: 'character/edit/:characterId',
     component: CharacterPostComponent
   },
   {
-    path: 'createStory',
+    path: 'story/create',
     component: StoryPostComponent,
   },
   {
-    path: 'editStory/:storyId',
+    path: 'story/edit/:storyId',
     component: StoryPostComponent
   },
   {
@@ -40,11 +40,11 @@ const routes: Routes = [
     component: CommentListComponent
   },
   {
-    path: 'createComment',
+    path: 'comment/create',
     component: CommentPostComponent
   },
   {
-    path: 'editComment/:commentId',
+    path: 'comment/edit/:commentId',
     component: CommentPostComponent
   },
   {

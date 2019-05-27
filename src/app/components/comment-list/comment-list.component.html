@@ -8,7 +8,7 @@
         {{ comment.postBody }}
       </p>
     <mat-action-row>
-      <a mat-button color="primary" [routerLink] = "['/editComment', comment.id]">Edit Comment</a>
+      <a mat-button color="primary" [routerLink] = "['/comment/edit', comment.id]">Edit Comment</a>
       <button mat-button color="warn" (click)="onDelete(comment.id)">Delete Comment</button>
     </mat-action-row>
   </mat-expansion-panel>

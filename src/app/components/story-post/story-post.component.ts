@@ -29,7 +29,7 @@ export class StoryPostComponent implements OnInit {
   /**
    * mode property set to createStory route.
    */
-  private mode = 'createStory';
+  private mode = 'story/create';
   /**
    * storyId property with type string.
    */
@@ -47,12 +47,12 @@ export class StoryPostComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('storyId')) {
-        this.mode = 'editStory';
+        this.mode = 'story/edit';
         this.storyId = paramMap.get('storyId');
         this.storyService.getStory(this.storyId).subscribe(storyData => {
           this.story = {id: storyData._id, storyTitle: storyData.storyTitle, storyBody: storyData.storyBody};
         });
-      } else { this.mode = 'createStory'; this.storyId = null; }
+      } else { this.mode = 'story/create'; this.storyId = null; }
     });
   }
 
@@ -64,7 +64,7 @@ export class StoryPostComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    if (this.mode === 'createStory') {
+    if (this.mode === 'story/create') {
       this.storyService.addStory(form.value.storyTitle, form.value.storyBody);
     } else {
       this.storyService.updateStory(this.storyId, form.value.storyTitle, form.value.storyBody);

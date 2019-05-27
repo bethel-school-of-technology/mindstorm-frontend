@@ -4,13 +4,13 @@
   </span>
   <span>
     <span>
-      <a mat-button routerLink="characters/create" routerLinkActive="mat-primary">Build a Character</a>
+      <a mat-button routerLink="/character/create" routerLinkActive="mat-primary">Build a Character</a>
     </span>
     <span>
       <a mat-button routerLink="/characters" routerLinkActive="mat-primary">List of Character Traits</a>
     </span>
     <span>
-      <a mat-button routerLink="/createStory" routerLinkActive="mat-primary">Create a Story</a>
+      <a mat-button routerLink="/story/create" routerLinkActive="mat-primary">Create a Story</a>
     </span>
     <span *ngIf="!userIsAuthenticated">
       <a mat-button routerLink="/login" routerLinkActive="mat-primary">Login</a>
