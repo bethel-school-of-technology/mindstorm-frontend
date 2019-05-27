@@ -15,4 +15,8 @@ export class Comment {
    * The comment details.
    */
   postBody: string;
+  /**
+     * The comment creator.
+     */
+  creator: string;
 }
