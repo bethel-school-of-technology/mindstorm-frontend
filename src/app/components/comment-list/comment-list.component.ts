@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Comment } from '../../shared/comment.model';
-import { CommentService } from '../../shared/comment.service';
+import { Comment } from '../../shared/models/comment.model';
+import { CommentService } from '../../shared/service/comment.service';
 import { AuthServiceService } from '../user/auth-service.service';
 
 /**

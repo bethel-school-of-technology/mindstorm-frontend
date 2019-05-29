@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Story } from '../../shared/story.model';
-import { StoryService } from '../../shared/story.service';
+import { Story } from '../../shared/models/story.model';
+import { StoryService } from '../../shared/service/story.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 /**

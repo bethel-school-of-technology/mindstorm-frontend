@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { Comment } from './comment.model';
-import { environment } from '../../environments/environment';
+import { Comment } from '../models/comment.model';
+import { environment } from '../../../environments/environment';
 
 /**
  * This variable connects the frontend to the backend's api route.
