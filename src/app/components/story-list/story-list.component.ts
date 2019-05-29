@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Story } from '../../shared/story.model';
-import { StoryService } from '../../shared/story.service';
+import { Story } from '../../shared/models/story.model';
+import { StoryService } from '../../shared/service/story.service';
 import { AuthServiceService } from '../user/auth-service.service';
 
 /**
@@ -26,14 +26,10 @@ export class StoryListComponent implements OnInit, OnDestroy {
   userIsAuthenticated = false;
   private authStatusSub: Subscription;
 
-
   /**
    *  @ignore
    */
-  constructor(
-    public storyService: StoryService,
-    private authService: AuthServiceService
-    ) { }
+  constructor(public storyService: StoryService, private authService: AuthServiceService) { }
 
   /**
    * This function performs a GET request from the StoryService for a list of stories from the database.
@@ -56,7 +52,7 @@ export class StoryListComponent implements OnInit, OnDestroy {
 
   /**
    * Performs a delete function from the StoryService on a button click.
-   * @param storyId of type string.
+   * @param storyId string.
    */
   onDelete(storyId: string) {
     this.storyService.deleteStory(storyId);

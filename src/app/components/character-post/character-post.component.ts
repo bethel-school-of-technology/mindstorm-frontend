@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, ParamMap} from '@angular/router';
-import { CharacterService } from '../../shared/character.service';
-import { Character } from '../../shared/character.model';
+import { CharacterService } from '../../shared/service/character.service';
+import { Character } from '../../shared/models/character.model';
 
 /**
  * Character-post component uses an html form to GET by id, POST, and PUT character
