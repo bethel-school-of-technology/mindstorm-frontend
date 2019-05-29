@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { Story } from './story.model';
+import { Story } from '../models/story.model';
 import { environment } from '../../../environments/environment';
 
 /**
