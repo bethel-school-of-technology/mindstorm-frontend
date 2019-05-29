@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { CommentService } from '../../shared/comment.service';
-import { Comment } from '../../shared/comment.model';
+import { CommentService } from '../../shared/service/comment.service';
+import { Comment } from '../../shared/models/comment.model';
 
 /**
  * Comment-post component uses an html form to GET by id, POST, and PUT comments to the database.

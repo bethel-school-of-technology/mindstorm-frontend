@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Character } from '../../shared/character.model';
-import { CharacterService } from '../../shared/character.service';
+import { Character } from '../../shared/models/character.model';
+import { CharacterService } from '../../shared/service/character.service';
 import { AuthServiceService } from '../user/auth-service.service';
 
 /**
