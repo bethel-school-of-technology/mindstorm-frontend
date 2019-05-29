@@ -1,19 +1,20 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CharacterPostComponent } from './components/character-post/character-post.component';
-import { CharacterListComponent } from './components/character-list/character-list.component';
-import { StoryPostComponent } from './components/story-post/story-post.component';
-import { StoryListComponent } from './components/story-list/story-list.component';
-import { CommentPostComponent } from './components/comment-post/comment-post.component';
-import { CommentListComponent } from './components/comment-list/comment-list.component';
-import { HeaderComponent } from './components/header/header.component';
-import { Interceptor } from './components/user/interceptors';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { CharacterPostComponent } from "./components/character-post/character-post.component";
+import { CharacterListComponent } from "./components/character-list/character-list.component";
+import { StoryPostComponent } from "./components/story-post/story-post.component";
+import { StoryListComponent } from "./components/story-list/story-list.component";
+import { CommentPostComponent } from "./components/comment-post/comment-post.component";
+import { CommentListComponent } from "./components/comment-list/comment-list.component";
+import { HeaderComponent } from "./components/header/header.component";
+import { Interceptor } from "./components/user/interceptors";
+import { ErrorInterceptor } from "./error.interceptor";
 /**
  * Angular Material imports.
  */
@@ -24,10 +25,12 @@ import {
   MatToolbarModule,
   MatExpansionModule,
   MatDividerModule,
-  MatListModule
-} from '@angular/material';
-import { SignUpComponent } from './components/user/sign-up/sign-up.component';
-import { LoginComponent } from './components/user/login/login.component';
+  MatListModule,
+  MatDialogModule
+} from "@angular/material";
+import { SignUpComponent } from "./components/user/sign-up/sign-up.component";
+import { LoginComponent } from "./components/user/login/login.component";
+import { ErrorComponent } from "./error/error.component";
 
 /**
  * The bootstrapper module.
@@ -43,7 +46,8 @@ import { LoginComponent } from './components/user/login/login.component';
     CommentListComponent,
     CommentPostComponent,
     SignUpComponent,
-    LoginComponent
+    LoginComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -57,9 +61,14 @@ import { LoginComponent } from './components/user/login/login.component';
     MatToolbarModule,
     MatExpansionModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [ErrorComponent]
 })
-export class AppModule { }
+export class AppModule {}
