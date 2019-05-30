@@ -25,6 +25,7 @@ import {
   MatToolbarModule,
   MatExpansionModule,
   MatDividerModule,
+  MatProgressSpinnerModule,
   MatListModule,
   MatDialogModule
 } from "@angular/material";
@@ -61,6 +62,7 @@ import { ErrorComponent } from "./error/error.component";
     MatToolbarModule,
     MatExpansionModule,
     MatDividerModule,
+    MatProgressSpinnerModule,
     MatListModule,
     MatDialogModule
   ],
