@@ -25,6 +25,7 @@ import {
   MatToolbarModule,
   MatExpansionModule,
   MatDividerModule,
+  MatProgressSpinnerModule,
   MatListModule,
   MatDialogModule
 } from '@angular/material';
@@ -63,6 +64,7 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     MatToolbarModule,
     MatExpansionModule,
     MatDividerModule,
+    MatProgressSpinnerModule,
     MatListModule,
     MatDialogModule
   ],

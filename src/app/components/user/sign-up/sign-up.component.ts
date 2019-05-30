@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../user.service';
+import { Subscription } from 'rxjs';
 
 /**
- * The SignIn Component
+ * The Signup Component
  */
 
 @Component({
@@ -11,37 +12,43 @@ import { UserService } from '../user.service';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent implements OnInit, OnDestroy {
+  isLoading = false;
+  private authStatusSub: Subscription;
 
 /**
  * @Ignore
  */
   constructor(public userService: UserService) {}
 
-/**
- * Empty ngOnInIt
- */
-
   ngOnInit() {
+    this.authStatusSub = this.userService
+      .getAuthStatusListener()
+      .subscribe(authStatus => {
+        this.isLoading = false;
+      });
   }
 
-/**
- *
- * @param form of type NgForm
- *
- * This function performs a signin method and tells them that the app is loading and checks
- *
- * and creates a user
- */
-
+  /**
+   * This function performs a signin method and tells them that the app is loading and checks
+   * and creates a user
+   * @param form NgForm
+   */
   onSignUp(form: NgForm) {
     if (form.invalid) {
       return;
     }
-/**
- * Uses authService and createUser and checks values.
- */
+    /**
+     * Uses userService and createUser and checks values.
+     */
+    this.isLoading = true;
     this.userService.createUser(form.value.email, form.value.password);
   }
 
+  /**
+   * Unsubscribes using rxjs Subscription.
+   */
+  ngOnDestroy() {
+    this.authStatusSub.unsubscribe();
+  }
 }
