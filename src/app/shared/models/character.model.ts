@@ -15,4 +15,8 @@ export class Character {
    * Character trait detail.
    */
   detail: string;
+  /**
+   * The character trait's creator.
+   */
+  creator: string;
 }

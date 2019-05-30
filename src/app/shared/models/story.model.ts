@@ -15,4 +15,8 @@ export class Story {
    * The story details.
    */
   storyBody: string;
+  /**
+   * The story's creator.
+   */
+  creator: string;
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthServiceService } from '../auth-service.service';
+import { Subscription } from 'rxjs';
+import { UserService } from '../user.service';
 
 /**
  * The Login Component.
@@ -11,26 +12,24 @@ import { AuthServiceService } from '../auth-service.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  private authStatusSub: Subscription;
 
   /**
    * @Ignore
    */
-  constructor(public authService: AuthServiceService) { }
+  constructor(public userService: UserService) { }
 
-  /**
-   * Empty ngOnInit.
-   */
   ngOnInit() {
   }
 
   /**
    * This function performs a login method.
-   * @param form of type NgForm.
+   * @param form NgForm.
    */
   onLogin(form: NgForm) {
     if (form.invalid) {
       return;
     }
-    this.authService.login(form.value.email, form.value.password);
+    this.userService.login(form.value.email, form.value.password);
   }
 }

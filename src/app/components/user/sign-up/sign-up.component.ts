@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthServiceService } from '../auth-service.service';
+import { UserService } from '../user.service';
 
 /**
  * The SignIn Component
@@ -16,7 +16,7 @@ export class SignUpComponent implements OnInit {
 /**
  * @Ignore
  */
-  constructor(public authService: AuthServiceService) {}
+  constructor(public userService: UserService) {}
 
 /**
  * Empty ngOnInIt
@@ -41,7 +41,7 @@ export class SignUpComponent implements OnInit {
 /**
  * Uses authService and createUser and checks values.
  */
-    this.authService.createUser(form.value.email, form.value.password);
+    this.userService.createUser(form.value.email, form.value.password);
   }
 
 }

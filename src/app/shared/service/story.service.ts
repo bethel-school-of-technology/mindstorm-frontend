@@ -26,7 +26,7 @@ export class StoryService {
   /**
    * storiesUpdated property used to reference a new Subject and Story array.
    */
-  private storiesUpdated = new Subject<Story[]>();
+  private storiesUpdated = new Subject<{ stories: Story[] }>();
 
   /**
    * @ignore
@@ -39,17 +39,22 @@ export class StoryService {
   getStories() {
     this.http.get<{ message: string; stories: any }>(backendURL)
       .pipe(map(storyData => {
-        return storyData.stories.map(story => {
+        return {
+          stories: storyData.stories.map(story => {
           return {
             storyTitle: story.storyTitle,
             storyBody: story.storyBody,
-            id: story._id
+            id: story._id,
+            creator: story.creator
           };
-        });
+        })
+      };
       }))
       .subscribe(formedStories => {
-        this.stories = formedStories;
-        this.storiesUpdated.next([...this.stories]);
+        this.stories = formedStories.stories;
+        this.storiesUpdated.next({
+          stories: [...this.stories]
+        });
       });
   }
 
@@ -62,60 +67,65 @@ export class StoryService {
 
   /**
    * This function performs an http DELETE method for deleting a story by its id.
-   * @param storyId of type string.
+   * @param storyId string.
    */
   deleteStory(storyId: string) {
-    this.http.delete(backendURL + storyId)
-      .subscribe(() => {
-        const updatedStories = this.stories.filter(story => story.id !== storyId);
-        this.stories = updatedStories;
-        this.storiesUpdated.next([...this.stories]);
-      });
+    return this.http.delete(backendURL + storyId);
+      // .subscribe(() => {
+      //   const updatedStories = this.stories.filter(story => story.id !== storyId);
+      //   this.stories = updatedStories;
+      //   this.storiesUpdated.next([...this.stories]);
+      // });
   }
 
   /**
    * This function performs an http GET method to get a single story by its id.
-   * @param id of type string.
+   * @param id string.
    */
   getStory(id: string) {
     return this.http.get<{
       _id: string;
       storyTitle: string;
       storyBody: string;
+      creator: string;
     }>(backendURL + id);
   }
 
   /**
    * This function performs an http POST method for creating a new story.
-   * @param storyTitle of type string.
-   * @param storyBody of type string.
+   * @param storyTitle string.
+   * @param storyBody string.
    */
-  addStory(storyTitle: string, storyBody: string) {
-    const story: Story = { id: null, storyTitle, storyBody };
+  addStory(storyTitle: string, storyBody: string, creator: string) {
+    const story: Story = { id: null, storyTitle, storyBody, creator };
     this.http.post<{ message: string; storyId: string }>(backendURL, story)
       .subscribe(responseData => {
         const id = responseData.storyId;
         story.id = id;
         this.stories.push(story);
-        this.storiesUpdated.next([...this.stories]);
+        this.storiesUpdated.next({
+          stories: [...this.stories]
+        });
         this.router.navigate(['/']);
       });
   }
 
   /**
    * This function performs an http PUT method for editing a story by its id.
-   * @param id of type string.
-   * @param storyTitle of type string.
-   * @param storyBody of type string.
+   * @param id string.
+   * @param storyTitle string.
+   * @param storyBody string.
    */
-  updateStory(id: string, storyTitle: string, storyBody: string) {
-    const story: Story = { id, storyTitle, storyBody };
+  updateStory(id: string, storyTitle: string, storyBody: string, creator: string) {
+    const story: Story = { id, storyTitle, storyBody, creator };
     this.http.put(backendURL + id, story)
       .subscribe(response => {
         const updatedStories = [...this.stories];
         const oldStoriesIndex = updatedStories.findIndex(s => s.id === story.id);
         updatedStories[oldStoriesIndex] = story;
-        this.storiesUpdated.next([...this.stories]);
+        this.storiesUpdated.next({
+          stories: [...this.stories]
+        });
         this.router.navigate(['/']);
       });
   }

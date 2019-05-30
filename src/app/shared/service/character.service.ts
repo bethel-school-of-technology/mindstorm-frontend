@@ -43,7 +43,8 @@ export class CharacterService {
           return {
             title: character.title,
             detail: character.detail,
-            id: character._id
+            id: character._id,
+            creator: character.creator
           };
         });
       }))
@@ -69,7 +70,8 @@ export class CharacterService {
     return this.http.get<{
       _id: string;
       title: string;
-      detail: string
+      detail: string;
+      creator: string;
     }>(backendURL + id);
   }
 
@@ -78,8 +80,8 @@ export class CharacterService {
    * @param title of type string.
    * @param detail of type string.
    */
-  addCharacter(title: string, detail: string) {
-    const character: Character = { id: null, title, detail };
+  addCharacter(title: string, detail: string, creator: string) {
+    const character: Character = { id: null, title, detail, creator };
     this.http.post<{ message: string; characterId: string }>(backendURL, character)
       .subscribe(responseData => {
         const id = responseData.characterId;
@@ -92,12 +94,12 @@ export class CharacterService {
 
   /**
    * This function updates a character trait using the http PUT method.
-   * @param id of type string.
-   * @param title of type string.
-   * @param detail of type string.
+   * @param id string.
+   * @param title string.
+   * @param detail string.
    */
-  updateCharacter(id: string, title: string, detail: string) {
-    const character: Character = { id, title, detail };
+  updateCharacter(id: string, title: string, detail: string, creator: string) {
+    const character: Character = { id, title, detail, creator };
     this.http.put(backendURL + id, character)
       .subscribe(response => {
         const updatedCharacters = [...this.characters];
@@ -110,7 +112,7 @@ export class CharacterService {
 
   /**
    * This function deletes a character trait using the http DELETE method.
-   * @param characterId of type string.
+   * @param characterId string.
    */
   deleteCharacter(characterId: string) {
     this.http.delete(backendURL + characterId)

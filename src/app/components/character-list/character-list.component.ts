@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Character } from '../../shared/models/character.model';
 import { CharacterService } from '../../shared/service/character.service';
-import { AuthServiceService } from '../user/auth-service.service';
+import { UserService } from '../user/user.service';
 
 /**
  * Character-list component gets a list of character traits from the database.
@@ -29,7 +29,7 @@ export class CharacterListComponent implements OnInit, OnDestroy {
   /**
    *  @ignore
    */
-  constructor(public characterService: CharacterService, private authService: AuthServiceService) { }
+  constructor(public characterService: CharacterService, private userService: UserService) { }
 
   /**
    * ngOnInit function performs a GET request for list of character traits
@@ -37,17 +37,17 @@ export class CharacterListComponent implements OnInit, OnDestroy {
    */
   ngOnInit() {
     this.characterService.getCharacters();
-    this.userId = this.authService.getUserId();
+    this.userId = this.userService.getUserId();
     this.characterSub = this.characterService.getCharacterUpdateListener()
       .subscribe((characters: Character[]) => {
         this.characters = characters;
       });
-    this.userIsAuthenticated = this.authService.getIsAuth();
-    this.authStatusSub = this.authService
+    this.userIsAuthenticated = this.userService.getIsAuth();
+    this.authStatusSub = this.userService
       .getAuthStatusListener()
       .subscribe(isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated;
-        this.userId = this.authService.getUserId();
+        this.userId = this.userService.getUserId();
       });
   }
   /**

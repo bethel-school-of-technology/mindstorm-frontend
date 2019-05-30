@@ -50,7 +50,12 @@ export class StoryPostComponent implements OnInit {
         this.mode = 'story/edit';
         this.storyId = paramMap.get('storyId');
         this.storyService.getStory(this.storyId).subscribe(storyData => {
-          this.story = {id: storyData._id, storyTitle: storyData.storyTitle, storyBody: storyData.storyBody};
+          this.story = {
+            id: storyData._id,
+            storyTitle: storyData.storyTitle,
+            storyBody: storyData.storyBody,
+            creator: storyData.creator
+          };
         });
       } else { this.mode = 'story/create'; this.storyId = null; }
     });
@@ -65,9 +70,9 @@ export class StoryPostComponent implements OnInit {
       return;
     }
     if (this.mode === 'story/create') {
-      this.storyService.addStory(form.value.storyTitle, form.value.storyBody);
+      this.storyService.addStory(form.value.storyTitle, form.value.storyBody, form.value);
     } else {
-      this.storyService.updateStory(this.storyId, form.value.storyTitle, form.value.storyBody);
+      this.storyService.updateStory(this.storyId, form.value.storyTitle, form.value.storyBody, form.value);
     }
     form.resetForm();
   }

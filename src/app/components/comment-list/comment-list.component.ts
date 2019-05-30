@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Comment } from '../../shared/models/comment.model';
 import { CommentService } from '../../shared/service/comment.service';
-import { AuthServiceService } from '../user/auth-service.service';
+import { UserService } from '../user/user.service';
 
 /**
  * Comment-list component gets a list of comments from the database.
@@ -31,24 +31,24 @@ export class CommentListComponent implements OnInit, OnDestroy {
   /**
    * @ignore
    */
-  constructor(public commentService: CommentService, private authService: AuthServiceService) { }
+  constructor(public commentService: CommentService, private userService: UserService) { }
 
   /**
    * This function performs a GET request from the CommentService for a list of comments from the database.
    */
   ngOnInit() {
     this.commentService.getComments();
-    this.userId = this.authService.getUserId();
+    this.userId = this.userService.getUserId();
     this.commentSub = this.commentService.getCommentUpdateListener()
       .subscribe((comments: Comment[]) => {
         this.comments = comments;
       });
-    this.userIsAuthenticated = this.authService.getIsAuth();
-    this.authStatusSub = this.authService
+    this.userIsAuthenticated = this.userService.getIsAuth();
+    this.authStatusSub = this.userService
       .getAuthStatusListener()
       .subscribe(isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated;
-        this.userId = this.authService.getUserId();
+        this.userId = this.userService.getUserId();
       });
   }
   /**

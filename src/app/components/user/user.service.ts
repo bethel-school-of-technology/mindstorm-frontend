@@ -12,7 +12,7 @@ import { environment } from '../../../environments/environment';
 const backendURL = environment.apiURL + '/user/';
 
 @Injectable({ providedIn: 'root' })
-export class AuthServiceService {
+export class UserService {
   private isAuthenticated = false;
   private token: string;
   private tokenTimer: any;
@@ -40,17 +40,22 @@ export class AuthServiceService {
   createUser(email: string, password: string) {
     const user: User = { email, password };
     this.http
-      .post(backendURL + 'signup', user)
+      .post(backendURL + '/signup', user)
       .subscribe(() => {
+        this.login(email, password);
         this.router.navigate(['/']);
-      });
+      },
+      error => {
+        this.authStatusListener.next(false);
+      }
+    );
   }
 
   login(email: string, password: string) {
     const user: User = { email, password };
     this.http
       .post<{ token: string; expiresIn: number; userId: string }>(
-        backendURL + 'login', user
+        backendURL + '/login', user
       )
       .subscribe(response => {
         const token = response.token;
@@ -62,17 +67,25 @@ export class AuthServiceService {
           this.userId = response.userId;
           this.authStatusListener.next(true);
           const now = new Date();
-          const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
+          const expirationDate = new Date(
+            now.getTime() + expiresInDuration * 1000
+          );
           console.log(expirationDate);
           this.saveAuthData(token, expirationDate, this.userId);
           this.router.navigate(['/']);
         }
-      });
+      },
+      error => {
+        this.authStatusListener.next(false);
+      }
+    );
   }
 
   autoAuthUser() {
     const authInformation = this.getAuthData();
-    if (!authInformation) { return; }
+    if (!authInformation) {
+      return;
+    }
     const now = new Date();
     const expiresIn = authInformation.expirationDate.getTime() - now.getTime();
     if (expiresIn > 0) {
@@ -110,7 +123,7 @@ export class AuthServiceService {
   private clearAuthData() {
     localStorage.removeItem('token');
     localStorage.removeItem('expiration');
-    localStorage.reomveItem('userId');
+    localStorage.removeItem('userId');
   }
 
   private getAuthData() {
@@ -122,8 +135,8 @@ export class AuthServiceService {
     }
     return {
       token,
-      expirationDate: new Date(expirationDate),
-      userId
+      userId,
+      expirationDate: new Date(expirationDate)
     };
   }
 }
