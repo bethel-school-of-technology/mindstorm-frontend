@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatDialog } from '@angular/material';
 import { Story } from '../../shared/models/story.model';
 import { StoryService } from '../../shared/service/story.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 /**
  * Story-post component uses an html form to GET by id, POST, and PUT character
@@ -34,11 +36,16 @@ export class StoryPostComponent implements OnInit {
    * storyId property with type string.
    */
   private storyId: string;
+  title = 'confirmation-dialog';
 
   /**
    * @ignore
    */
-  constructor(public storyService: StoryService, public route: ActivatedRoute) { }
+  constructor(
+    public storyService: StoryService,
+    public route: ActivatedRoute,
+    public dialog: MatDialog
+    ) { }
 
   /**
    * Performs a GET by id function from the StoryService, getting a single
@@ -63,7 +70,7 @@ export class StoryPostComponent implements OnInit {
 
   /**
    * Performs POST and PUT functions from the StoryService and resets the form.
-   * @param form of type NgForm.
+   * @param form NgForm.
    */
   onSaveStory(form: NgForm) {
     if (form.invalid) {
@@ -76,5 +83,6 @@ export class StoryPostComponent implements OnInit {
     }
     form.resetForm();
   }
+
 }
 

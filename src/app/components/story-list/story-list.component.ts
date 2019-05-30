@@ -58,14 +58,6 @@ export class StoryListComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Performs a delete function from the StoryService on a button click.
-   * @param storyId string.
-   */
-  // onDelete(storyId: string) {
-  //   this.storyService.deleteStory(storyId);
-  // }
-
-  /**
    * Opens a dialog popup when the delete button is clicked
    * @param storyId string
    */

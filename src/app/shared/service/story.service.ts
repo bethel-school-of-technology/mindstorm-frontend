@@ -62,7 +62,7 @@ export class StoryService {
    * This function returns the storiesUpdated property to update the list of stories.
    */
   getStoryUpdateListener() {
-    return this.storiesUpdated.asObservable();
+   return this.storiesUpdated.asObservable();
   }
 
   /**
@@ -70,12 +70,12 @@ export class StoryService {
    * @param storyId string.
    */
   deleteStory(storyId: string) {
-    return this.http.delete(backendURL + storyId);
-      // .subscribe(() => {
-      //   const updatedStories = this.stories.filter(story => story.id !== storyId);
-      //   this.stories = updatedStories;
-      //   this.storiesUpdated.next([...this.stories]);
-      // });
+    this.http.delete(backendURL + storyId)
+      .subscribe(() => {
+        const updatedStories = this.stories.filter(story => story.id !== storyId);
+        this.stories = updatedStories;
+        this.storiesUpdated.next({ stories: [...this.stories] });
+      });
   }
 
   /**
