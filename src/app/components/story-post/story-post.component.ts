@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatDialog } from '@angular/material';
 import { Story } from '../../shared/models/story.model';
 import { StoryService } from '../../shared/service/story.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 /**
  * Story-post component uses an html form to GET by id, POST, and PUT character
@@ -34,11 +36,16 @@ export class StoryPostComponent implements OnInit {
    * storyId property with type string.
    */
   private storyId: string;
+  title = 'confirmation-dialog';
 
   /**
    * @ignore
    */
-  constructor(public storyService: StoryService, public route: ActivatedRoute) { }
+  constructor(
+    public storyService: StoryService,
+    public route: ActivatedRoute,
+    public dialog: MatDialog
+    ) { }
 
   /**
    * Performs a GET by id function from the StoryService, getting a single
@@ -50,7 +57,12 @@ export class StoryPostComponent implements OnInit {
         this.mode = 'story/edit';
         this.storyId = paramMap.get('storyId');
         this.storyService.getStory(this.storyId).subscribe(storyData => {
-          this.story = {id: storyData._id, storyTitle: storyData.storyTitle, storyBody: storyData.storyBody};
+          this.story = {
+            id: storyData._id,
+            storyTitle: storyData.storyTitle,
+            storyBody: storyData.storyBody,
+            creator: storyData.creator
+          };
         });
       } else { this.mode = 'story/create'; this.storyId = null; }
     });
@@ -58,18 +70,19 @@ export class StoryPostComponent implements OnInit {
 
   /**
    * Performs POST and PUT functions from the StoryService and resets the form.
-   * @param form of type NgForm.
+   * @param form NgForm.
    */
   onSaveStory(form: NgForm) {
     if (form.invalid) {
       return;
     }
     if (this.mode === 'story/create') {
-      this.storyService.addStory(form.value.storyTitle, form.value.storyBody);
+      this.storyService.addStory(form.value.storyTitle, form.value.storyBody, form.value);
     } else {
-      this.storyService.updateStory(this.storyId, form.value.storyTitle, form.value.storyBody);
+      this.storyService.updateStory(this.storyId, form.value.storyTitle, form.value.storyBody, form.value);
     }
     form.resetForm();
   }
+
 }
 

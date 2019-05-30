@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AuthServiceService } from '../user/auth-service.service';
+import { UserService } from '../user/user.service';
 
 /**
  * Header component
@@ -17,14 +17,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   /**
    * @ignore
    */
-  constructor(private authService: AuthServiceService) { }
+  constructor(private userService: UserService) { }
 
   /**
    * Performs an authentication from the authService
    */
   ngOnInit() {
-    this.userIsAuthenticated = this.authService.getIsAuth();
-    this.authListenerSubs = this.authService
+    this.userIsAuthenticated = this.userService.getIsAuth();
+    this.authListenerSubs = this.userService
       .getAuthStatusListener()
       .subscribe(isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated;
@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onLogout() {
-    this.authService.logout();
+    this.userService.logout();
   }
 
   ngOnDestroy() {

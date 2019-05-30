@@ -1,8 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material';
 import { Story } from '../../shared/models/story.model';
 import { StoryService } from '../../shared/service/story.service';
-import { AuthServiceService } from '../user/auth-service.service';
+import { UserService } from '../user/user.service';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 /**
  * Story-list component gets a list of stories from the database.
@@ -25,37 +27,50 @@ export class StoryListComponent implements OnInit, OnDestroy {
   userId: string;
   userIsAuthenticated = false;
   private authStatusSub: Subscription;
+  title = 'confirmation-dialog';
 
   /**
    *  @ignore
    */
-  constructor(public storyService: StoryService, private authService: AuthServiceService) { }
+  constructor(
+    public storyService: StoryService,
+    private userService: UserService,
+    public dialog: MatDialog
+    ) { }
 
   /**
    * This function performs a GET request from the StoryService for a list of stories from the database.
    */
   ngOnInit() {
     this.storyService.getStories();
-    this.userId = this.authService.getUserId();
+    this.userId = this.userService.getUserId();
     this.storySub = this.storyService.getStoryUpdateListener()
-      .subscribe((stories: Story[]) => {
-        this.stories = stories;
+      .subscribe((storyData: { stories: Story[] }) => {
+        this.stories = storyData.stories;
       });
-    this.userIsAuthenticated = this.authService.getIsAuth();
-    this.authStatusSub = this.authService
+    this.userIsAuthenticated = this.userService.getIsAuth();
+    this.authStatusSub = this.userService
       .getAuthStatusListener()
       .subscribe(isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated;
-        this.userId = this.authService.getUserId();
+        this.userId = this.userService.getUserId();
       });
   }
 
   /**
-   * Performs a delete function from the StoryService on a button click.
-   * @param storyId string.
+   * Opens a dialog popup when the delete button is clicked
+   * @param storyId string
    */
-  onDelete(storyId: string) {
-    this.storyService.deleteStory(storyId);
+  openDialog(storyId: string) {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: 'Are you sure you want this deleted?'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.storyService.deleteStory(storyId);
+      }
+    });
   }
 
   /**

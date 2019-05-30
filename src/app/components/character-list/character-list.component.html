@@ -10,9 +10,9 @@
         {{ character.detail }}
       </p>
     </mat-list-item>
-    <mat-action-row>
+    <mat-action-row *ngIf="userIsAuthenticated">
       <a mat-button color="primary" [routerLink] = "['/character/edit', character.id]">Edit Character Trait</a>
-      <button mat-button color="warn" (click)="onDelete(character.id)">Delete Character Trait</button>
+      <button mat-button color="warn" (click)="openDialog(character.id)">Delete Character Trait</button>
     </mat-action-row>
     <hr />
   </mat-list>

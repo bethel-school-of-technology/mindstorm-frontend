@@ -50,7 +50,12 @@ export class CharacterPostComponent implements OnInit {
         this.mode = 'character/edit';
         this.characterId = paramMap.get('characterId');
         this.characterService.getCharacter(this.characterId).subscribe(characterData => {
-          this.character = {id: characterData._id, title: characterData.title, detail: characterData.detail};
+          this.character = {
+            id: characterData._id,
+            title: characterData.title,
+            detail: characterData.detail,
+            creator: characterData.creator
+          };
         });
       } else { this.mode = 'character/create'; this.characterId = null; }
     });
@@ -64,9 +69,9 @@ export class CharacterPostComponent implements OnInit {
       return;
     }
     if (this.mode === 'character/create') {
-      this.characterService.addCharacter(form.value.title, form.value.detail);
+      this.characterService.addCharacter(form.value.title, form.value.detail, form.value);
     } else {
-      this.characterService.updateCharacter(this.characterId, form.value.title, form.value.detail);
+      this.characterService.updateCharacter(this.characterId, form.value.title, form.value.detail, form.value);
     }
     form.resetForm();
   }

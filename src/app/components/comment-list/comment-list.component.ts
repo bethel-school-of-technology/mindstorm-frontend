@@ -2,7 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Comment } from '../../shared/models/comment.model';
 import { CommentService } from '../../shared/service/comment.service';
-import { AuthServiceService } from '../user/auth-service.service';
+import { UserService } from '../user/user.service';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { MatDialog } from '@angular/material';
 
 /**
  * Comment-list component gets a list of comments from the database.
@@ -27,36 +29,49 @@ export class CommentListComponent implements OnInit, OnDestroy {
   userId: string;
   userIsAuthenticated = false;
   private authStatusSub: Subscription;
+  title = 'confirmation-dialog';
 
   /**
    * @ignore
    */
-  constructor(public commentService: CommentService, private authService: AuthServiceService) { }
+  constructor(
+    public commentService: CommentService,
+    private userService: UserService,
+    public dialog: MatDialog
+    ) { }
 
   /**
    * This function performs a GET request from the CommentService for a list of comments from the database.
    */
   ngOnInit() {
     this.commentService.getComments();
-    this.userId = this.authService.getUserId();
+    this.userId = this.userService.getUserId();
     this.commentSub = this.commentService.getCommentUpdateListener()
       .subscribe((comments: Comment[]) => {
         this.comments = comments;
       });
-    this.userIsAuthenticated = this.authService.getIsAuth();
-    this.authStatusSub = this.authService
+    this.userIsAuthenticated = this.userService.getIsAuth();
+    this.authStatusSub = this.userService
       .getAuthStatusListener()
       .subscribe(isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated;
-        this.userId = this.authService.getUserId();
+        this.userId = this.userService.getUserId();
       });
   }
   /**
-   * Performs a delete function from the CommentService on a button click.
-   * @param commentId of type string.
+   * Opens a dialog popup when the delete button is clicked
+   * @param commentId string
    */
-  onDelete(commentId: string) {
-    this.commentService.deleteComment(commentId);
+  openDialog(commentId: string) {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: 'Are you sure you want this deleted?'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.commentService.deleteComment(commentId);
+      }
+    });
   }
 
   /**
