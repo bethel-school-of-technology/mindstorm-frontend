@@ -17,9 +17,9 @@ import { Comment } from '../../shared/models/comment.model';
   styleUrls: ['./comment-post.component.css']
 })
 export class CommentPostComponent implements OnInit {
-  /*** @property postTitle of empty string */
+  /*** @property postTitle with empty string */
   postTitle = '';
-  /*** @property postBody of empty string */
+  /*** @property postBody with empty string */
   postBody = '';
   /** Local reference of Comment */
   comment: Comment;

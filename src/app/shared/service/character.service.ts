@@ -18,18 +18,13 @@ const backendURL = environment.apiURL + '/characters/';
   providedIn: 'root'
 })
 export class CharacterService {
-  /**
-   * characters property used to reference an array of character data.
-   */
+  /*** @property characters references an array of character data.*/
   private characters: Character[] = [];
-  /**
-   * charactersUpdated property used to reference a new Subject and Character array.
-   */
+
+  /*** @property charactersUpdated references a new Subject and Character array */
   private charactersUpdated = new Subject<Character[]>();
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   constructor(private http: HttpClient, private router: Router) { }
 
   /**
@@ -64,7 +59,7 @@ export class CharacterService {
 
   /**
    * This function is used to get a character trait by its id using the http GET method.
-   * @param id of type string.
+   * @param id string
    */
   getCharacter(id: string) {
     return this.http.get<{
@@ -77,8 +72,9 @@ export class CharacterService {
 
   /**
    * This function creates a new character trait using the http POST method.
-   * @param title of type string.
-   * @param detail of type string.
+   * @param title string
+   * @param detail string
+   * @param creator string
    */
   addCharacter(title: string, detail: string, creator: string) {
     const character: Character = { id: null, title, detail, creator };
@@ -94,9 +90,10 @@ export class CharacterService {
 
   /**
    * This function updates a character trait using the http PUT method.
-   * @param id string.
-   * @param title string.
-   * @param detail string.
+   * @param id string
+   * @param title string
+   * @param detail string
+   * @param creator string
    */
   updateCharacter(id: string, title: string, detail: string, creator: string) {
     const character: Character = { id, title, detail, creator };
@@ -112,7 +109,7 @@ export class CharacterService {
 
   /**
    * This function deletes a character trait using the http DELETE method.
-   * @param characterId string.
+   * @param characterId string
    */
   deleteCharacter(characterId: string) {
     this.http.delete(backendURL + characterId)

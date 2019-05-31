@@ -15,7 +15,6 @@ import { Comment } from '../../shared/models/comment.model';
   styleUrls: ['./comment-list.component.css']
 })
 export class CommentListComponent implements OnInit, OnDestroy {
-
   /*** @property comments references an array of comment data */
   comments: Comment[] = [];
   /*** @property dialog title */

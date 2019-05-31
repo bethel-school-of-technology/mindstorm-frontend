@@ -17,9 +17,9 @@ import { Character } from '../../shared/models/character.model';
   styleUrls: ['./character-post.component.css']
 })
 export class CharacterPostComponent implements OnInit {
-  /*** @property characterTitle of empty string */
+  /*** @property characterTitle with empty string */
   characterTitle = '';
-  /*** @property characterDetail of empty string */
+  /*** @property characterDetail with empty string */
   characterDetail = '';
   /** Local reference of Character */
   character: Character;
