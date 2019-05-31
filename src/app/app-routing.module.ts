@@ -8,6 +8,7 @@ import { CommentListComponent } from './components/comment-list/comment-list.com
 import { CommentPostComponent } from './components/comment-post/comment-post.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { SignUpComponent } from './components/user/sign-up/sign-up.component';
+import { UserGuard } from './components/user/user.guard';
 
 
 const routes: Routes = [
@@ -59,6 +60,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [UserGuard]
 })
 export class AppRoutingModule { }

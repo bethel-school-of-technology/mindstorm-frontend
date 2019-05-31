@@ -5,3 +5,7 @@ textarea {
 textarea {
   height: 20rem;
 }
+
+mat-spinner {
+  margin: auto;
+}

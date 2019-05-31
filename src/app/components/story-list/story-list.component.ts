@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { MatDialog } from '@angular/material';
-import { Story } from '../../shared/models/story.model';
-import { StoryService } from '../../shared/service/story.service';
-import { UserService } from '../user/user.service';
+import { MatDialog, PageEvent } from '@angular/material';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { UserService } from '../user/user.service';
+import { StoryService } from '../../shared/service/story.service';
+import { Story } from '../../shared/models/story.model';
 
 /**
  * Story-list component gets a list of stories from the database.
@@ -15,23 +15,39 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
   styleUrls: ['./story-list.component.css']
 })
 export class StoryListComponent implements OnInit, OnDestroy {
-  /**
-   * stories property used to reference an array of story data.
-   */
+  /*** @property stories references an array of story data. */
   stories: Story[] = [];
+  /*** @property totalStories set to an initial 0 */
+  totalStories = 0;
+  /*** @property storiesPerPage set to initial 5 stories per page */
+  storiesPerPage = 5;
+  /*** @property currentPage set to 1 page */
+  currentPage = 1;
+  /*** @property pageSizeOptions set to pagination sizes */
+  pageSizeOptions = [1, 2, 5, 10];
+  /*** @property dialog title */
+  title = 'confirmation-dialog';
   /**
-   * storySub property with a type of Subscription from the rxjs library.
+   * authStatusSub Subscription from the rxjs library.
+   * Unsubscribes in the ngOnDestroy function.
+   */
+  userIsAuthenticated = false;
+  /*** @property userId string */
+  userId: string;
+  /*** @property isLoading reference to mat-spinner */
+  isLoading = false;
+  /**
+   * storySub Subscription from the rxjs library.
    * Unsubscribes in the ngOnDestroy function.
    */
   private storySub: Subscription;
-  userId: string;
-  userIsAuthenticated = false;
-  private authStatusSub: Subscription;
-  title = 'confirmation-dialog';
-
   /**
-   *  @ignore
+   * authStatusSub Subscription from the rxjs library.
+   * Unsubscribes in the ngOnDestroy function.
    */
+  private authStatusSub: Subscription;
+
+  /*** @ignore */
   constructor(
     public storyService: StoryService,
     private userService: UserService,
@@ -42,10 +58,13 @@ export class StoryListComponent implements OnInit, OnDestroy {
    * This function performs a GET request from the StoryService for a list of stories from the database.
    */
   ngOnInit() {
-    this.storyService.getStories();
+    this.isLoading = true;
+    this.storyService.getStories(this.storiesPerPage, this.currentPage);
     this.userId = this.userService.getUserId();
     this.storySub = this.storyService.getStoryUpdateListener()
-      .subscribe((storyData: { stories: Story[] }) => {
+      .subscribe((storyData: { stories: Story[]; storyCount: number }) => {
+        this.isLoading = false;
+        this.totalStories = storyData.storyCount;
         this.stories = storyData.stories;
       });
     this.userIsAuthenticated = this.userService.getIsAuth();
@@ -58,7 +77,18 @@ export class StoryListComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Opens a dialog popup when the delete button is clicked
+   * Performs pagination by controlling stories per page, page size, and current page.
+   * @param pageData PageEvent
+   */
+  onPageChanged(pageData: PageEvent) {
+    this.isLoading = true;
+    this.currentPage = pageData.pageIndex + 1;
+    this.storiesPerPage = pageData.pageSize;
+    this.storyService.getStories(this.storiesPerPage, this.currentPage);
+  }
+
+  /**
+   * Opens a dialog popup when the delete button is clicked.
    * @param storyId string
    */
   openDialog(storyId: string) {
@@ -68,14 +98,18 @@ export class StoryListComponent implements OnInit, OnDestroy {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.storyService.deleteStory(storyId);
+        this.isLoading = true;
+        this.storyService.deleteStory(storyId).subscribe(() => {
+          this.storyService.getStories(this.storiesPerPage, this.currentPage);
+        },
+        () => {
+          this.isLoading = false;
+        });
       }
     });
   }
 
-  /**
-   * Performs an unsubscribe method when onDelete() is clicked.
-   */
+  /*** Performs an unsubscribe method when onDelete() is clicked. */
   ngOnDestroy() {
     this.storySub.unsubscribe();
     this.authStatusSub.unsubscribe();

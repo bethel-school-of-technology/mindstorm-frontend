@@ -1,5 +1,6 @@
 <mat-card>
-  <form (submit)="onSaveComment(commentForm)" #commentForm="ngForm">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="openDialog(commentForm)" #commentForm="ngForm" *ngIf="!isLoading">
     <mat-form-field>
       <input matInput type="text" name="postTitle" [ngModel]="comment?.postTitle" required minlength="3" placeholder="Post Title..." #postTitle="ngModel" >
       <mat-error *ngIf="postTitle.invalid">Please Enter a Title</mat-error>
@@ -9,7 +10,7 @@
       </textarea>
       <mat-error *ngIf="postBody.invalid">Please Enter a Comment</mat-error>
     </mat-form-field>
-    <button mat-button color="primary" type="submit">Save Comment</button>
-    <a mat-button color="warn" routerLink="/comments">Cancel</a>
+    <button mat-raised-button color="primary" type="submit">Save Comment</button>
+    <a mat-raised-button color="warn" routerLink="/comments">Cancel</a>
   </form>
 </mat-card>

@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material';
-import { Character } from '../../shared/models/character.model';
-import { CharacterService } from '../../shared/service/character.service';
-import { UserService } from '../user/user.service';
+import { Subscription } from 'rxjs';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { UserService } from '../user/user.service';
+import { CharacterService } from '../../shared/service/character.service';
+import { Character } from '../../shared/models/character.model';
 
 /**
  * Character-list component gets a list of character traits from the database.
@@ -15,32 +15,25 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
   styleUrls: ['./character-list.component.css']
 })
 export class CharacterListComponent implements OnInit, OnDestroy {
-  /**
-   * @property characters used to reference an array of character data.
-   */
+  /*** @property characters references an array of character data*/
   characters: Character[] = [];
+  /*** @property userId string */
+  userId: string;
+  /*** Checks a user's authentication status. */
+  userIsAuthenticated = false;
+  /*** @property dialog title */
+  title = 'confirmation-dialog';
+  /*** @property isLoading reference to mat-spinner */
+  isLoading = false;
   /**
-   * @property characterSub rxjs Subscription
+   * characterSub rxjs Subscription.
    * Unsubscribes in ngOnDestroy function.
    */
   private characterSub: Subscription;
-  /**
-   * @property userId string
-   */
-  userId: string;
-  /**
-   * Checks a user's authentication status.
-   */
-  userIsAuthenticated = false;
-  /**
-   * @property authStatusSub rxjs Subscription
-   */
+  /*** @property authStatusSub rxjs Subscription */
   private authStatusSub: Subscription;
-  title = 'confirmation-dialog';
 
-  /**
-   *  @ignore
-   */
+  /** @ignore */
   constructor(
     public characterService: CharacterService,
     private userService: UserService,
@@ -52,10 +45,12 @@ export class CharacterListComponent implements OnInit, OnDestroy {
    * from the database.
    */
   ngOnInit() {
+    this.isLoading = true;
     this.characterService.getCharacters();
     this.userId = this.userService.getUserId();
     this.characterSub = this.characterService.getCharacterUpdateListener()
       .subscribe((characters: Character[]) => {
+        this.isLoading = false;
         this.characters = characters;
       });
     this.userIsAuthenticated = this.userService.getIsAuth();
@@ -78,7 +73,9 @@ export class CharacterListComponent implements OnInit, OnDestroy {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        this.isLoading = true;
         this.characterService.deleteCharacter(characterId);
+        this.isLoading = false;
       }
     });
   }

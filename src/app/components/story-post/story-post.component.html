@@ -3,7 +3,7 @@
 <!-- <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
 <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script> -->
 
-<mat-card>
+<!-- <mat-card>
   <form (submit)="onSaveStory(storyForm)" #storyForm="ngForm" (keydown.enter)="$event.stopPropagation()">
     <mat-form-field>
       <input matInput type="text" name="storyTitle" [ngModel]="story?.storyTitle" required minlegnth="3" placeholder="Story Title" #storyTitle="ngModel">
@@ -14,5 +14,21 @@
     </mat-form-field>
     <button mat-button color="primary" type="submit">Save Story</button>
     <a mat-button color="warn" routerLink="/">Cancel</a>
+  </form>
+</mat-card> -->
+
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form [formGroup]="form" (submit)="openDialog()" *ngIf="!isLoading">
+    <mat-form-field>
+      <input matInput type="text" formControlName="storyTitle" placeholder="Post a title for your story" />
+      <mat-error *ngIf="form.get('storyTitle').invalid">Please enter a title</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput rows="4" formControlName="storyBody" placeholder="Post a Story"></textarea>
+      <mat-error *ngIf="form.get('storyBody').invalid">Please enter a story</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Save Your Story</button>
+    <a mat-raised-button color="warn" routerLink="/">Cancel</a>
   </form>
 </mat-card>
