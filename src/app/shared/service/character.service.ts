@@ -64,7 +64,7 @@ export class CharacterService {
 
   /**
    * This function is used to get a character trait by its id using the http GET method.
-   * @param id of type string.
+   * @param id string.
    */
   getCharacter(id: string) {
     return this.http.get<{
@@ -77,8 +77,8 @@ export class CharacterService {
 
   /**
    * This function creates a new character trait using the http POST method.
-   * @param title of type string.
-   * @param detail of type string.
+   * @param title string.
+   * @param detail string.
    */
   addCharacter(title: string, detail: string, creator: string) {
     const character: Character = { id: null, title, detail, creator };
