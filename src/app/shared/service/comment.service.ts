@@ -63,7 +63,7 @@ export class CommentService {
 
   /**
    * This function performs an http DELETE method for deleting a comment by its id.
-   * @param commentId of type string.
+   * @param commentId string.
    */
   deleteComment(commentId: string) {
     this.http.delete(backendURL + commentId)
@@ -76,7 +76,7 @@ export class CommentService {
 
   /**
    * This function performs an http GET method to get a single comment by its id.
-   * @param id of type string.
+   * @param id string.
    */
   getComment(id: string) {
     return this.http.get<{
@@ -89,8 +89,8 @@ export class CommentService {
 
   /**
    * This function performs an http POST method for creating a new comment.
-   * @param postTitle of type string.
-   * @param postBody of type string.
+   * @param postTitle string.
+   * @param postBody string.
    */
   addComment(postTitle: string, postBody: string, creator: string) {
     const comment: Comment = { id: null, postTitle, postBody, creator };
@@ -106,9 +106,9 @@ export class CommentService {
 
   /**
    * This function performs an http PUT method for editing a comment by its id.
-   * @param id of type string.
-   * @param postTitle of type string.
-   * @param postBody of type string.
+   * @param id string.
+   * @param postTitle string.
+   * @param postBody string.
    */
 
   updateComment(id: string, postTitle: string, postBody: string, creator: string) {

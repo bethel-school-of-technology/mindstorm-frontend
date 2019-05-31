@@ -15,11 +15,11 @@ import { Character } from '../../shared/models/character.model';
 })
 export class CharacterPostComponent implements OnInit {
   /**
-   * characterTitle property with a type of empty string.
+   * characterTitle property with empty string.
    */
   characterTitle = '';
   /**
-   * characterDetail property with a type of empty string.
+   * characterDetail property with empty string.
    */
   characterDetail = '';
   /**
@@ -31,7 +31,7 @@ export class CharacterPostComponent implements OnInit {
    */
   private mode = 'character/create';
   /**
-   * characterId property with type string.
+   * characterId property string.
    */
   private characterId: string;
 
@@ -62,7 +62,7 @@ export class CharacterPostComponent implements OnInit {
   }
   /**
    * Performs POST and PUT functions from the characterService and resets the form.
-   * @param form of type NgForm.
+   * @param form NgForm.
    */
   onSaveCharacter(form: NgForm) {
     if (form.invalid) {

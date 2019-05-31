@@ -15,19 +15,26 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./comment-list.component.css']
 })
 export class CommentListComponent implements OnInit, OnDestroy {
-
   /**
-   * comments property used to reference an array of comment data.
+   * @property comments property used to reference an array of comment data.
    */
   comments: Comment[] = [];
-
   /**
-   * commentSub property with a type of Subscription from the rxjs library.
+   * @property commentSub property with a type of Subscription from the rxjs library.
    * Unsubscribes in the ngOnDestroy function.
    */
   private commentSub: Subscription;
+  /**
+   * @property userId string
+   */
   userId: string;
+   /**
+   * Checks a user's authentication status.
+   */
   userIsAuthenticated = false;
+  /**
+   * @property authStatusSub rxjs Subscription
+   */
   private authStatusSub: Subscription;
   title = 'confirmation-dialog';
 

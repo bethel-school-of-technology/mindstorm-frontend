@@ -14,11 +14,11 @@ import { Comment } from '../../shared/models/comment.model';
 })
 export class CommentPostComponent implements OnInit {
   /**
-   * postTitle property with a type of empty string.
+   * postTitle property with empty string.
    */
   postTitle = '';
   /**
-   * postBody property with a type of empty string.
+   * postBody property with empty string.
    */
   postBody = '';
   /**
@@ -30,7 +30,7 @@ export class CommentPostComponent implements OnInit {
    */
   private mode = 'comment/create';
   /**
-   * commentId property of type string.
+   * commentId property string.
    */
   private commentId: string;
 
@@ -62,7 +62,7 @@ export class CommentPostComponent implements OnInit {
 
   /**
    * Performs POST and PUT functions from the CommentService and resets the form.
-   * @param form of type NgForm.
+   * @param form NgForm.
    */
   onSaveComment(form: NgForm) {
     if (form.invalid) {
