@@ -19,28 +19,22 @@ const backendURL = environment.apiURL + '/stories/';
   providedIn: 'root'
 })
 export class StoryService {
-  /**
-   * stories property used to reference an array of Story data.
-   */
+  /*** @property stories used to reference an array of Story data */
   private stories: Story[] = [];
-  /**
-   * storiesUpdated property used to reference a new Subject and Story array.
-   */
+
+  /*** @property storiesUpdated used to reference a new Subject and Story array */
   private storiesUpdated = new Subject<{ stories: Story[]; storyCount: number }>();
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   constructor(private http: HttpClient, private router: Router) { }
 
   /**
-   * This function performs a GET method to get a list of stories from the database.
+   * Performs a GET method to retrieve a list of stories from the database.
    */
   getStories(storiesPerPage: number, currentPage: number) {
     const queryParams = `?pagesize=${storiesPerPage}&page=${currentPage}`;
     this.http
-    .get<{ message: string; stories: any; maxStories: number }>
-    (backendURL + queryParams)
+    .get<{ message: string; stories: any; maxStories: number }>(backendURL + queryParams)
       .pipe(map(storyData => {
         return {
           stories: storyData.stories.map(story => {

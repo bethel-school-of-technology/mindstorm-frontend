@@ -17,34 +17,41 @@ import { Story } from '../../shared/models/story.model';
 export class StoryListComponent implements OnInit, OnDestroy {
   /*** @property stories references an array of story data. */
   stories: Story[] = [];
+
   /*** @property totalStories set to an initial 0 */
   totalStories = 0;
+
   /*** @property storiesPerPage set to initial 5 stories per page */
   storiesPerPage = 5;
+
   /*** @property currentPage set to 1 page */
   currentPage = 1;
+
   /*** @property pageSizeOptions set to pagination sizes */
   pageSizeOptions = [1, 2, 5, 10];
+
   /*** @property dialog title */
   title = 'confirmation-dialog';
+
   /**
    * authStatusSub Subscription from the rxjs library.
    * Unsubscribes in the ngOnDestroy function.
    */
   userIsAuthenticated = false;
+
   /*** @property userId string */
   userId: string;
+
   /*** @property isLoading reference to mat-spinner */
   isLoading = false;
+
   /**
    * storySub Subscription from the rxjs library.
    * Unsubscribes in the ngOnDestroy function.
    */
   private storySub: Subscription;
-  /**
-   * authStatusSub Subscription from the rxjs library.
-   * Unsubscribes in the ngOnDestroy function.
-   */
+
+  /*** @property authStatusSub Subscription rxjs library */
   private authStatusSub: Subscription;
 
   /*** @ignore */
@@ -55,7 +62,7 @@ export class StoryListComponent implements OnInit, OnDestroy {
     ) { }
 
   /**
-   * This function performs a GET request from the StoryService for a list of stories from the database.
+   * Performs a GET request from StoryService for a list of stories from the database.
    */
   ngOnInit() {
     this.isLoading = true;

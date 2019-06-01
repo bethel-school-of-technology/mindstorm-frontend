@@ -22,31 +22,37 @@ export class CharacterService {
   private characters: Character[] = [];
 
   /*** @property charactersUpdated references a new Subject and Character array */
-  private charactersUpdated = new Subject<Character[]>();
+  private charactersUpdated = new Subject<{ characters: Character[] }>();
 
   /** @ignore */
   constructor(private http: HttpClient, private router: Router) { }
 
   /**
-   * This function is used to retrieve a list of character traits from the database using
-   * the http GET method.
+   * Performs a GET method to retrieve a list of character traits from the database.
    */
   getCharacters() {
-    this.http.get<{ message: string; characters: any }>(backendURL)
+    // const queryParams = `?pagesize=${charactersPerPage}&page=${currentPage}`;
+    this.http
+    .get<{ message: string; characters: any }>(backendURL)
       .pipe(map(characterData => {
-        return characterData.characters.map(character => {
-          return {
-            title: character.title,
-            detail: character.detail,
-            id: character._id,
-            creator: character.creator
-          };
-        });
-      }))
-      .subscribe(formedCharacters => {
-        this.characters = formedCharacters;
-        this.charactersUpdated.next([...this.characters]);
+        return {
+          characters: characterData.characters.map(character => {
+            return {
+              title: character.title,
+              detail: character.detail,
+              id: character._id,
+              creator: character.creator
+            };
+          })
+        };
+      })
+    )
+    .subscribe(transFormedCharacterData => {
+      this.characters = transFormedCharacterData.characters;
+      this.charactersUpdated.next({
+        characters: [...this.characters]
       });
+    });
   }
 
   /**
@@ -77,13 +83,15 @@ export class CharacterService {
    * @param creator string
    */
   addCharacter(title: string, detail: string, creator: string) {
-    const character: Character = { id: null, title, detail, creator };
-    this.http.post<{ message: string; characterId: string }>(backendURL, character)
+    const characterData: Character = { id: null, title, detail, creator };
+    this.http.post<{ message: string; characterId: string }>(backendURL, characterData)
       .subscribe(responseData => {
         const id = responseData.characterId;
-        character.id = id;
-        this.characters.push(character);
-        this.charactersUpdated.next([...this.characters]);
+        characterData.id = id;
+        this.characters.push(characterData);
+        this.charactersUpdated.next({
+          characters: [...this.characters]
+        });
         this.router.navigate(['/characters']);
       });
   }
@@ -93,8 +101,20 @@ export class CharacterService {
    * @param id string
    * @param title string
    * @param detail string
-   * @param creator string
    */
+  // updateCharacter(id: string, title: string, detail: string) {
+  //   let characterData: Character;
+  //   characterData = {
+  //     id,
+  //     title,
+  //     detail,
+  //     creator: null
+  //   };
+  //   this.http.put(backendURL + id, characterData)
+  //   .subscribe(response => {
+  //     this.router.navigate(['/characters']);
+  //   });
+  // }
   updateCharacter(id: string, title: string, detail: string, creator: string) {
     const character: Character = { id, title, detail, creator };
     this.http.put(backendURL + id, character)
@@ -102,7 +122,9 @@ export class CharacterService {
         const updatedCharacters = [...this.characters];
         const oldCharacterIndex = updatedCharacters.findIndex(c => c.id === character.id);
         updatedCharacters[oldCharacterIndex] = character;
-        this.charactersUpdated.next([...this.characters]);
+        this.charactersUpdated.next({
+          characters: [...this.characters]
+        });
         this.router.navigate(['/characters']);
       });
   }
@@ -116,8 +138,9 @@ export class CharacterService {
       .subscribe(() => {
         const updatedCharacters = this.characters.filter(character => character.id !== characterId);
         this.characters = updatedCharacters;
-        this.charactersUpdated.next([...this.characters]);
+        this.charactersUpdated.next({
+          characters: [...this.characters]
+        });
       });
+    }
   }
-}
-

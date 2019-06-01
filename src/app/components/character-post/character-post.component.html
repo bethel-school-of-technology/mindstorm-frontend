@@ -13,3 +13,19 @@
     <a mat-raised-button color="warn" routerLink="/characters">Cancel</a>
   </form>
 </mat-card>
+
+<!-- <mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form [formGroup]="form" (submit)="onSaveCharacter()" *ngIf="!isLoading">
+    <mat-form-field>
+      <input matInput type="text" formControlName="title" placeholder="Post Trait Title..." />
+      <mat-error *ngIf="form.get('title').invalid">Please enter a title</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea matInput rows="4" formControlName="detail" placeholder="Post Trait Detail..."></textarea>
+      <mat-error *ngIf="form.get('detail').invalid">Please enter a story</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Save Character Trait</button>
+    <a mat-raised-button color="warn" routerLink="/">Cancel</a>
+  </form>
+</mat-card> -->
