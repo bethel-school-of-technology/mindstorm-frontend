@@ -11,24 +11,18 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class ConfirmationDialogComponent implements OnInit {
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   constructor(
     public dialogRef: MatDialogRef<ConfirmationDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public message: string
   ) { }
 
-  /**
-   * Performa a cancel on button click.
-   */
+  /** Performa a cancel on button click */
   onNoClick() {
     this.dialogRef.close();
   }
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   ngOnInit() {
   }
 }

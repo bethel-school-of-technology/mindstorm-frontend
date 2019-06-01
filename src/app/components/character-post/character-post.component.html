@@ -1,5 +1,6 @@
 <mat-card>
-  <form (submit)="onSaveCharacter(characterForm)" #characterForm="ngForm">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onSaveCharacter(characterForm)" #characterForm="ngForm" *ngIf="!isLoading">
     <mat-form-field>
       <input matInput type="text" name="title" [ngModel]="character?.title" required minlength="3" placeholder="Post Trait..." #title="ngModel" >
       <mat-error *ngIf="title.invalid">Please Enter a Character Trait</mat-error>
@@ -8,7 +9,7 @@
       <textarea matInput type="text" name="detail" rows="4" [ngModel]="character?.detail" placeholder="Post Details..." #detail="ngModel" >
       </textarea>
     </mat-form-field>
-    <button mat-button color="primary" type="submit">Save Character Trait</button>
-    <a mat-button color="warn" routerLink="/characters">Cancel</a>
+    <button mat-raised-button color="primary" type="submit">Save Character Trait</button>
+    <a mat-raised-button color="warn" routerLink="/characters">Cancel</a>
   </form>
 </mat-card>

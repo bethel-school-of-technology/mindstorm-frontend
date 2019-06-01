@@ -1,4 +1,5 @@
-<mat-accordion *ngIf="stories.length > 0">
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion *ngIf="stories.length > 0 && !isLoading">
   <mat-expansion-panel *ngFor="let story of stories">
     <mat-expansion-panel-header>
       <span class="spacer"></span>
@@ -7,7 +8,7 @@
       <p>
         {{ story.storyBody }}
       </p>
-    <mat-action-row *ngIf="userIsAuthenticated">
+    <mat-action-row *ngIf="userIsAuthenticated && userId === story.creator">
       <a mat-button color="primary" [routerLink] = "['/story/edit', story.id]">Edit Story</a>
       <button mat-button color="warn" (click)="openDialog(story.id)">Delete Story</button>
     </mat-action-row>
@@ -17,4 +18,11 @@
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
-<p class="info-text mat-body-1" *ngIf="stories.length <= 0">No Story added yet!</p>
+<mat-paginator
+  [length]="totalStories"
+  [pageSize]="storiesPerPage"
+  [pageSizeOptions]="pageSizeOptions"
+  (page)="onPageChanged($event)"
+  *ngIf="stories.length > 0">
+</mat-paginator>
+<p class="info-text mat-body-1" *ngIf="stories.length <= 0 && !isLoading">No Story added yet!</p>

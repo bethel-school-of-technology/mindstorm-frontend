@@ -39,7 +39,7 @@ export class UserService {
 
   createUser(email: string, password: string) {
     const user: User = { email, password };
-    this.http.post(backendURL + '/signup', user).subscribe(
+    this.http.post(backendURL + 'signup', user).subscribe(
       () => {
         this.login(email, password);
         this.router.navigate(['/']);
@@ -54,7 +54,7 @@ export class UserService {
     const user: User = { email, password };
     this.http
       .post<{ token: string; expiresIn: number; userId: string }>(
-        backendURL + '/login',
+        backendURL + 'login',
         user
       )
       .subscribe(

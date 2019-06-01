@@ -13,7 +13,7 @@ import { UserService } from '../user.service';
 })
 export class LoginComponent implements OnInit, OnDestroy {
   /**
-   * @property mat-spinner
+   * property mat-spinner
    */
   isLoading = false;
   private authStatusSub: Subscription;

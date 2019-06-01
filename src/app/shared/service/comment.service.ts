@@ -19,18 +19,13 @@ const backendURL = environment.apiURL + '/comments/';
   providedIn: 'root'
 })
 export class CommentService {
-  /**
-   * comments property used to reference an array of Comment data.
-   */
+  /*** @property comments references an array of Comment data */
   private comments: Comment[] = [];
-  /**
-   * commentsUpdated property used to reference a new Subject and Comment array.
-   */
+
+  /*** @property commentsUpdated references a new Subject and Comment array */
   private commentsUpdated = new Subject<Comment[]>();
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   constructor(private http: HttpClient, private router: Router) { }
 
   /**
@@ -63,7 +58,7 @@ export class CommentService {
 
   /**
    * This function performs an http DELETE method for deleting a comment by its id.
-   * @param commentId string.
+   * @param commentId string
    */
   deleteComment(commentId: string) {
     this.http.delete(backendURL + commentId)
@@ -76,7 +71,7 @@ export class CommentService {
 
   /**
    * This function performs an http GET method to get a single comment by its id.
-   * @param id string.
+   * @param id string
    */
   getComment(id: string) {
     return this.http.get<{
@@ -89,8 +84,9 @@ export class CommentService {
 
   /**
    * This function performs an http POST method for creating a new comment.
-   * @param postTitle string.
-   * @param postBody string.
+   * @param postTitle string
+   * @param postBody string
+   * @param creator string
    */
   addComment(postTitle: string, postBody: string, creator: string) {
     const comment: Comment = { id: null, postTitle, postBody, creator };
@@ -106,9 +102,10 @@ export class CommentService {
 
   /**
    * This function performs an http PUT method for editing a comment by its id.
-   * @param id string.
-   * @param postTitle string.
-   * @param postBody string.
+   * @param id string
+   * @param postTitle string
+   * @param postBody string
+   * @param creator string
    */
 
   updateComment(id: string, postTitle: string, postBody: string, creator: string) {

@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { Comment } from '../../shared/models/comment.model';
-import { CommentService } from '../../shared/service/comment.service';
-import { UserService } from '../user/user.service';
-import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { MatDialog } from '@angular/material';
+import { Subscription } from 'rxjs';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { UserService } from '../user/user.service';
+import { CommentService } from '../../shared/service/comment.service';
+import { Comment } from '../../shared/models/comment.model';
 
 /**
  * Comment-list component gets a list of comments from the database.
@@ -15,32 +15,25 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./comment-list.component.css']
 })
 export class CommentListComponent implements OnInit, OnDestroy {
-  /**
-   * @property comments property used to reference an array of comment data.
-   */
+  /*** @property comments references an array of comment data */
   comments: Comment[] = [];
+  /*** @property dialog title */
+  title = 'confirmation-dialog';
+  /*** @property userId string */
+  userId: string;
+  /*** Checks a user's authentication status. */
+  userIsAuthenticated = false;
+  /*** @property isLoading reference to mat-spinner */
+  isLoading = false;
   /**
-   * @property commentSub property with a type of Subscription from the rxjs library.
+   * commentSub Subscription from the rxjs library.
    * Unsubscribes in the ngOnDestroy function.
    */
   private commentSub: Subscription;
-  /**
-   * @property userId string
-   */
-  userId: string;
-   /**
-   * Checks a user's authentication status.
-   */
-  userIsAuthenticated = false;
-  /**
-   * @property authStatusSub rxjs Subscription
-   */
+  /*** @property authStatusSub rxjs Subscription */
   private authStatusSub: Subscription;
-  title = 'confirmation-dialog';
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   constructor(
     public commentService: CommentService,
     private userService: UserService,
@@ -51,10 +44,12 @@ export class CommentListComponent implements OnInit, OnDestroy {
    * This function performs a GET request from the CommentService for a list of comments from the database.
    */
   ngOnInit() {
+    this.isLoading = true;
     this.commentService.getComments();
     this.userId = this.userService.getUserId();
     this.commentSub = this.commentService.getCommentUpdateListener()
       .subscribe((comments: Comment[]) => {
+        this.isLoading = false;
         this.comments = comments;
       });
     this.userIsAuthenticated = this.userService.getIsAuth();
@@ -76,7 +71,9 @@ export class CommentListComponent implements OnInit, OnDestroy {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        this.isLoading = true;
         this.commentService.deleteComment(commentId);
+        this.isLoading = false;
       }
     });
   }
