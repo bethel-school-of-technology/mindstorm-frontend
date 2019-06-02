@@ -1,0 +1,31 @@
+<mat-toolbar>
+  <span><a routerLink="/">MindStorm</a>
+  </span>
+  <ul>
+    <li>
+      <a mat-button *ngIf="userIsAuthenticated" routerLink="/character/create" routerLinkActive="mat-primary">Add a
+        Character Trait</a>
+    </li>
+    <li>
+      <a mat-button *ngIf="userIsAuthenticated" routerLink="/characters" routerLinkActive="mat-primary">Your List of
+        Character Traits</a>
+    </li>
+    <li>
+      <a mat-button *ngIf="userIsAuthenticated" routerLink="/story/create" routerLinkActive="mat-primary">Create a
+        Story</a>
+    </li>
+  </ul>
+  <span class="spacer">
+    <button mat-button (click)="onLogout()">Logout</button>
+  </span>
+
+</mat-toolbar>
+<div style="text-align:center">
+    <h1>
+    Welcome to {{ title }}!
+    </h1>
+    <img width="300" alt="" src="../assets/images/">
+</div>
+<p>
+  profile-page works!
+</p>
