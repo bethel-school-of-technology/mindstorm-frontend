@@ -95,7 +95,8 @@ export class StoryListComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Opens a dialog popup when the delete button is clicked.
+   * Opens a dialog popup when the delete button is clicked
+   * and performs the deleteStory method from {@link StoryService}.
    * @param storyId string
    */
   openDialog(storyId: string) {
@@ -116,7 +117,10 @@ export class StoryListComponent implements OnInit, OnDestroy {
     });
   }
 
-  /*** Performs an unsubscribe method when onDelete() is clicked. */
+  /**
+   *  Performs an unsubscribe method on storySub and
+   * authStatusSub properties when onDelete() is clicked.
+   */
   ngOnDestroy() {
     this.storySub.unsubscribe();
     this.authStatusSub.unsubscribe();

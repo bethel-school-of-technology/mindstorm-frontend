@@ -12,6 +12,9 @@
       <a mat-button color="primary" [routerLink] = "['/story/edit', story.id]">Edit Story</a>
       <button mat-button color="warn" (click)="openDialog(story.id)">Delete Story</button>
     </mat-action-row>
+    <div class="story-image">
+      <img [src]="story.imagePath" [alt]="story.storyTitle" />
+    </div>
     <mat-action-row>
       <a mat-raised-button routerLink="/comment/create" *ngIf="userIsAuthenticated">Give Feedback</a>
       <a mat-raised-button routerLink="/comments">View Comments</a>

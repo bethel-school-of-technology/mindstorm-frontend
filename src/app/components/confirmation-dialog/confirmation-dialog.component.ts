@@ -2,7 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 /**
- * Confirmation-dialog component sets up the confirmation dialog popup.
+ * Confirmation-dialog component sets up the confirmation dialog popup
+ * for the create/edit buttons.
  */
 @Component({
   selector: 'app-confirmation-dialog',

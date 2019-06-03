@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, ParamMap} from '@angular/router';
 import { Subscription } from 'rxjs';
+
 import { UserService } from '../user/user.service';
 import { CharacterService } from '../../shared/service/character.service';
 import { Character } from '../../shared/models/character.model';
@@ -35,8 +36,8 @@ export class CharacterPostComponent implements OnInit {
    * authStatusSub Subscription from rxjs library
    * and unsubscribes in the ngOnDestroy function.
    */
-
   private authStatusSub: Subscription;
+
   /*** @property isLoading reference to mat-spinner */
   isLoading = false;
 
@@ -75,45 +76,6 @@ export class CharacterPostComponent implements OnInit {
     });
   }
 
-  // ngOnInit() {
-  //   this.authStatusSub = this.userService
-  //   .getAuthStatusListener()
-  //   .subscribe(authStatus => {
-  //     this.isLoading = false;
-  //   });
-  //   this.form = new FormGroup({
-  //     title: new FormControl(null, {
-  //       validators: [Validators.required, Validators.minLength(3)]
-  //     }),
-  //     detail: new FormControl(null, {
-  //       validators: [Validators.required]
-  //     })
-  //   });
-  //   this.route.paramMap.subscribe((paramMap: ParamMap) => {
-  //     if (paramMap.has('characterId')) {
-  //       this.mode = 'character/edit';
-  //       this.characterId = paramMap.get('characterId');
-  //       this.isLoading = true;
-  //       this.characterService.getCharacter(this.characterId).subscribe(characterData => {
-  //         this.isLoading = false;
-  //         this.character = {
-  //           id: characterData._id,
-  //           title: characterData.title,
-  //           detail: characterData.detail,
-  //           creator: characterData.creator
-  //         };
-  //         this.form.setValue({
-  //           title: this.character.title,
-  //           detail: this.character.detail
-  //         });
-  //       });
-  //     } else {
-  //       this.mode = 'character/create';
-  //       this.characterId = null;
-  //     }
-  //   });
-  // }
-
   /**
    * Performs POST and PUT functions from the characterService and resets the form.
    * @param form NgForm
@@ -130,7 +92,4 @@ export class CharacterPostComponent implements OnInit {
     }
     form.resetForm();
   }
-  // ngOnDestroy() {
-  //   this.authStatusSub.unsubscribe();
-  // }
 }

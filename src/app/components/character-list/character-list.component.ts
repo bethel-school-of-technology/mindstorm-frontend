@@ -18,21 +18,6 @@ export class CharacterListComponent implements OnInit, OnDestroy {
   /*** @property characters references an array of character data*/
   characters: Character[] = [];
 
-  // /*** @property totalStories set to an initial 0 */
-  // totalCharacters = 0;
-
-  // /*** @property storiesPerPage set to initial 5 stories per page */
-  // charactersPerPage = 15;
-
-  // /*** @property currentPage set to 1 page */
-  // currentPage = 1;
-
-  // /*** @property pageSizeOptions set to pagination sizes */
-  // pageSizeOptions = [
-  //   5, 10, 15, 16, 17, 18, 19, 20,
-  //   21, 22, 23, 24, 25, 26, 27, 28, 29, 30
-  // ];
-
   /*** @property dialog title */
   title = 'confirmation-dialog';
 
@@ -85,18 +70,8 @@ export class CharacterListComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Performs pagination by controlling character traits per page, page size, and current page.
-   * @param pageData PageEvent
-   */
-  // onPageChanged(pageData: PageEvent) {
-  //   this.isLoading = true;
-  //   this.currentPage = pageData.pageIndex + 1;
-  //   this.charactersPerPage = pageData.pageSize;
-  //   this.characterService.getCharacters(this.charactersPerPage, this.currentPage);
-  // }
-
-  /**
    * Opens a dialog popup when the delete button is clicked
+   * and performs the deleteCharacter method from {@link CharacterService}.
    * @param characterId string
    */
   openDialog(characterId: string) {
@@ -109,15 +84,13 @@ export class CharacterListComponent implements OnInit, OnDestroy {
         this.isLoading = true;
         this.characterService.deleteCharacter(characterId);
         this.isLoading = false;
-        //   this.characterService.getCharacters(this.charactersPerPage, this.currentPage);
-        // },
-        // () => {
       }
     });
   }
 
   /**
-   * Performs an unsubscribe method when onDelete() is clicked.
+   * Performs an unsubscribe method on characterSub and
+   * authStatusSub properties when onDelete() is clicked.
    */
   ngOnDestroy() {
     this.characterSub.unsubscribe();

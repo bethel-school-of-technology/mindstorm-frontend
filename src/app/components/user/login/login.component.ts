@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
+
 import { UserService } from '../user.service';
 
 /**
@@ -12,15 +13,17 @@ import { UserService } from '../user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  /**
-   * property mat-spinner
-   */
+
+  /*** @property isLoading for mat-spinner in the html file */
   isLoading = false;
-  private authStatusSub: Subscription;
 
   /**
-   * @Ignore
+   * authStatusSub Subscription from rxjs library
+   * and unsubscribes in the ngOnDestroy function.
    */
+  private authStatusSub: Subscription;
+
+  /** @Ignore */
   constructor(public userService: UserService) { }
 
   /**
@@ -46,6 +49,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.userService.login(form.value.email, form.value.password);
   }
 
+  /** Performs an unsubscription on authStatusSub. */
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();
   }

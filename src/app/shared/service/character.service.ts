@@ -3,11 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+
 import { Character } from '../models/character.model';
 import { environment } from '../../../environments/environment';
 
 /**
- * This variable connects the frontend to the backend's api route.
+ * This variable connects the frontend to the backend's api route
+ * and is stored in the environment folder.
  */
 const backendURL = environment.apiURL + '/characters/';
 /**
@@ -31,7 +33,6 @@ export class CharacterService {
    * Performs a GET method to retrieve a list of character traits from the database.
    */
   getCharacters() {
-    // const queryParams = `?pagesize=${charactersPerPage}&page=${currentPage}`;
     this.http
     .get<{ message: string; characters: any }>(backendURL)
       .pipe(map(characterData => {
@@ -101,20 +102,8 @@ export class CharacterService {
    * @param id string
    * @param title string
    * @param detail string
+   * @param creator string
    */
-  // updateCharacter(id: string, title: string, detail: string) {
-  //   let characterData: Character;
-  //   characterData = {
-  //     id,
-  //     title,
-  //     detail,
-  //     creator: null
-  //   };
-  //   this.http.put(backendURL + id, characterData)
-  //   .subscribe(response => {
-  //     this.router.navigate(['/characters']);
-  //   });
-  // }
   updateCharacter(id: string, title: string, detail: string, creator: string) {
     const character: Character = { id, title, detail, creator };
     this.http.put(backendURL + id, character)
