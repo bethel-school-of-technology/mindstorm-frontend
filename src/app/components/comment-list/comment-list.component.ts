@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Subscription } from 'rxjs';
+
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { UserService } from '../user/user.service';
 import { CommentService } from '../../shared/service/comment.service';
@@ -17,19 +18,25 @@ import { Comment } from '../../shared/models/comment.model';
 export class CommentListComponent implements OnInit, OnDestroy {
   /*** @property comments references an array of comment data */
   comments: Comment[] = [];
+
   /*** @property dialog title */
   title = 'confirmation-dialog';
+
   /*** @property userId string */
   userId: string;
+
   /*** Checks a user's authentication status. */
   userIsAuthenticated = false;
+
   /*** @property isLoading reference to mat-spinner */
   isLoading = false;
+
   /**
    * commentSub Subscription from the rxjs library.
    * Unsubscribes in the ngOnDestroy function.
    */
   private commentSub: Subscription;
+
   /*** @property authStatusSub rxjs Subscription */
   private authStatusSub: Subscription;
 
@@ -60,8 +67,10 @@ export class CommentListComponent implements OnInit, OnDestroy {
         this.userId = this.userService.getUserId();
       });
   }
+
   /**
-   * Opens a dialog popup when the delete button is clicked
+   * Opens a dialog popup when the delete button is clicked.
+   * Performs a deleteComment method from {@link CommentService}.
    * @param commentId string
    */
   openDialog(commentId: string) {
@@ -79,7 +88,8 @@ export class CommentListComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Performs an unsubscribe method when onDelete() is clicked.
+   * Performs an unsubscribe method on commentSub and
+   * authStatusSub properties when onDelete() is clicked.
    */
   ngOnDestroy() {
     this.commentSub.unsubscribe();

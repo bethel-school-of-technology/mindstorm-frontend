@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material';
+
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { UserService } from '../user/user.service';
 import { CommentService } from '../../shared/service/comment.service';
@@ -19,21 +20,28 @@ import { Comment } from '../../shared/models/comment.model';
 export class CommentPostComponent implements OnInit {
   /*** @property postTitle with empty string */
   postTitle = '';
+
   /*** @property postBody with empty string */
   postBody = '';
+
   /** Local reference of Comment */
   comment: Comment;
+
   /*** @property mode set to comment/create route */
   private mode = 'comment/create';
+
   /*** @property commentId string */
   private commentId: string;
+
   /**
    * authStatusSub Subscription from rxjs library
    * and unsubscribes in the ngOnDestroy function.
    */
   private authStatusSub: Subscription;
+
   /*** @property isLoading reference to mat-spinner */
   isLoading = false;
+
   /*** @property dialog title */
   title = 'confirmation-dialog';
 
@@ -73,6 +81,11 @@ export class CommentPostComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens a dialog popup for user comfirmation of the creation or edit of a comment.
+   * Performs POST and PUT functions from the CommentService and resets the form.
+   * @param form NgForm
+   */
   openDialog(form: NgForm) {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '350px',
@@ -97,25 +110,4 @@ export class CommentPostComponent implements OnInit {
       }
     });
   }
-
-  /**
-   * Performs POST and PUT functions from the CommentService and resets the form.
-   * @param form NgForm
-   */
-  // onSaveComment(form: NgForm) {
-  //   if (form.invalid) {
-  //     return;
-  //   }
-  //   this.isLoading = true;
-  //   if (this.mode === 'comment/create') {
-  //     this.commentService.addComment(form.value.postTitle, form.value.postBody,
-  //       form.value
-  //     );
-  //   } else {
-  //     this.commentService.updateComment(this.commentId, form.value.postTitle, form.value.postBody,
-  //       form.value
-  //     );
-  //   }
-  //   form.resetForm();
-  // }
 }

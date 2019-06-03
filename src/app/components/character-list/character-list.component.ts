@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog, PageEvent } from '@angular/material';
 import { Subscription } from 'rxjs';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { UserService } from '../user/user.service';
@@ -17,19 +17,26 @@ import { Character } from '../../shared/models/character.model';
 export class CharacterListComponent implements OnInit, OnDestroy {
   /*** @property characters references an array of character data*/
   characters: Character[] = [];
-  /*** @property userId string */
-  userId: string;
-  /*** Checks a user's authentication status. */
-  userIsAuthenticated = false;
+
   /*** @property dialog title */
   title = 'confirmation-dialog';
+
+  /*** @property userId string */
+  userId: string;
+
+  /*** Checks a user's authentication status. */
+  userIsAuthenticated = false;
+
+
   /*** @property isLoading reference to mat-spinner */
   isLoading = false;
+
   /**
    * characterSub rxjs Subscription.
    * Unsubscribes in ngOnDestroy function.
    */
   private characterSub: Subscription;
+
   /*** @property authStatusSub rxjs Subscription */
   private authStatusSub: Subscription;
 
@@ -49,9 +56,9 @@ export class CharacterListComponent implements OnInit, OnDestroy {
     this.characterService.getCharacters();
     this.userId = this.userService.getUserId();
     this.characterSub = this.characterService.getCharacterUpdateListener()
-      .subscribe((characters: Character[]) => {
+      .subscribe((characterData: { characters: Character[]; characterCount: number }) => {
         this.isLoading = false;
-        this.characters = characters;
+        this.characters = characterData.characters;
       });
     this.userIsAuthenticated = this.userService.getIsAuth();
     this.authStatusSub = this.userService
@@ -64,6 +71,7 @@ export class CharacterListComponent implements OnInit, OnDestroy {
 
   /**
    * Opens a dialog popup when the delete button is clicked
+   * and performs the deleteCharacter method from {@link CharacterService}.
    * @param characterId string
    */
   openDialog(characterId: string) {
@@ -81,7 +89,8 @@ export class CharacterListComponent implements OnInit, OnDestroy {
   }
 
   /**
-   * Performs an unsubscribe method when onDelete() is clicked.
+   * Performs an unsubscribe method on characterSub and
+   * authStatusSub properties when onDelete() is clicked.
    */
   ngOnDestroy() {
     this.characterSub.unsubscribe();
