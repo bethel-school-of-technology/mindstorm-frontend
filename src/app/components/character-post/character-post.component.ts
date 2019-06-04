@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, ParamMap} from '@angular/router';
 import { Subscription } from 'rxjs';
+
 import { UserService } from '../user/user.service';
 import { CharacterService } from '../../shared/service/character.service';
 import { Character } from '../../shared/models/character.model';
-
 
 /**
  * Character-post component uses an html form to GET by id, POST, and PUT character
@@ -18,20 +18,26 @@ import { Character } from '../../shared/models/character.model';
 })
 export class CharacterPostComponent implements OnInit {
   /*** @property characterTitle with empty string */
-  characterTitle = '';
+  title = '';
+
   /*** @property characterDetail with empty string */
-  characterDetail = '';
+  detail = '';
+
   /** Local reference of Character */
   character: Character;
+
   /*** @property mode routed to character/create */
   private mode = 'character/create';
+
   /*** @property characterId string */
   private characterId: string;
+
   /**
    * authStatusSub Subscription from rxjs library
    * and unsubscribes in the ngOnDestroy function.
    */
   private authStatusSub: Subscription;
+
   /*** @property isLoading reference to mat-spinner */
   isLoading = false;
 
@@ -69,6 +75,7 @@ export class CharacterPostComponent implements OnInit {
       } else { this.mode = 'character/create'; this.characterId = null; }
     });
   }
+
   /**
    * Performs POST and PUT functions from the characterService and resets the form.
    * @param form NgForm

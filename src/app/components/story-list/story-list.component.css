@@ -13,9 +13,23 @@ p {
 }
 
 mat-paginator {
+  opacity: 0.6;
   margin-top: 1rem;
+}
+
+mat-expansion-panel-header {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 mat-spinner {
   margin: auto;
+}
+
+.post-image {
+  width: 100%;
+}
+
+.post-image img {
+  width: 100%;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
