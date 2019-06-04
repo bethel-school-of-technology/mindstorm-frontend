@@ -1,3 +1,7 @@
+mat-toolbar {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
+}
+
 ul {
   display: flex;
   list-style: none;
@@ -11,4 +15,19 @@ ul {
 
 a {
   text-decoration: none;
+}
+
+a {
+  text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.6);
+}
+
+.logo {
+  /* color: ghostwhite; */
+  font-size: 30px;
+  padding: 1.5rem;
+  box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.5);
+}
+
+.logo:hover {
+  font-size: 50px;
 }
