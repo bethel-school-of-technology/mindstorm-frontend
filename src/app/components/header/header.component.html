@@ -4,25 +4,28 @@
   </span>
   <ul>
     <li>
-      <a mat-button *ngIf="userIsAuthenticated" routerLink="/character/create" routerLinkActive="mat-primary">Add a Character Trait</a>
+      <a mat-button *ngIf="userIsAuthenticated" routerLink="/character/create" routerLinkActive="mat-primary">Add a
+        Character Trait</a>
     </li>
     <li>
-      <a mat-button *ngIf="userIsAuthenticated" routerLink="/characters" routerLinkActive="mat-primary">Your List of Character Traits</a>
+      <a mat-button *ngIf="userIsAuthenticated" routerLink="/characters" routerLinkActive="mat-primary">Your List of
+        Character Traits</a>
     </li>
     <li>
-      <a mat-button *ngIf="userIsAuthenticated" routerLink="/story/create" routerLinkActive="mat-primary">Create a Story</a>
+      <a mat-button *ngIf="userIsAuthenticated" routerLink="/story/create" routerLinkActive="mat-primary">Create a
+        Story</a>
     </li>
   </ul>
-    <span class="spacer"></span>
-    <ul>
-      <li *ngIf="!userIsAuthenticated">
-        <a mat-button routerLink="/login" routerLinkActive="mat-primary">Login</a>
-      </li>
-      <li *ngIf="!userIsAuthenticated">
-        <a mat-button routerLink="/signup" routerLinkActive="mat-primary">Signup</a>
-      </li>
-      <li *ngIf="userIsAuthenticated">
-        <button mat-button (click)="onLogout()">Logout</button>
-      </li>
-    </ul>
+  <span class="spacer"></span>
+  <ul>
+    <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/login" routerLinkActive="mat-primary">Login</a>
+    </li>
+    <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/signup" routerLinkActive="mat-primary">Signup</a>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <button mat-button (click)="onLogout()">Logout</button>
+    </li>
+  </ul>
 </mat-toolbar>
