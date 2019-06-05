@@ -31,6 +31,9 @@ export class CharacterListComponent implements OnInit, OnDestroy {
   /*** @property isLoading reference to mat-spinner */
   isLoading = false;
 
+  /** On button click, shows example list of character traits */
+  show = false;
+
   /**
    * characterSub rxjs Subscription.
    * Unsubscribes in ngOnDestroy function.

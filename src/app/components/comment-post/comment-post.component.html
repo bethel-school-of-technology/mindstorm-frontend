@@ -1,19 +1,21 @@
 <mat-sidenav-container class="background"></mat-sidenav-container>
-<mat-card>
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form (submit)="openDialog(commentForm)" #commentForm="ngForm" *ngIf="!isLoading">
-    <mat-form-field>
-      <input matInput type="text" name="postTitle" [ngModel]="comment?.postTitle" required minlength="3"
-        placeholder="Post Title..." #postTitle="ngModel">
-      <mat-error *ngIf="postTitle.invalid">Please Enter a Title</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <textarea matInput type="text" name="postBody" rows="4" [ngModel]="comment?.postBody"
-        placeholder="Post Comment..." #postBody="ngModel">
-      </textarea>
-      <mat-error *ngIf="postBody.invalid">Please Enter a Comment</mat-error>
-    </mat-form-field>
-    <button mat-raised-button color="primary" type="submit">Save Comment</button>
-    <a mat-raised-button color="warn" routerLink="/comments">Cancel</a>
-  </form>
-</mat-card>
+  <mat-card>
+    <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
+    <form (submit)="openDialog(commentForm)" #commentForm="ngForm" *ngIf="!isLoading">
+      <mat-form-field>
+        <input matInput type="text" name="postTitle" [ngModel]="comment?.postTitle" required minlength="3"
+          placeholder="Post your comment title here..." #postTitle="ngModel">
+        <mat-error *ngIf="postTitle.invalid">Please Enter a Title</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput type="text" name="postBody" rows="4" [ngModel]="comment?.postBody"
+          placeholder="Post your comment here..." #postBody="ngModel">
+        </textarea>
+        <mat-error *ngIf="postBody.invalid">Please Enter a Comment</mat-error>
+      </mat-form-field>
+      <mat-action-row>
+        <button mat-raised-button color="accent" type="submit">Save Comment</button>
+        <a mat-raised-button color="warn" routerLink="/comments">Cancel</a>
+      </mat-action-row>
+    </form>
+  </mat-card>
