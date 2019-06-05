@@ -1,6 +1,36 @@
+:host {
+  display: block;
+  margin-top: 2rem;
+}
+
+mat-card {
+  display: flex;
+  justify-content: center;
+  opacity: 0.8;
+}
+
+form {
+  width: 100%;
+}
+
 mat-form-field {
   width: 100%;
 }
+
 mat-spinner {
   margin: auto;
+}
+
+mat-action-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+button:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+}
+
+a:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
 }

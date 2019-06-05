@@ -1,6 +1,6 @@
 :host {
   display: block;
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
 .spacer {
@@ -13,8 +13,8 @@ p {
 }
 
 mat-paginator {
-  opacity: 0.6;
-  margin-top: 1rem;
+  opacity: 0.7;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 mat-expansion-panel-header {
@@ -29,7 +29,7 @@ mat-spinner {
   width: 100%;
 }
 
-.post-image img {
+img {
   width: 100%;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
