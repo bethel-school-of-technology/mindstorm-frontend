@@ -16,7 +16,9 @@
     <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
       <img [src]="imagePreview" [alt]="form.value.storyTitle" />
     </div>
-    <button mat-raised-button color="primary" type="submit">Save Your Story</button>
-    <a mat-raised-button color="warn" routerLink="/">Cancel</a>
+    <button mat-raised-button color="primary" type="submit">
+      <i class="material-icons">save_alt</i>Save Your Story</button>
+    <a mat-raised-button color="warn" routerLink="/">
+      <i class="material-icons">block</i>Cancel</a>
   </form>
 </mat-card>

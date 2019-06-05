@@ -4,25 +4,34 @@
   </span>
   <ul>
     <li>
-      <a mat-button *ngIf="userIsAuthenticated" routerLink="/character/create" routerLinkActive="mat-accent">Add a Character Trait</a>
+      <a mat-button *ngIf="userIsAuthenticated" routerLink="/character/create" routerLinkActive="mat-accent">Add a
+        Character Trait</a>
+      <i class="material-icons">perm_identity</i>
     </li>
     <li>
-      <a mat-button *ngIf="userIsAuthenticated" routerLink="/characters" routerLinkActive="mat-accent">Your List of Character Traits</a>
+      <a mat-button *ngIf="userIsAuthenticated" routerLink="/characters" routerLinkActive="mat-accent">Your List of
+        Character Traits</a>
+      <i class="material-icons">rowing</i>
     </li>
     <li>
-      <a mat-button *ngIf="userIsAuthenticated" routerLink="/story/create" routerLinkActive="mat-accent">Create a Story</a>
+      <a mat-button *ngIf="userIsAuthenticated" routerLink="/story/create" routerLinkActive="mat-accent">Create a
+        Story</a>
+      <i class="material-icons">import_contacts</i>
     </li>
   </ul>
-    <span class="spacer"></span>
-    <ul>
-      <li *ngIf="!userIsAuthenticated">
-        <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
-      </li>
-      <li *ngIf="!userIsAuthenticated">
-        <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Signup</a>
-      </li>
-      <li *ngIf="userIsAuthenticated">
-        <button mat-button (click)="onLogout()">Logout</button>
-      </li>
-    </ul>
+  <span class="spacer"></span>
+  <ul>
+    <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login
+        <i class="material-icons">fingerprint</i></a>
+    </li>
+    <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Signup
+        <i class="material-icons">storage</i></a>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <button mat-button (click)="onLogout()">Logout</button>
+      <i class="material-icons">account_circle</i>
+    </li>
+  </ul>
 </mat-toolbar>
