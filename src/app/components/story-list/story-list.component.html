@@ -6,11 +6,14 @@
       <span class="spacer"></span>
       {{ story.storyTitle }}
     </mat-expansion-panel-header>
-      <p>
-        {{ story.storyBody }}
-      </p>
+    <p>
+      {{ story.storyBody }}
+    </p>
+    <p>
+      <app-comment-post></app-comment-post>
+    </p>
     <mat-action-row *ngIf="userIsAuthenticated && userId === story.creator">
-      <a mat-button color="primary" [routerLink] = "['/story/edit', story.id]">Edit Story</a>
+      <a mat-button color="primary" [routerLink]="['/story/edit', story.id]">Edit Story</a>
       <button mat-button color="warn" (click)="openDialog(story.id)">Delete Story</button>
     </mat-action-row>
     <div class="story-image">
@@ -22,11 +25,7 @@
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
-<mat-paginator
-  [length]="totalStories"
-  [pageSize]="storiesPerPage"
-  [pageSizeOptions]="pageSizeOptions"
-  (page)="onPageChanged($event)"
-  *ngIf="stories.length > 0">
+<mat-paginator [length]="totalStories" [pageSize]="storiesPerPage" [pageSizeOptions]="pageSizeOptions"
+  (page)="onPageChanged($event)" *ngIf="stories.length > 0">
 </mat-paginator>
 <p class="info-text mat-body-1" *ngIf="stories.length <= 0 && !isLoading">No Story added yet!</p>

@@ -3,11 +3,13 @@
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form (submit)="openDialog(commentForm)" #commentForm="ngForm" *ngIf="!isLoading">
     <mat-form-field>
-      <input matInput type="text" name="postTitle" [ngModel]="comment?.postTitle" required minlength="3" placeholder="Post Title..." #postTitle="ngModel" >
+      <input matInput type="text" name="postTitle" [ngModel]="comment?.postTitle" required minlength="3"
+        placeholder="Post Title..." #postTitle="ngModel">
       <mat-error *ngIf="postTitle.invalid">Please Enter a Title</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput type="text" name="postBody" rows="4" [ngModel]="comment?.postBody" placeholder="Post Comment..." #postBody="ngModel" >
+      <textarea matInput type="text" name="postBody" rows="4" [ngModel]="comment?.postBody"
+        placeholder="Post Comment..." #postBody="ngModel">
       </textarea>
       <mat-error *ngIf="postBody.invalid">Please Enter a Comment</mat-error>
     </mat-form-field>
