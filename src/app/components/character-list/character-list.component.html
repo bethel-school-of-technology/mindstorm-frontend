@@ -1,23 +1,26 @@
-<mat-spinner *ngIf="isLoading"></mat-spinner>
-<mat-card *ngIf="characters.length > 0 && !isLoading">
-  <mat-list *ngFor="let character of characters">
-    <mat-list *ngIf="userIsAuthenticated && userId === character.creator">
-      <mat-list-item>
-        <h3>
-          {{ character.title }}
-        </h3>
-      </mat-list-item>
-      <mat-list-item>
-        <p>
-          {{ character.detail }}
-        </p>
-      </mat-list-item>
-      <mat-action-row>
-        <a mat-button color="accent" [routerLink] = "['/character/edit', character.id]">Edit Character Trait</a>
-        <button mat-button color="warn" (click)="openDialog(character.id)">Delete Character Trait</button>
-      </mat-action-row>
-      <hr />
-    </mat-list>
-  </mat-list>
-</mat-card>
-<a mat-button color="primary" routerLink = "/character/create">Add a Character Trait</a>
+<mat-sidenav-container class="background"></mat-sidenav-container>
+<div>
+  <span class="spacer">Here</span>
+  <mat-card *ngIf="characters.length > 0 && !isLoading">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <mat-card-content *ngFor="let character of characters">
+      <mat-card-content *ngIf="userIsAuthenticated && userId === character.creator">
+        <mat-card-title>
+            {{ character.title }}
+        </mat-card-title>
+        <mat-card-content>
+          <p>
+            {{ character.detail }}
+          </p>
+        </mat-card-content>
+        <mat-action-row>
+          <a mat-button color="accent" [routerLink] = "['/character/edit', character.id]">Edit Character Trait</a>
+          <button mat-button color="warn" (click)="openDialog(character.id)">Delete Character Trait</button>
+        </mat-action-row>
+        <hr />
+      </mat-card-content>
+    </mat-card-content>
+    <a mat-button color="primary" routerLink = "/character/create">Add a Character Trait</a>
+  </mat-card>
+  <span class="spacer">Here</span>
+</div>

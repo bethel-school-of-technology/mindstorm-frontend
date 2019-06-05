@@ -1,3 +1,21 @@
+:host {
+  display: block;
+  margin-top: 2rem;
+}
+
+div {
+  display: flex;
+  justify-content: space-between;
+}
+
+mat-card {
+  opacity: 0.8;
+}
+
+mat-card-title {
+  text-align: left;
+}
+
 p {
   white-space: pre-line;
   text-align: left;
@@ -7,6 +25,21 @@ mat-spinner {
   margin: auto;
 }
 
+.spacer {
+  visibility: hidden;
+}
+
 .info-text {
   text-align: center;
+}
+
+.background {
+  position: fixed;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
+  z-index: -1;
 }
