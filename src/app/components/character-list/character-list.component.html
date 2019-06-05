@@ -14,15 +14,23 @@
           </p>
         </mat-card-content>
         <mat-card-content class="btn">
-          <a mat-stroked-button	color="accent" [routerLink] = "['/character/edit', character.id]">Edit</a>
-          <button mat-stroked-button	 color="warn" (click)="openDialog(character.id)">Delete</button>
+          <a mat-stroked-button	color="accent" [routerLink] = "['/character/edit', character.id]">
+            Edit
+            <i class="material-icons">border_color</i>
+          </a>
+          <button mat-stroked-button	 color="warn" (click)="openDialog(character.id)">
+            Delete
+            <i class="material-icons">delete</i>
+          </button>
         </mat-card-content>
         <hr />
       </mat-card-content>
     </mat-card-content>
     <mat-card-content class="btn">
       <span class="btn-spacer"></span>
-      <a mat-raised-button color="primary" routerLink = "/character/create">Add a Character Trait</a>
+      <a mat-raised-button color="primary" routerLink = "/character/create">
+        <i class="material-icons">add_circle</i>Add a Character Trait
+        <i class="material-icons">how_to_reg</i></a>
       <button mat-raised-button color="primary" class="btn-list" (click)="show = !show">Trait Examples</button>
       <span class="btn-spacer"></span>
     </mat-card-content>
