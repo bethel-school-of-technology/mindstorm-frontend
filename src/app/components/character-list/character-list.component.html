@@ -12,12 +12,16 @@
           {{ character.detail }}
         </p>
       </mat-list-item>
+      <a mat-button color="primary" routerLink="/character/create">
+        <i class="material-icons">add_circle</i>Add a Character Trait
+        <i class="material-icons">how_to_reg</i></a>
       <mat-action-row>
-        <a mat-button color="accent" [routerLink]="['/character/edit', character.id]">Edit Character Trait</a>
-        <button mat-button color="warn" (click)="openDialog(character.id)">Delete Character Trait</button>
+        <a mat-button color="accent" [routerLink]="['/character/edit', character.id]">Edit Character Trait
+          <i class="material-icons">border_color</i></a>
+        <button mat-button color="warn" (click)="openDialog(character.id)">Delete Character Trait
+          <i class="material-icons">delete</i></button>
       </mat-action-row>
       <hr />
     </mat-list>
   </mat-list>
 </mat-card>
-<a mat-button color="primary" routerLink="/character/create">Add a Character Trait</a>
