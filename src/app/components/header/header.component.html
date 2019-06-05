@@ -1,22 +1,26 @@
 <mat-toolbar color="primary">
   <span>
-    <a mat-flat-button color="accent" class="logo" routerLink="/">MindStorm</a>
+    <a mat-flat-button color="accent" class="logo" routerLink="/" >MindStorm</a>
   </span>
+  <img src="../../../assets/images/logo-yellow.png" width="150" height="150" />
   <ul>
     <li>
-      <a mat-button *ngIf="userIsAuthenticated" routerLink="/character/create" routerLinkActive="mat-accent">Add a
-        Character Trait</a>
-      <i class="material-icons">perm_identity</i>
+      <a mat-button *ngIf="userIsAuthenticated" routerLink="/character/create" routerLinkActive="mat-accent">
+        Add a Character Trait
+        <i class="material-icons">perm_identity</i>
+      </a>
     </li>
     <li>
-      <a mat-button *ngIf="userIsAuthenticated" routerLink="/characters" routerLinkActive="mat-accent">Your List of
-        Character Traits</a>
-      <i class="material-icons">rowing</i>
+      <a mat-button *ngIf="userIsAuthenticated" routerLink="/characters" routerLinkActive="mat-accent">
+        Your List of Character Traits
+        <i class="material-icons">rowing</i>
+      </a>
     </li>
     <li>
-      <a mat-button *ngIf="userIsAuthenticated" routerLink="/story/create" routerLinkActive="mat-accent">Create a
-        Story</a>
-      <i class="material-icons">import_contacts</i>
+      <a mat-button *ngIf="userIsAuthenticated" routerLink="/story/create" routerLinkActive="mat-accent">
+        Create a Story
+        <i class="material-icons">import_contacts</i>
+      </a>
     </li>
   </ul>
   <span class="spacer"></span>

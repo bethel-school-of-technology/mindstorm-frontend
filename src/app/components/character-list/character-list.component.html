@@ -1,27 +1,56 @@
-<mat-spinner *ngIf="isLoading"></mat-spinner>
-<mat-card *ngIf="characters.length > 0 && !isLoading">
-  <mat-list *ngFor="let character of characters">
-    <mat-list *ngIf="userIsAuthenticated && userId === character.creator">
-      <mat-list-item>
-        <h3>
-          {{ character.title }}
-        </h3>
-      </mat-list-item>
-      <mat-list-item>
-        <p>
-          {{ character.detail }}
-        </p>
-      </mat-list-item>
-      <a mat-button color="primary" routerLink="/character/create">
+<mat-sidenav-container class="background"></mat-sidenav-container>
+<div class="container">
+  <span class="spacer">Here</span>
+  <mat-card *ngIf="characters.length > 0 && !isLoading">
+    <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
+    <mat-card-content *ngFor="let character of characters">
+      <mat-card-content *ngIf="userIsAuthenticated && userId === character.creator">
+        <mat-card-title>
+            {{ character.title }}
+        </mat-card-title>
+        <mat-card-content>
+          <p>
+            {{ character.detail }}
+          </p>
+        </mat-card-content>
+        <mat-card-content class="btn">
+          <a mat-stroked-button	color="accent" [routerLink] = "['/character/edit', character.id]">
+            Edit
+            <i class="material-icons">border_color</i>
+          </a>
+          <button mat-stroked-button	 color="warn" (click)="openDialog(character.id)">
+            Delete
+            <i class="material-icons">delete</i>
+          </button>
+        </mat-card-content>
+        <hr />
+      </mat-card-content>
+    </mat-card-content>
+    <mat-card-content class="btn">
+      <span class="btn-spacer"></span>
+      <a mat-raised-button color="primary" routerLink = "/character/create">
         <i class="material-icons">add_circle</i>Add a Character Trait
         <i class="material-icons">how_to_reg</i></a>
-      <mat-action-row>
-        <a mat-button color="accent" [routerLink]="['/character/edit', character.id]">Edit Character Trait
-          <i class="material-icons">border_color</i></a>
-        <button mat-button color="warn" (click)="openDialog(character.id)">Delete Character Trait
-          <i class="material-icons">delete</i></button>
-      </mat-action-row>
-      <hr />
-    </mat-list>
-  </mat-list>
-</mat-card>
+      <button mat-raised-button color="primary" class="btn-list" (click)="show = !show">Trait Examples</button>
+      <span class="btn-spacer"></span>
+    </mat-card-content>
+      <div class="list" *ngIf="show">
+        Name<br>
+        Gender<br>
+        Species<br>
+        Appearance<br>
+        Personality<br>
+        Flaws<br>
+        Strengths<br>
+        Likes<br>
+        Dislikes<br>
+        Relationships<br>
+        Goals<br>
+        Culture<br>
+        Home<br>
+        Education<br>
+        Story Summary<br>
+      </div>
+  </mat-card>
+  <span class="spacer">Here</span>
+</div>

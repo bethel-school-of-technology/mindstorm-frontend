@@ -1,4 +1,5 @@
-<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
+<mat-sidenav-container class="background"></mat-sidenav-container>
 <mat-accordion *ngIf="stories.length > 0 && !isLoading">
   <mat-expansion-panel *ngFor="let story of stories">
     <mat-expansion-panel-header>
@@ -9,19 +10,20 @@
       {{ story.storyBody }}
     </p>
     <p>
-      <app-comment-post></app-comment-post>
     </p>
-    <mat-action-row *ngIf="userIsAuthenticated && userId === story.creator">
-      <a mat-button color="primary" [routerLink]="['/story/edit', story.id]">Edit Story</a>
-      <button mat-button color="warn" (click)="openDialog(story.id)">Delete Story</button>
-    </mat-action-row>
+    <mat-card-content class="btn" *ngIf="userIsAuthenticated && userId === story.creator">
+      <a mat-raised-button color="accent" [routerLink]="['/story/edit', story.id]">Edit Story</a>
+      <button mat-raised-button color="warn" (click)="openDialog(story.id)">Delete Story</button>
+    </mat-card-content>
     <div class="story-image">
       <img [src]="story.imagePath" [alt]="story.storyTitle" />
     </div>
     <mat-action-row>
-      <a mat-raised-button routerLink="/comment/create" *ngIf="userIsAuthenticated">Give Feedback</a>
       <a mat-raised-button routerLink="/comments">View Comments</a>
     </mat-action-row>
+    <mat-card-content>
+      <app-comment-post></app-comment-post>
+    </mat-card-content>
   </mat-expansion-panel>
 </mat-accordion>
 <mat-paginator [length]="totalStories" [pageSize]="storiesPerPage" [pageSizeOptions]="pageSizeOptions"
