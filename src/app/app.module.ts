@@ -28,7 +28,9 @@ import {
   MatProgressSpinnerModule,
   MatListModule,
   MatDialogModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatSidenavModule,
+  MatTabsModule
 } from '@angular/material';
 import { SignUpComponent } from './components/user/sign-up/sign-up.component';
 import { LoginComponent } from './components/user/login/login.component';
@@ -69,7 +71,9 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     MatProgressSpinnerModule,
     MatListModule,
     MatDialogModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSidenavModule,
+    MatTabsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
