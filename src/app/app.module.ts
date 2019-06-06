@@ -30,23 +30,15 @@ import {
   MatDialogModule,
   MatPaginatorModule,
   MatSidenavModule,
-<<<<<<< HEAD
   MatTabsModule,
   MatSlideToggleModule
 } from "@angular/material";
+
 import { SignUpComponent } from "./components/user/sign-up/sign-up.component";
 import { LoginComponent } from "./components/user/login/login.component";
 import { ErrorComponent } from "./error/error.component";
 import { ConfirmationDialogComponent } from "./components/confirmation-dialog/confirmation-dialog.component";
-=======
-  MatTabsModule
-} from '@angular/material';
-import { SignUpComponent } from './components/user/sign-up/sign-up.component';
-import { LoginComponent } from './components/user/login/login.component';
-import { ErrorComponent } from './error/error.component';
-import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
-import { ProfilePageComponent } from './components/profile-page/profile-page.component';
->>>>>>> develop
+import { ProfilePageComponent } from "./components/profile-page/profile-page.component";
 
 /**
  * The bootstrapper module.
@@ -95,4 +87,4 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
   bootstrap: [AppComponent],
   entryComponents: [ErrorComponent, ConfirmationDialogComponent]
 })
-export class AppModule { }
+export class AppModule {}
