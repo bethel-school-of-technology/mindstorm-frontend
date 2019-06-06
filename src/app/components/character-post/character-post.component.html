@@ -1,31 +1,20 @@
+<mat-sidenav-container class="background"></mat-sidenav-container>
 <mat-card>
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
   <form (submit)="onSaveCharacter(characterForm)" #characterForm="ngForm" *ngIf="!isLoading">
     <mat-form-field>
-      <input matInput type="text" name="title" [ngModel]="character?.title" required minlength="3" placeholder="Post Trait..." #title="ngModel" >
+      <input matInput type="text" name="title" [ngModel]="character?.title" required minlength="3"
+        placeholder="Post Trait..." #title="ngModel">
       <mat-error *ngIf="title.invalid">Please Enter a Character Trait</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput type="text" name="detail" rows="4" [ngModel]="character?.detail" placeholder="Post Details..." #detail="ngModel" >
+      <textarea matInput type="text" name="detail" rows="4" [ngModel]="character?.detail" placeholder="Post Details..."
+        #detail="ngModel">
       </textarea>
     </mat-form-field>
-    <button mat-raised-button color="primary" type="submit">Save Character Trait</button>
-    <a mat-raised-button color="warn" routerLink="/characters">Cancel</a>
+    <button mat-raised-button color="primary" type="submit">
+      <i class="material-icons">save_alt</i>Save Character Trait</button>
+    <a mat-raised-button color="warn" routerLink="/characters">
+      <i class="material-icons">block</i>Cancel</a>
   </form>
 </mat-card>
-
-<!-- <mat-card>
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form [formGroup]="form" (submit)="onSaveCharacter()" *ngIf="!isLoading">
-    <mat-form-field>
-      <input matInput type="text" formControlName="title" placeholder="Post Trait Title..." />
-      <mat-error *ngIf="form.get('title').invalid">Please enter a title</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <textarea matInput rows="4" formControlName="detail" placeholder="Post Trait Detail..."></textarea>
-      <mat-error *ngIf="form.get('detail').invalid">Please enter a story</mat-error>
-    </mat-form-field>
-    <button mat-raised-button color="primary" type="submit">Save Character Trait</button>
-    <a mat-raised-button color="warn" routerLink="/">Cancel</a>
-  </form>
-</mat-card> -->
