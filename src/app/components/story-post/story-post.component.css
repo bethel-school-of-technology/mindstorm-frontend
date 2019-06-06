@@ -1,28 +1,69 @@
-mat-form-field,
-textarea {
-  width: 100%;
-}
-textarea {
-  height: 20rem;
+/* Sets distance of content from the top */
+:host {
+  display: block;
+  margin-top: 2rem;
 }
 
+/* Loading symbol centered */
 mat-spinner {
   margin: auto;
 }
 
+/* Sets opacity of entire form*/
+mat-card {
+  opacity: 0.9;
+}
+
+/* Sets width of mat-form-field and textarea */
+mat-form-field,
+textarea {
+  width: 100%;
+}
+
+/* Sets height of textarea */
+textarea {
+  height: 17rem;
+}
+
+/* Sets flex on Pick Your Image button */
+.btn-image {
+  display: flex;
+  justify-content: center;
+}
+
+/* Sets the file input field to invisible */
 input[type="file"] {
   visibility: hidden;
 }
 
+/* Sets size of the image preview container */
 .image-preview {
   height: 5rem;
-  margin: 1rem 0,
+  margin-bottom: 1rem
 }
 
+/* Sets height of image preview img */
 .image-preview img {
   height: 100%;
 }
 
+/* Sets flex on Save Story and Cancel buttons */
+mat-card-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Sets every button with a drop shadow on mouse hover*/
+button:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Sets every anchor with a drop shadow on mouse hover*/
+a:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Sets position of background color sidenav container */
 .background {
   position: fixed;
   height: 100%;
