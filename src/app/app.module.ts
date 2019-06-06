@@ -30,12 +30,14 @@ import {
   MatDialogModule,
   MatPaginatorModule,
   MatSidenavModule,
-  MatTabsModule
+  MatTabsModule, MatIconModule
 } from '@angular/material';
 import { SignUpComponent } from './components/user/sign-up/sign-up.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { ErrorComponent } from './error/error.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 /**
  * The bootstrapper module.
@@ -53,7 +55,8 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     SignUpComponent,
     LoginComponent,
     ErrorComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    MainNavComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +76,9 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
     MatDialogModule,
     MatPaginatorModule,
     MatSidenavModule,
-    MatTabsModule
+    MatTabsModule,
+    LayoutModule,
+    MatIconModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
