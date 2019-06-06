@@ -1,8 +1,7 @@
 <mat-sidenav-container class="background"></mat-sidenav-container>
-<div>
-  <span class="spacer"></span>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<div class="container">
   <mat-card>
-    <mat-spinner *ngIf="isLoading"></mat-spinner>
     <form (submit)="onSignUp(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
       <mat-form-field>
         <input
@@ -15,9 +14,9 @@
           required
           email
         />
-        <mat-error *ngIf="emailInput.invalid"
-          >Please enter a valid email.</mat-error
-        >
+        <mat-error *ngIf="emailInput.invalid">
+          Please enter a valid email.
+        </mat-error>
       </mat-form-field>
       <mat-form-field>
         <input
@@ -29,17 +28,20 @@
           #passwordInput="ngModel"
           required
         />
-        <mat-error *ngIf="passwordInput.invalid"
-          >Please enter a valid password.</mat-error
-        >
+        <mat-error *ngIf="passwordInput.invalid">
+          Please enter a valid password.
+        </mat-error>
       </mat-form-field>
-      <mat-action-row>
+      <mat-card-content>
           <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">
+            <i class="material-icons">local_play</i>
             Signup
           </button>
-          <a mat-raised-button routerLink="/login" color="primary">Have an account? Login!</a>
-      </mat-action-row>
+          <a mat-raised-button routerLink="/login" color="primary">
+            Have an account? Login!
+            <i class="material-icons">fingerprint</i>
+          </a>
+      </mat-card-content>
     </form>
   </mat-card>
-  <span class="spacer"></span>
 </div>

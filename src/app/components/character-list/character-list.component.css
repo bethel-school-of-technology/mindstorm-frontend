@@ -1,66 +1,72 @@
+/* Sets distance of content from the top */
 :host {
   display: block;
   margin-top: 2rem;
 }
 
-.container {
-  display: flex;
-  justify-content: space-between;
+/* Loading symbol centered */
+mat-spinner {
+  margin: auto;
 }
 
+/* Div container sets flex*/
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Sets opacity and width of entire list of character traits */
 mat-card {
+  width: 60%;
   opacity: 0.8;
 }
 
+/* Sets character trait title to the left */
 mat-card-title {
   text-align: left;
 }
 
+/* Sets character trait detail to the left and recognizes new lines */
 p {
   white-space: pre-line;
   text-align: left;
 }
 
-mat-spinner {
-  margin: auto;
-}
 
+/* Class container for Edit and Delete buttons */
 .btn {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
+/* Sets every button with a drop shadow on mouse hover */
 button:hover {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
 }
 
+/* Sets every anchor with a drop shadow on mouse hover */
 a:hover {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
 }
 
+/* Sets dividing line with a drop shadow */
 hr {
   box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.6);
 }
 
-.spacer {
-  visibility: hidden;
-  margin: 7rem;
-}
-
-.btn-spacer {
+/* Refers to Add a Character Trait and Trait Examples buttons */
+.list-btn-container {
   display: flex;
   justify-content: space-evenly;
 }
 
+/* Sets example list to the center */
 .list {
   text-align: center;
 }
 
-.info-text {
-  text-align: center;
-}
-
+/* Sets position of background color sidenav container */
 .background {
   position: fixed;
   height: 100%;

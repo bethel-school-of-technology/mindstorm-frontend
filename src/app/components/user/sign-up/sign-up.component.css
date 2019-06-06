@@ -3,14 +3,18 @@
   margin-top: 2rem;
 }
 
-div {
+mat-spinner {
+  margin: auto;
+}
+
+.container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 mat-card {
   display: flex;
-  justify-content: center;
+  width: 60%;
   opacity: 0.9;
 }
 
@@ -22,13 +26,10 @@ mat-form-field {
   width: 100%;
 }
 
-mat-spinner {
-  margin: auto;
-}
-
-mat-action-row {
+mat-card-content {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   width: 100%;
 }
 
@@ -38,6 +39,10 @@ button:hover {
 
 a:hover {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+}
+
+a {
+  margin-top: 0.3rem;
 }
 
 .background {

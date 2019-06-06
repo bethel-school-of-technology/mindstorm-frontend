@@ -1,20 +1,42 @@
+<!-- Background color placement tag -->
 <mat-sidenav-container class="background"></mat-sidenav-container>
-<mat-card>
-  <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
-  <form (submit)="onSaveCharacter(characterForm)" #characterForm="ngForm" *ngIf="!isLoading">
-    <mat-form-field>
-      <input matInput type="text" name="title" [ngModel]="character?.title" required minlength="3"
-        placeholder="Post Trait..." #title="ngModel">
-      <mat-error *ngIf="title.invalid">Please Enter a Character Trait</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <textarea matInput type="text" name="detail" rows="4" [ngModel]="character?.detail" placeholder="Post Details..."
-        #detail="ngModel">
-      </textarea>
-    </mat-form-field>
-    <button mat-raised-button color="primary" type="submit">
-      <i class="material-icons">save_alt</i>Save Character Trait</button>
-    <a mat-raised-button color="warn" routerLink="/characters">
-      <i class="material-icons">block</i>Cancel</a>
-  </form>
-</mat-card>
+
+<!-- Loading symbol -->
+<mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
+
+<!-- Generic container for character post -->
+<div class="container">
+
+  <!-- Character form container -->
+  <mat-card>
+    <form (submit)="onSaveCharacter(characterForm)" #characterForm="ngForm" *ngIf="!isLoading">
+
+      <!-- Input for character title -->
+      <mat-form-field>
+        <input matInput type="text" name="title" [ngModel]="character?.title" required minlength="3"
+          placeholder="Post Trait..." #title="ngModel">
+        <mat-error *ngIf="title.invalid">Please Enter a Character Trait</mat-error>
+      </mat-form-field>
+
+      <!-- Textarea for character detail -->
+      <mat-form-field>
+        <textarea matInput type="text" name="detail" rows="4" [ngModel]="character?.detail" placeholder="Post Details..."
+          #detail="ngModel">
+        </textarea>
+      </mat-form-field>
+
+      <!-- Container for Save Character Trait and Cancel buttons -->
+      <mat-card-content>
+        <button mat-raised-button color="accent" type="submit">
+          <i class="material-icons">add_circle</i>
+          Add Trait
+        </button>
+        <a mat-raised-button color="warn" routerLink="/characters">
+          <i class="material-icons">cancel</i>
+          Cancel
+        </a>
+      </mat-card-content>
+
+    </form>
+  </mat-card>
+</div>

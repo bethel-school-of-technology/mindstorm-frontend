@@ -1,3 +1,14 @@
+/* Sets distance of content from the top */
+:host {
+  display: block;
+  margin-top: 2rem;
+}
+
+/* Loading symbol centered */
+mat-spinner {
+  margin: auto;
+}
+
 .spacer {
   flex: .5 0 auto;
 }
@@ -7,10 +18,7 @@ p {
   text-align: left;
 }
 
-mat-spinner {
-  margin: auto;
-}
-
+/* Sets position of background color sidenav container */
 .background {
   position: fixed;
   height: 100%;

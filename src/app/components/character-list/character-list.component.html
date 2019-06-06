@@ -1,9 +1,17 @@
+<!-- Background color placement tag -->
 <mat-sidenav-container class="background"></mat-sidenav-container>
+
+<!-- Loading symbol -->
+<mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
+
+<!-- Generic container for entire list of character traits -->
 <div class="container">
-  <span class="spacer">Here</span>
+
+  <!-- Mat-card container for list of character traits -->
   <mat-card *ngIf="characters.length > 0 && !isLoading">
-    <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
     <mat-card-content *ngFor="let character of characters">
+
+      <!-- Container for character trait title and detail -->
       <mat-card-content *ngIf="userIsAuthenticated && userId === character.creator">
         <mat-card-title>
             {{ character.title }}
@@ -13,26 +21,39 @@
             {{ character.detail }}
           </p>
         </mat-card-content>
+
+        <!-- btn class container for Edit and Delete buttons -->
         <mat-card-content class="btn">
           <a mat-stroked-button	color="accent" [routerLink] = "['/character/edit', character.id]">
+            <i class="material-icons">edit</i>
             Edit
-            <i class="material-icons">border_color</i>
           </a>
           <button mat-stroked-button	 color="warn" (click)="openDialog(character.id)">
-            Delete
             <i class="material-icons">delete</i>
+            Delete
           </button>
         </mat-card-content>
+
+        <!-- Line divider -->
         <hr />
+
       </mat-card-content>
     </mat-card-content>
-    <mat-card-content class="btn">
-      <span class="btn-spacer"></span>
+
+    <!-- Container for adding a character trait and getting an example list of traits buttons -->
+    <mat-card-content class="list-btn-container">
       <a mat-raised-button color="primary" routerLink = "/character/create">
-        <i class="material-icons">add_circle</i>Add a Character Trait
-        <i class="material-icons">how_to_reg</i></a>
-      <button mat-raised-button color="primary" class="btn-list" (click)="show = !show">Trait Examples</button>
-      <span class="btn-spacer"></span>
+        <i class="material-icons">add_circle</i>
+        Add a Character Trait
+      </a>
+       <!-- Generic spacer -->
+       <span class="btn-spacer"></span>
+      <button mat-raised-button color="primary" (click)="show = !show">
+          <i class="material-icons">near_me</i>
+        Trait Examples
+      </button>
+
+      <!-- Container for list of character trait examples -->
     </mat-card-content>
       <div class="list" *ngIf="show">
         Name<br>
@@ -52,5 +73,4 @@
         Story Summary<br>
       </div>
   </mat-card>
-  <span class="spacer">Here</span>
 </div>

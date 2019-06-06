@@ -6,20 +6,20 @@
   <ul>
     <li>
       <a mat-button *ngIf="userIsAuthenticated" routerLink="/character/create" routerLinkActive="mat-accent">
-        Add a Character Trait
         <i class="material-icons">perm_identity</i>
+        Add a Character Trait
       </a>
     </li>
     <li>
       <a mat-button *ngIf="userIsAuthenticated" routerLink="/characters" routerLinkActive="mat-accent">
+        <i class="material-icons">list</i>
         Your List of Character Traits
-        <i class="material-icons">rowing</i>
       </a>
     </li>
     <li>
       <a mat-button *ngIf="userIsAuthenticated" routerLink="/story/create" routerLinkActive="mat-accent">
-        Create a Story
         <i class="material-icons">import_contacts</i>
+        Create a Story
       </a>
     </li>
   </ul>

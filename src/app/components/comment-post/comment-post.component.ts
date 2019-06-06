@@ -18,28 +18,29 @@ import { Comment } from '../../shared/models/comment.model';
   styleUrls: ['./comment-post.component.css']
 })
 export class CommentPostComponent implements OnInit {
-  /*** @property postTitle with empty string */
+
+  /** postTitle empty string */
   postTitle = '';
 
-  /*** @property postBody with empty string */
+  /** postBody empty string */
   postBody = '';
 
   /** Local reference of Comment */
   comment: Comment;
 
-  /*** @property mode set to comment/create route */
+  /** mode set to comment/create route */
   private mode = 'comment/create';
 
-  /*** @property commentId string */
+  /** commentId string */
   private commentId: string;
 
   /**
-   * authStatusSub Subscription from rxjs library
-   * and unsubscribes in the ngOnDestroy function.
+   * authStatusSub rxjs Subscription.
+   * Unsubscribes in the ngOnDestroy function.
    */
   private authStatusSub: Subscription;
 
-  /*** @property isLoading reference to mat-spinner */
+  /** isLoading reference to mat-spinner */
   isLoading = false;
 
   /*** @property dialog title */
@@ -55,7 +56,7 @@ export class CommentPostComponent implements OnInit {
 
   /**
    * Performs a GET by id function from the CommentService, getting a single
-   * comment. Routes to editComment or createComment mode, depending on the existence of an id.
+   * comment. Routes to comment/edit or comment/create mode, depending on the existence of an id.
    */
   ngOnInit() {
     this.authStatusSub = this.userService
