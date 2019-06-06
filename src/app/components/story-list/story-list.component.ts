@@ -59,7 +59,7 @@ export class StoryListComponent implements OnInit, OnDestroy {
     public storyService: StoryService,
     private userService: UserService,
     public dialog: MatDialog
-    ) { }
+  ) { }
 
   /**
    * Performs a GET request from StoryService for a list of stories from the database.
@@ -110,9 +110,9 @@ export class StoryListComponent implements OnInit, OnDestroy {
         this.storyService.deleteStory(storyId).subscribe(() => {
           this.storyService.getStories(this.storiesPerPage, this.currentPage);
         },
-        () => {
-          this.isLoading = false;
-        });
+          () => {
+            this.isLoading = false;
+          });
       }
     });
   }

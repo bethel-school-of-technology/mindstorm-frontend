@@ -10,3 +10,14 @@ p {
 mat-spinner {
   margin: auto;
 }
+
+.background {
+  position: fixed;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
+  z-index: -1;
+}

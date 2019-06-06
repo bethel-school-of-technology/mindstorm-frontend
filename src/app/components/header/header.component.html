@@ -1,28 +1,41 @@
 <mat-toolbar color="primary">
   <span>
-    <a mat-flat-button color="accent" class="logo" routerLink="/">MindStorm</a>
+    <a mat-flat-button color="accent" class="logo" routerLink="/" >MindStorm</a>
   </span>
+  <img src="../../../assets/images/logo-yellow.png" width="150" height="150" />
   <ul>
     <li>
-      <a mat-button *ngIf="userIsAuthenticated" routerLink="/character/create" routerLinkActive="mat-accent">Add a Character Trait</a>
+      <a mat-button *ngIf="userIsAuthenticated" routerLink="/character/create" routerLinkActive="mat-accent">
+        Add a Character Trait
+        <i class="material-icons">perm_identity</i>
+      </a>
     </li>
     <li>
-      <a mat-button *ngIf="userIsAuthenticated" routerLink="/characters" routerLinkActive="mat-accent">Your List of Character Traits</a>
+      <a mat-button *ngIf="userIsAuthenticated" routerLink="/characters" routerLinkActive="mat-accent">
+        Your List of Character Traits
+        <i class="material-icons">rowing</i>
+      </a>
     </li>
     <li>
-      <a mat-button *ngIf="userIsAuthenticated" routerLink="/story/create" routerLinkActive="mat-accent">Create a Story</a>
+      <a mat-button *ngIf="userIsAuthenticated" routerLink="/story/create" routerLinkActive="mat-accent">
+        Create a Story
+        <i class="material-icons">import_contacts</i>
+      </a>
     </li>
   </ul>
-    <span class="spacer"></span>
-    <ul>
-      <li *ngIf="!userIsAuthenticated">
-        <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
-      </li>
-      <li *ngIf="!userIsAuthenticated">
-        <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Signup</a>
-      </li>
-      <li *ngIf="userIsAuthenticated">
-        <button mat-button (click)="onLogout()">Logout</button>
-      </li>
-    </ul>
+  <span class="spacer"></span>
+  <ul>
+    <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login
+        <i class="material-icons">fingerprint</i></a>
+    </li>
+    <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Signup
+        <i class="material-icons">storage</i></a>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <button mat-button (click)="onLogout()">Logout</button>
+      <i class="material-icons">account_circle</i>
+    </li>
+  </ul>
 </mat-toolbar>
