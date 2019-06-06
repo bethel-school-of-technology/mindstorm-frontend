@@ -4,29 +4,27 @@
 <!-- Loading symbol -->
 <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
 
-<!-- Generic container for story post -->
+<!-- Generic container for story post form -->
 <div class="container">
 
-  <!-- <span class="spacer"></span> -->
-  <!-- Story form container -->
   <mat-card>
     <form [formGroup]="form" (submit)="openDialog()" *ngIf="!isLoading">
 
       <!-- Input for story title -->
       <mat-form-field>
-        <input matInput type="text" formControlName="storyTitle" placeholder="Post a title for your story" />
+        <input matInput type="text" formControlName="storyTitle" placeholder="Post a title for your story..." />
         <mat-error *ngIf="form.get('storyTitle').invalid">Please enter a title</mat-error>
       </mat-form-field>
 
       <!-- Textarea for main story content -->
       <mat-form-field>
-        <textarea matInput rows="4" formControlName="storyBody" placeholder="Post a Story"></textarea>
+        <textarea matInput rows="4" formControlName="storyBody" placeholder="Write your story..."></textarea>
         <mat-error *ngIf="form.get('storyBody').invalid">Please enter a story</mat-error>
       </mat-form-field>
 
       <!-- Pick Your Image button -->
       <div class="btn-image">
-        <button mat-raised-button type="button" color="primary" (click)="filePicker.click()">
+        <button mat-raised-button class="btn" color="primary" type="button" (click)="filePicker.click()">
           <i class="material-icons">add_photo_alternate</i>
           Pick Your Image
         </button>
@@ -44,11 +42,11 @@
 
       <!-- Contains the Save Story and Cancel buttons -->
       <mat-card-content>
-        <button mat-raised-button color="accent" type="submit">
+        <button mat-raised-button class="btn" color="accent" type="submit">
           <i class="material-icons">cloud_upload</i>
           Save Story
         </button>
-        <a mat-raised-button color="warn" routerLink="/">
+        <a mat-raised-button class="btn" color="warn" routerLink="/">
           <i class="material-icons">cancel</i>
           Cancel
         </a>
@@ -56,5 +54,5 @@
 
     </form>
   </mat-card>
-  <!-- <span class="spacer"></span> -->
+
 </div>

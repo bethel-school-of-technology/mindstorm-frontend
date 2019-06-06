@@ -1,7 +1,7 @@
 /* Sets distance of content from the top */
 :host {
   display: block;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 /* Loading symbol centered */
@@ -32,19 +32,9 @@ img {
 }
 
 /* Container for the Edit Story and Delete Story buttons */
-.btn {
+.btn-container {
   display: flex;
   justify-content: space-around;
-}
-
-/* Edit button is given a drop shadow on mouse hover */
-button:hover {
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
-}
-
-/* Delete anchor button is given a drop shadow on mouse hover */
-a:hover {
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
 }
 
 /* Number of stories per page, sets width,
@@ -65,4 +55,9 @@ mat-paginator {
   left: 0;
   opacity: 0.5;
   z-index: -1;
+}
+
+/* All anchors and buttons are given drop shadows on mouse hover */
+.btn:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
 }

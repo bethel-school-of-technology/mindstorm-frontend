@@ -1,8 +1,16 @@
+<!-- Background color placement tag -->
 <mat-sidenav-container class="background"></mat-sidenav-container>
+
+<!-- Loading symbol -->
 <mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<!-- Generic container of signup form -->
 <div class="container">
+
   <mat-card>
     <form (submit)="onSignUp(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
+
+      <!-- Input for email and invalid error message -->
       <mat-form-field>
         <input
           matInput
@@ -18,6 +26,8 @@
           Please enter a valid email.
         </mat-error>
       </mat-form-field>
+
+      <!-- Input for password and invalid error message -->
       <mat-form-field>
         <input
           type="password"
@@ -32,16 +42,20 @@
           Please enter a valid password.
         </mat-error>
       </mat-form-field>
+
+      <!-- Contains the Signup and Login buttons -->
       <mat-card-content>
-          <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">
+          <button mat-raised-button class="btn" color="accent" type="submit" *ngIf="!isLoading">
             <i class="material-icons">local_play</i>
             Signup
           </button>
-          <a mat-raised-button routerLink="/login" color="primary">
-            Have an account? Login!
+          <a mat-raised-button class="btn" routerLink="/login" class="btn" color="primary">
             <i class="material-icons">fingerprint</i>
+            Have an account? Login!
           </a>
       </mat-card-content>
+
     </form>
   </mat-card>
+
 </div>

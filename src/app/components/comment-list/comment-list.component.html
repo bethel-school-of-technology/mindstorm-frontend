@@ -12,8 +12,8 @@
       {{ comment.postBody }}
     </p>
     <mat-action-row *ngIf="userIsAuthenticated && userId === comment.creator">
-      <a mat-button color="primary" [routerLink]="['/comment/edit', comment.id]">Edit Comment</a>
-      <button mat-button color="warn" (click)="openDialog(comment.id)">Delete Comment</button>
+      <a mat-button class="btn" color="primary" [routerLink]="['/comment/edit', comment.id]">Edit Comment</a>
+      <button mat-button class="btn" color="warn" (click)="openDialog(comment.id)">Delete Comment</button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>

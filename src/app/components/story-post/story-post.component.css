@@ -1,7 +1,7 @@
 /* Sets distance of content from the top */
 :host {
   display: block;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 /* Loading symbol centered */
@@ -9,8 +9,15 @@ mat-spinner {
   margin: auto;
 }
 
-/* Sets opacity of entire form*/
+/* Div container sets flex*/
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Sets width and opacity of entire form*/
 mat-card {
+  width: 90%;
   opacity: 0.9;
 }
 
@@ -22,7 +29,7 @@ textarea {
 
 /* Sets height of textarea */
 textarea {
-  height: 17rem;
+  height: 15rem;
 }
 
 /* Sets flex on Pick Your Image button */
@@ -53,16 +60,6 @@ mat-card-content {
   justify-content: space-between;
 }
 
-/* Sets every button with a drop shadow on mouse hover*/
-button:hover {
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
-}
-
-/* Sets every anchor with a drop shadow on mouse hover*/
-a:hover {
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
-}
-
 /* Sets position of background color sidenav container */
 .background {
   position: fixed;
@@ -73,4 +70,9 @@ a:hover {
   left: 0;
   opacity: 0.5;
   z-index: -1;
+}
+
+/* All anchors and buttons are given drop shadows on mouse hover */
+.btn:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
 }

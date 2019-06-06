@@ -19,12 +19,12 @@
     </p>
 
     <!-- Container for edit and delete buttons -->
-    <mat-card-content class="btn" *ngIf="userIsAuthenticated && userId === story.creator">
-      <a mat-raised-button color="accent" [routerLink]="['/story/edit', story.id]">
+    <mat-card-content class="btn-container" *ngIf="userIsAuthenticated && userId === story.creator">
+      <a mat-raised-button class="btn" color="accent" [routerLink]="['/story/edit', story.id]">
         <i class="material-icons">edit</i>
         Edit Story
       </a>
-      <button mat-raised-button color="warn" (click)="openDialog(story.id)">
+      <button mat-raised-button class="btn" color="warn" (click)="openDialog(story.id)">
         <i class="material-icons">delete</i>
         Delete Story
       </button>
@@ -37,7 +37,7 @@
 
     <!-- View Comments button -->
     <mat-action-row>
-      <a mat-raised-button color="primary" routerLink="/comments">View Comments</a>
+      <a mat-raised-button class="btn" color="primary" routerLink="/comments">View Comments</a>
     </mat-action-row>
 
     <!-- Post comments component. Appears only if user is authenticated -->

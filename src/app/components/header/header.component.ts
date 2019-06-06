@@ -3,9 +3,7 @@ import { Subscription } from 'rxjs';
 
 import { UserService } from '../user/user.service';
 
-/**
- * Header component
- */
+/** Header component */
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -22,9 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
    */
   private authListenerSubs: Subscription;
 
-  /**
-   * @ignore
-   */
+  /** @ignore */
   constructor(private userService: UserService) { }
 
   /** Performs an authentication from the authService */

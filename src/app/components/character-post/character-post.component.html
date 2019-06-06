@@ -4,10 +4,9 @@
 <!-- Loading symbol -->
 <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
 
-<!-- Generic container for character post -->
+<!-- Generic container for character post form -->
 <div class="container">
 
-  <!-- Character form container -->
   <mat-card>
     <form (submit)="onSaveCharacter(characterForm)" #characterForm="ngForm" *ngIf="!isLoading">
 
@@ -27,11 +26,11 @@
 
       <!-- Container for Save Character Trait and Cancel buttons -->
       <mat-card-content>
-        <button mat-raised-button color="accent" type="submit">
+        <button mat-raised-button class="btn" color="accent" type="submit">
           <i class="material-icons">add_circle</i>
           Add Trait
         </button>
-        <a mat-raised-button color="warn" routerLink="/characters">
+        <a mat-raised-button class="btn" color="warn" routerLink="/characters">
           <i class="material-icons">cancel</i>
           Cancel
         </a>
