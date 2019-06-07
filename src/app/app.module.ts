@@ -39,6 +39,7 @@ import { LoginComponent } from "./components/user/login/login.component";
 import { ErrorComponent } from "./error/error.component";
 import { ConfirmationDialogComponent } from "./components/confirmation-dialog/confirmation-dialog.component";
 import { ProfilePageComponent } from "./components/profile-page/profile-page.component";
+import { TeamComponent } from "./components/team/team.component";
 
 /**
  * The bootstrapper module.
@@ -57,7 +58,8 @@ import { ProfilePageComponent } from "./components/profile-page/profile-page.com
     LoginComponent,
     ErrorComponent,
     ConfirmationDialogComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    TeamComponent
   ],
   imports: [
     BrowserModule,
