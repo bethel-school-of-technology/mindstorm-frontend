@@ -7,27 +7,27 @@
   font-family: 'Merienda', cursive;
 }
 
-html, body { height: 100%; }
-body { margin: 0; }
-
-/* Positions background image for all components */
-body {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: 100%;
+html, body {
   height: 100%;
-  background-position: center;
-  background-size: cover;
-  background-image: url('./assets/images/cloud.jpg');
-  z-index: -2;
 }
 
-/* All anchors and buttons are given drop shadows on mouse hover */
-// .btn:hover {
-//   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+body {
+  margin: 0;
+}
+
+/* Positions background image for all components */
+// body {
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+//   left: 0;
+//   background-attachment: fixed;
+//   background-repeat: no-repeat;
+//   background-size: 100%;
+//   height: 100%;
+//   background-position: center;
+//   background-size: cover;
+//   background-image: url('./assets/images/cloud.jpg');
+//   z-index: -2;
 // }

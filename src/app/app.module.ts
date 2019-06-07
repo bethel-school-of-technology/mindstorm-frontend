@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,10 +22,9 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
 import { Interceptor } from './components/user/interceptors';
 import { ErrorInterceptor } from './error.interceptor';
 import { AutofocusDirective } from './shared/auto-focus.directive';
+import { MainNavComponent } from './main-nav/main-nav.component';
 
-/**
- * Angular Material imports.
- */
+/** Angular Material imports. */
 import {
   MatInputModule,
   MatCardModule,
@@ -38,12 +38,11 @@ import {
   MatPaginatorModule,
   MatSidenavModule,
   MatTabsModule,
+  MatIconModule,
   MatSlideToggleModule
 } from '@angular/material';
 
-/**
- * The bootstrapper module.
- */
+/** The bootstrapper module. */
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +58,7 @@ import {
     ErrorComponent,
     ConfirmationDialogComponent,
     ProfilePageComponent,
+    MainNavComponent,
     AutofocusDirective
   ],
   imports: [
@@ -80,6 +80,8 @@ import {
     MatPaginatorModule,
     MatSidenavModule,
     MatTabsModule,
+    LayoutModule,
+    MatIconModule,
     MatSlideToggleModule
   ],
   providers: [
