@@ -10,7 +10,7 @@
     <mat-nav-list>
       <a mat-list-item *ngIf="userIsAuthenticated" routerLink="/character/create" routerLinkActive="mat-accent">Add a Charcter trait</a>
       <a mat-list-item *ngIf="userIsAuthenticated" routerLink="/characters" routerLinkActive="mat-accent">List of Character Traits</a>
-      <a mat-list-item *ngIf="userIsAuthenticated" routerLink="/story/create/" routerLinkActive="mat-accent">Create a Stroy</a>
+      <a mat-list-item *ngIf="userIsAuthenticated" routerLink="/story/create/" routerLinkActive="mat-accent">Create a Story</a>
       <a mat-list-item *ngIf="!userIsAuthenticated" routerLink="/login" routerLinkActive="mat-accent">Login</a>
       <a mat-list-item *ngIf="!userIsAuthenticated" routerLink="/signup" routerLinkActive="mat-accent">Signup</a>
       <a mat-list-item *ngIf="userIsAuthenticated" (click)="onLogout()">Logout</a>

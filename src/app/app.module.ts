@@ -59,7 +59,7 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
     LoginComponent,
     ErrorComponent,
     ConfirmationDialogComponent,
-    MainNavComponent
+    MainNavComponent,
     ProfilePageComponent
   ],
   imports: [
@@ -82,7 +82,7 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
     MatSidenavModule,
     MatTabsModule,
     LayoutModule,
-    MatIconModule
+    MatIconModule,
     MatSlideToggleModule
   ],
   providers: [
