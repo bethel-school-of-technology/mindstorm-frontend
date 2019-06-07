@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,12 +21,10 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { Interceptor } from './components/user/interceptors';
 import { ErrorInterceptor } from './error.interceptor';
+import { AutofocusDirective } from './shared/auto-focus.directive';
 import { MainNavComponent } from './main-nav/main-nav.component';
-import { LayoutModule } from '@angular/cdk/layout';
 
-/**
- * Angular Material imports.
- */
+/** Angular Material imports. */
 import {
   MatInputModule,
   MatCardModule,
@@ -40,12 +39,10 @@ import {
   MatSidenavModule,
   MatTabsModule,
   MatIconModule,
-  MatSlideToggleModule,
+  MatSlideToggleModule
+} from '@angular/material';
 
-} from "@angular/material";
-
-//  * The bootstrapper module.
-//  */
+/** The bootstrapper module. */
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,8 +57,9 @@ import {
     LoginComponent,
     ErrorComponent,
     ConfirmationDialogComponent,
-    MainNavComponent,
     ProfilePageComponent,
+    MainNavComponent,
+    AutofocusDirective
   ],
   imports: [
     BrowserModule,

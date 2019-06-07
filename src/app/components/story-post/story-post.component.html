@@ -1,24 +1,23 @@
 <!-- Background color placement tag -->
 <mat-sidenav-container class="background"></mat-sidenav-container>
 
-<!-- Loading symbol -->
-<mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
-
 <!-- Generic container for story post form -->
 <div class="container">
 
   <mat-card>
+      <!-- Loading symbol -->
+      <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
     <form [formGroup]="form" (submit)="openDialog()" *ngIf="!isLoading">
 
       <!-- Input for story title -->
       <mat-form-field>
-        <input matInput type="text" formControlName="storyTitle" placeholder="Post a title for your story..." />
+        <input matInput color="primary" type="text" formControlName="storyTitle" placeholder="Post a title for your story..." appAutoFocus>
         <mat-error *ngIf="form.get('storyTitle').invalid">Please enter a title</mat-error>
       </mat-form-field>
 
       <!-- Textarea for main story content -->
       <mat-form-field>
-        <textarea matInput rows="4" formControlName="storyBody" placeholder="Write your story..."></textarea>
+        <textarea matInput color="primary" rows="4" formControlName="storyBody" placeholder="Write your story..."></textarea>
         <mat-error *ngIf="form.get('storyBody').invalid">Please enter a story</mat-error>
       </mat-form-field>
 

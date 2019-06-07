@@ -1,11 +1,10 @@
 /**
  * The User class.
- * See {@link UserService} for its use in the service.
+ * See {@link UserService} for use.
  */
 export class User {
-  /** The user's email */
+  /** The user email */
   email: string;
-
-  /** The user's password */
+  /** The user password */
   password: string;
 }

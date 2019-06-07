@@ -1,25 +1,24 @@
 <!-- Background color placement tag -->
 <mat-sidenav-container class="background"></mat-sidenav-container>
 
-<!-- Loading symbol -->
-<mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
-
 <!-- Generic container for character post form -->
 <div class="container">
 
   <mat-card>
+      <!-- Loading symbol -->
+      <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
     <form (submit)="onSaveCharacter(characterForm)" #characterForm="ngForm" *ngIf="!isLoading">
 
       <!-- Input for character title -->
       <mat-form-field>
-        <input matInput type="text" name="title" [ngModel]="character?.title" required minlength="3"
-          placeholder="Post Trait..." #title="ngModel">
-        <mat-error *ngIf="title.invalid">Please Enter a Character Trait</mat-error>
+        <input matInput color="primary" type="text" name="title" [ngModel]="character?.title" required minlength="3"
+          placeholder="Post Trait..." #title="ngModel" appAutoFocus>
+        <mat-error color="primary" *ngIf="title.invalid">Please Enter a Character Trait</mat-error>
       </mat-form-field>
 
       <!-- Textarea for character detail -->
       <mat-form-field>
-        <textarea matInput type="text" name="detail" rows="4" [ngModel]="character?.detail" placeholder="Post Details..."
+        <textarea matInput color="primary" type="text" name="detail" rows="4" [ngModel]="character?.detail" placeholder="Post Details..."
           #detail="ngModel">
         </textarea>
       </mat-form-field>

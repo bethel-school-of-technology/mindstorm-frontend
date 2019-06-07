@@ -21,10 +21,10 @@ const backendURL = environment.apiURL + '/stories/';
   providedIn: 'root'
 })
 export class StoryService {
-  /*** @property stories used to reference an array of Story data */
+  /** stories used to reference an array of Story data */
   private stories: Story[] = [];
 
-  /*** @property storiesUpdated used to reference a new Subject and Story array */
+  /** storiesUpdated used to reference a new Subject and Story array */
   private storiesUpdated = new Subject<{ stories: Story[]; storyCount: number }>();
 
   /** @ignore */
@@ -62,15 +62,13 @@ export class StoryService {
     });
   }
 
-  /**
-   * Returns the storiesUpdated property to update the list of stories.
-   */
+  /** Returns the storiesUpdated property to update the list of stories. */
   getStoryUpdateListener() {
    return this.storiesUpdated.asObservable();
   }
 
   /**
-   * Performs an http DELETE method for deleting a story by its id.
+   * Performs a DELETE method for deleting a story by its id.
    * @param storyId string.
    */
   deleteStory(storyId: string) {
@@ -78,7 +76,7 @@ export class StoryService {
   }
 
   /**
-   * Performs an http GET method to get a single story by its id.
+   * Performs a GET method to get a story by its id.
    * @param id string.
    */
   getStory(id: string) {
@@ -92,7 +90,7 @@ export class StoryService {
   }
 
   /**
-   * This function performs an http POST method for creating a new story.
+   * This function performs a POST method for creating a story.
    * @param storyTitle string.
    * @param storyBody string.
    * @param image File
@@ -109,7 +107,7 @@ export class StoryService {
   }
 
   /**
-   * Performs an http PUT method for editing a story by its id based
+   * Performs a PUT method for editing a story by its id based
    * on whether the image's type is an 'object' or not.
    * @param id string
    * @param storyTitle string

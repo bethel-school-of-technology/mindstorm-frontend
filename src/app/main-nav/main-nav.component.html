@@ -1,11 +1,10 @@
 <mat-sidenav-container class="img" class="sidenav-container">
   <mat-sidenav #drawer
       class="sidenav"
-      [ngClass]="{hidden: (isHandset$ | async)!.matches}"
-      fixedInViewport="false"
+      fixedInViewport="true"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async)!.matches">
+      [mode]="(isHandset$ | async) ? 'push' : 'push'"
+      [opened]="(isHandset$ | async)">
     <mat-toolbar> Mindstorm</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item *ngIf="userIsAuthenticated" routerLink="/character/create" routerLinkActive="mat-accent">Add a Charcter trait</a>
