@@ -25,6 +25,8 @@ import { JacobComponent } from "./components/team/jacob/jacob.component";
 import { MariaComponent } from "./components/team/maria/maria.component";
 import { TavoComponent } from "./components/team/tavo/tavo.component";
 import { MartyComponent } from "./components/team/marty/marty.component";
+import { MainNavComponent } from "./main-nav/main-nav.component";
+import { LayoutModule } from "@angular/cdk/layout";
 
 /**
  * Angular Material imports.
@@ -42,12 +44,12 @@ import {
   MatPaginatorModule,
   MatSidenavModule,
   MatTabsModule,
+  MatIconModule,
   MatSlideToggleModule
 } from "@angular/material";
 
-/**
- * The bootstrapper module.
- */
+//  * The bootstrapper module.
+//  */
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +69,9 @@ import {
     MartyComponent,
     MariaComponent,
     TavoComponent,
-    JacobComponent
+    JacobComponent,
+    MainNavComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,
@@ -88,6 +92,8 @@ import {
     MatPaginatorModule,
     MatSidenavModule,
     MatTabsModule,
+    LayoutModule,
+    MatIconModule,
     MatSlideToggleModule
   ],
   providers: [
