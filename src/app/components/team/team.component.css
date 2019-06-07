@@ -6,11 +6,11 @@
 .team-section {
   overflow: hidden;
   text-align: center;
-  padding: 60px;
+  padding: 10px;
 }
 .team-section h1 {
   text-transform: uppercase;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   color: black;
   font-size: 40px;
 }
@@ -23,25 +23,25 @@
   margin-bottom: 40px;
 }
 .pics {
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 .pics picture {
   display: inline-block;
   margin: 0 30px;
-  width: 160px;
-  height: 160px;
+  width: 200px;
+  height: 200px;
   overflow: hidden;
   border-radius: 50%;
 }
 .pics picture img {
   width: 100%;
   filter: grayscale(100%);
-  transition: 0.5s all;
+  transition: 0.4s all;
 }
 .pics picture:hover > img {
   filter: none;
-  width: 163px;
-  height: 163px;
+  width: 203px;
+  height: 203px;
 }
 
 .bio {
