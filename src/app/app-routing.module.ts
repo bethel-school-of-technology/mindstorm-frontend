@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+
 import { CharacterPostComponent } from "./components/character-post/character-post.component";
 import { CharacterListComponent } from "./components/character-list/character-list.component";
 import { StoryPostComponent } from "./components/story-post/story-post.component";
@@ -11,6 +12,7 @@ import { SignUpComponent } from "./components/user/sign-up/sign-up.component";
 import { UserGuard } from "./components/user/user.guard";
 import { TeamComponent } from "./components/team/team.component";
 
+/** App component routes. */
 const routes: Routes = [
   {
     path: "",

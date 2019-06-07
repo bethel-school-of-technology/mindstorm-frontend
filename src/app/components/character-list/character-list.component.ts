@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog, PageEvent } from '@angular/material';
 import { Subscription } from 'rxjs';
+
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { UserService } from '../user/user.service';
 import { CharacterService } from '../../shared/service/character.service';
@@ -15,20 +16,20 @@ import { Character } from '../../shared/models/character.model';
   styleUrls: ['./character-list.component.css']
 })
 export class CharacterListComponent implements OnInit, OnDestroy {
-  /*** @property characters references an array of character data*/
+
+  /** characters references an array of character data */
   characters: Character[] = [];
 
-  /*** @property dialog title */
+  /** Dialog title */
   title = 'confirmation-dialog';
 
-  /*** @property userId string */
+  /** userId string */
   userId: string;
 
-  /*** Checks a user's authentication status. */
+  /** Checks user's authorization */
   userIsAuthenticated = false;
 
-
-  /*** @property isLoading reference to mat-spinner */
+  /** isLoading reference to mat-spinner */
   isLoading = false;
 
   /** On button click, shows example list of character traits */
@@ -40,7 +41,7 @@ export class CharacterListComponent implements OnInit, OnDestroy {
    */
   private characterSub: Subscription;
 
-  /*** @property authStatusSub rxjs Subscription */
+  /** authStatusSub rxjs Subscription */
   private authStatusSub: Subscription;
 
   /** @ignore */

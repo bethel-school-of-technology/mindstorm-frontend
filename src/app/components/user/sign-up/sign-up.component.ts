@@ -4,9 +4,7 @@ import { Subscription } from 'rxjs';
 
 import { UserService } from '../user.service';
 
-/**
- * The Signup Component.
- */
+/** The Signup Component. */
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -14,12 +12,12 @@ import { UserService } from '../user.service';
 })
 export class SignUpComponent implements OnInit, OnDestroy {
 
-  /*** @property isLoading for mat-spinner in the html file */
+  /** isLoading for mat-spinner loading symbol. */
   isLoading = false;
 
   /**
-   * authStatusSub Subscription from rxjs library
-   * and unsubscribes in the ngOnDestroy function.
+   * authStatusSub rxjs Subscription.
+   * Unsubscribes in the ngOnDestroy function.
    */
   private authStatusSub: Subscription;
 
@@ -37,7 +35,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
   /**
    * Performs a signup method and tells them that the site is loading and checks
-   * and creates a user
+   * and creates a user.
    * @param form NgForm
    */
   onSignUp(form: NgForm) {

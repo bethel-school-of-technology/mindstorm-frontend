@@ -1,29 +1,58 @@
+<!-- Background color placement tag -->
 <mat-sidenav-container class="background"></mat-sidenav-container>
+
+<!-- Loading symbol -->
+<mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
+
+<!-- Generic container for story post form -->
 <div class="container">
-  <span class="spacer"></span>
+
   <mat-card>
-    <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
     <form [formGroup]="form" (submit)="openDialog()" *ngIf="!isLoading">
+
+      <!-- Input for story title -->
       <mat-form-field>
-        <input matInput type="text" formControlName="storyTitle" placeholder="Post a title for your story" />
+        <input matInput type="text" formControlName="storyTitle" placeholder="Post a title for your story..." />
         <mat-error *ngIf="form.get('storyTitle').invalid">Please enter a title</mat-error>
       </mat-form-field>
+
+      <!-- Textarea for main story content -->
       <mat-form-field>
-        <textarea matInput rows="4" formControlName="storyBody" placeholder="Post a Story"></textarea>
+        <textarea matInput rows="4" formControlName="storyBody" placeholder="Write your story..."></textarea>
         <mat-error *ngIf="form.get('storyBody').invalid">Please enter a story</mat-error>
       </mat-form-field>
+
+      <!-- Pick Your Image button -->
+      <div class="btn-image">
+        <button mat-raised-button class="btn" color="primary" type="button" (click)="filePicker.click()">
+          <i class="material-icons">add_photo_alternate</i>
+          Pick Your Image
+        </button>
+      </div>
+
+      <!-- Input file set to invisible -->
       <div>
-        <button mat-raised-button type="button" color="primary" (click)="filePicker.click()">Pick Your Image</button>
         <input type="file" #filePicker (change)="onImagePicked($event)" />
       </div>
+
+      <!-- Image previewer -->
       <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
         <img [src]="imagePreview" [alt]="form.value.storyTitle" />
       </div>
-      <mat-action-row>
-        <button mat-raised-button color="accent" type="submit"><i class="material-icons">save_alt</i>Save Your Story</button>
-        <a mat-raised-button color="warn" routerLink="/"><i class="material-icons">block</i>Cancel</a>
-      </mat-action-row>
+
+      <!-- Contains the Save Story and Cancel buttons -->
+      <mat-card-content>
+        <button mat-raised-button class="btn" color="accent" type="submit">
+          <i class="material-icons">cloud_upload</i>
+          Save Story
+        </button>
+        <a mat-raised-button class="btn" color="warn" routerLink="/">
+          <i class="material-icons">cancel</i>
+          Cancel
+        </a>
+      </mat-card-content>
+
     </form>
   </mat-card>
-  <span class="spacer"></span>
+
 </div>
