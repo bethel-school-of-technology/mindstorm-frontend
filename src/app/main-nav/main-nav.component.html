@@ -1,4 +1,4 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="img" class="sidenav-container">
   <mat-sidenav #drawer
       class="sidenav"
       [ngClass]="{hidden: (isHandset$ | async)!.matches}"
@@ -6,10 +6,10 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async)!.matches">
-    <mat-toolbar color="primary">MindStorm</mat-toolbar>
+    <mat-toolbar> Mindstorm</mat-toolbar>
     <mat-nav-list>
       <a mat-list-item *ngIf="userIsAuthenticated" routerLink="/character/create" routerLinkActive="mat-accent">Add a Charcter trait</a>
-      <a mat-list-item *ngIf="userIsAuthenticated" routerLink="/characters" routerLinkActive="mat-accent">List of Character Traits</a>
+      <a mat-list-item *ngIf="userIsAuthenticated" routerLink="/characters" routerLinkActive="mat-accent">Character Traits</a>
       <a mat-list-item *ngIf="userIsAuthenticated" routerLink="/story/create/" routerLinkActive="mat-accent">Create a Story</a>
       <a mat-list-item *ngIf="!userIsAuthenticated" routerLink="/login" routerLinkActive="mat-accent">Login</a>
       <a mat-list-item *ngIf="!userIsAuthenticated" routerLink="/signup" routerLinkActive="mat-accent">Signup</a>
@@ -29,13 +29,19 @@
       <span>
           <a mat-flat-button color="accent" class="logo" routerLink="/">MindStorm</a>
       </span>
-      <span class="spacer"></span>
+      <img src="../../../assets/images/logo-yellow.png" width="150" height="150" />
       <mat-nav-list>
-          <a *ngIf="userIsAuthenticated" routerLink="/character/create" routerLinkActive="mat-accent">Add a Charcter trait</a>
-          <a *ngIf="userIsAuthenticated" routerLink="/characters" routerLinkActive="mat-accent">List of Character Traits</a>
-          <a *ngIf="userIsAuthenticated" routerLink="/story/create/" routerLinkActive="mat-accent">Create a Stroy</a>
-          <a *ngIf="!userIsAuthenticated" routerLink="/signup" routerLinkActive="mat-accent">Signup</a>
-          <a *ngIf="userIsAuthenticated" (click)="onLogout()">Logout</a>
+        <!-- <span class="spacer"></span> -->
+        <a *ngIf="userIsAuthenticated" routerLink="/character/create" routerLinkActive="mat-accent">Add a Charcter trait</a>
+        <a *ngIf="userIsAuthenticated" routerLink="/characters" routerLinkActive="mat-accent">List of Character Traits</a>
+        <a *ngIf="userIsAuthenticated" routerLink="/story/create/" routerLinkActive="mat-accent">Create a Story</a>
+        <span class="spacer"></span>
+        <!-- <span class="right-push-2"> -->
+        <a *ngIf="!userIsAuthenticated" routerLink="/login" routerLinkActive="mat-accent">Login</a>
+        <a *ngIf="!userIsAuthenticated" routerLink="/signup" routerLinkActive="mat-accent">Signup</a>
+        <!-- </span> -->
+        <a class="right-push" *ngIf="userIsAuthenticated" (click)="onLogout()">Logout</a>
+
         </mat-nav-list>
     </mat-toolbar>
     <ng-content></ng-content>
