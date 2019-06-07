@@ -20,6 +20,8 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { Interceptor } from './components/user/interceptors';
 import { ErrorInterceptor } from './error.interceptor';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 /**
  * Angular Material imports.
@@ -37,12 +39,13 @@ import {
   MatPaginatorModule,
   MatSidenavModule,
   MatTabsModule,
-  MatSlideToggleModule
-} from '@angular/material';
+  MatIconModule,
+  MatSlideToggleModule,
 
-/**
- * The bootstrapper module.
- */
+} from "@angular/material";
+
+//  * The bootstrapper module.
+//  */
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +60,8 @@ import {
     LoginComponent,
     ErrorComponent,
     ConfirmationDialogComponent,
-    ProfilePageComponent
+    MainNavComponent,
+    ProfilePageComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,6 +82,8 @@ import {
     MatPaginatorModule,
     MatSidenavModule,
     MatTabsModule,
+    LayoutModule,
+    MatIconModule,
     MatSlideToggleModule
   ],
   providers: [

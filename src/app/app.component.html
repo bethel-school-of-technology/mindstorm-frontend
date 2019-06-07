@@ -1,14 +1,19 @@
+<app-main-nav>
 <div [(class.alternative)]="otherTheme">
   <div style="text-align:center">
-    <app-header></app-header>
-    <section class="toggle">
-        <i class="material-icons">brightness_5</i>
-        <mat-slide-toggle (click)="changeTheme()">
-        </mat-slide-toggle>
-        <i class="material-icons">brightness_3</i>
-    </section>
-    <router-outlet></router-outlet>
-    <mat-sidenav-container class="background"></mat-sidenav-container>
-    <mat-sidenav-container class="image"></mat-sidenav-container>
-  </div>
-</div>
+        <!-- <app-header></app-header> -->
+        <mat-sidenav-container class="background"></mat-sidenav-container>
+        <section class="toggle">
+          <i class="material-icons">brightness_5</i>
+          <mat-slide-toggle (click)="changeTheme()">
+            <i class="material-icons">brightness_3</i>
+          </mat-slide-toggle>
+        </section>
+        <router-outlet></router-outlet>
+        <mat-sidenav-container class="image"></mat-sidenav-container>
+      </div>
+    </div>
+  </app-main-nav>
+
+
+

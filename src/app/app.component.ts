@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   /**
    * title is referred to as frontend.
    */
-  title = 'frontend';
+  title = 'Mindstorm';
 
   changeTheme() {
     this.otherTheme = !this.otherTheme;
