@@ -1,13 +1,14 @@
 <!-- Background color placement tag -->
 <mat-sidenav-container class="background"></mat-sidenav-container>
 
-<!-- Loading symbol -->
-<mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
-
 <!-- Generic container for entire list of character traits -->
 <div class="container">
 
   <mat-card *ngIf="characters.length > 0 && !isLoading">
+
+      <!-- Loading symbol -->
+      <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
+
     <mat-card-content *ngFor="let character of characters">
 
       <!-- Container for character trait title and detail -->

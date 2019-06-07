@@ -23,7 +23,7 @@ export class CharacterListComponent implements OnInit, OnDestroy {
   /** Dialog title */
   title = 'confirmation-dialog';
 
-  /** userId string */
+  /** userId string for the user's id */
   userId: string;
 
   /** Checks user's authorization */

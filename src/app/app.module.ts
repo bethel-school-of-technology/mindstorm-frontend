@@ -20,6 +20,7 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 import { Interceptor } from './components/user/interceptors';
 import { ErrorInterceptor } from './error.interceptor';
+import { AutofocusDirective } from './shared/auto-focus.directive';
 
 /**
  * Angular Material imports.
@@ -57,7 +58,8 @@ import {
     LoginComponent,
     ErrorComponent,
     ConfirmationDialogComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    AutofocusDirective
   ],
   imports: [
     BrowserModule,
