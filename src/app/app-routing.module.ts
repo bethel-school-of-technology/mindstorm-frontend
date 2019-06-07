@@ -11,6 +11,10 @@ import { LoginComponent } from "./components/user/login/login.component";
 import { SignUpComponent } from "./components/user/sign-up/sign-up.component";
 import { UserGuard } from "./components/user/user.guard";
 import { TeamComponent } from "./components/team/team.component";
+import { MartyComponent } from "./components/team/marty/marty.component";
+import { MariaComponent } from "./components/team/maria/maria.component";
+import { TavoComponent } from "./components/team/tavo/tavo.component";
+import { JacobComponent } from "./components/team/jacob/jacob.component";
 
 /** App component routes. */
 const routes: Routes = [
@@ -61,6 +65,22 @@ const routes: Routes = [
   {
     path: "team",
     component: TeamComponent
+  },
+  {
+    path: "team/marty",
+    component: MartyComponent
+  },
+  {
+    path: "team/maria",
+    component: MariaComponent
+  },
+  {
+    path: "team/tavo",
+    component: TavoComponent
+  },
+  {
+    path: "team/jacob",
+    component: JacobComponent
   }
 ];
 

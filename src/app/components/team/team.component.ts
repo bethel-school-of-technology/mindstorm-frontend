@@ -7,6 +7,10 @@ import { Component, OnInit } from "@angular/core";
 })
 export class TeamComponent implements OnInit {
   showJacob = false;
+  showMaria = false;
+  showTavo = false;
+  showMarty = false;
+
   constructor() {}
 
   ngOnInit() {}

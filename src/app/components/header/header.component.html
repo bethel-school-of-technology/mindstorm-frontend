@@ -1,9 +1,8 @@
 <!-- Navagation bar -->
 <mat-toolbar color="primary">
-
   <!-- MindStorm logo button to main page with list of stories -->
   <span>
-    <a mat-flat-button color="accent" class="logo" routerLink="/" >MindStorm</a>
+    <a mat-flat-button color="accent" class="logo" routerLink="/">MindStorm</a>
   </span>
 
   <!-- MindStorm logo image -->
@@ -13,7 +12,12 @@
   <ul>
     <li>
       <!-- Link to character-post -->
-      <a mat-button *ngIf="userIsAuthenticated" routerLink="/character/create" routerLinkActive="mat-accent">
+      <a
+        mat-button
+        *ngIf="userIsAuthenticated"
+        routerLink="/character/create"
+        routerLinkActive="mat-accent"
+      >
         <i class="material-icons">perm_identity</i>
         Add a Character Trait
       </a>
@@ -21,7 +25,12 @@
 
     <li>
       <!-- Link to character-list -->
-      <a mat-button *ngIf="userIsAuthenticated" routerLink="/characters" routerLinkActive="mat-accent">
+      <a
+        mat-button
+        *ngIf="userIsAuthenticated"
+        routerLink="/characters"
+        routerLinkActive="mat-accent"
+      >
         <i class="material-icons">list</i>
         Your List of Character Traits
       </a>
@@ -29,7 +38,12 @@
 
     <li>
       <!-- Link to story-post -->
-      <a mat-button *ngIf="userIsAuthenticated" routerLink="/story/create" routerLinkActive="mat-accent">
+      <a
+        mat-button
+        *ngIf="userIsAuthenticated"
+        routerLink="/story/create"
+        routerLinkActive="mat-accent"
+      >
         <i class="material-icons">import_contacts</i>
         Create a Story
       </a>
@@ -37,6 +51,20 @@
   </ul>
 
   <!-- Generic spacer to force login, logout, and signup buttons to the right -->
+  <span class="spacer"></span>
+
+  <!-- Link to Our Team -->
+  <ul>
+    <li>
+      <a mat-button routerLink="/team" routerLinkActive="mat-accent">
+        <i class="material-icons">
+          people
+        </i>
+        Our Team
+      </a>
+    </li>
+  </ul>
+
   <span class="spacer"></span>
 
   <ul>
@@ -62,5 +90,4 @@
       <button mat-button (click)="onLogout()">Logout</button>
     </li>
   </ul>
-
 </mat-toolbar>

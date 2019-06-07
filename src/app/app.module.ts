@@ -21,6 +21,10 @@ import { ProfilePageComponent } from "./components/profile-page/profile-page.com
 import { Interceptor } from "./components/user/interceptors";
 import { ErrorInterceptor } from "./error.interceptor";
 import { TeamComponent } from "./components/team/team.component";
+import { JacobComponent } from "./components/team/jacob/jacob.component";
+import { MariaComponent } from "./components/team/maria/maria.component";
+import { TavoComponent } from "./components/team/tavo/tavo.component";
+import { MartyComponent } from "./components/team/marty/marty.component";
 
 /**
  * Angular Material imports.
@@ -59,7 +63,11 @@ import {
     ErrorComponent,
     ConfirmationDialogComponent,
     ProfilePageComponent,
-    TeamComponent
+    TeamComponent,
+    MartyComponent,
+    MariaComponent,
+    TavoComponent,
+    JacobComponent
   ],
   imports: [
     BrowserModule,

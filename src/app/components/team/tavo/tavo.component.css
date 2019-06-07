@@ -25,7 +25,7 @@
 .pics {
   margin-bottom: 40px;
 }
-.pics picture {
+.pics a {
   display: inline-block;
   margin: 0 30px;
   width: 160px;
@@ -33,26 +33,26 @@
   overflow: hidden;
   border-radius: 50%;
 }
-.pics picture img {
+.pics a img {
   width: 100%;
   filter: grayscale(100%);
-  transition: 0.5s all;
+  transition: 0.4s all;
 }
-.pics picture:hover > img {
+.pics a:hover > img {
   filter: none;
   width: 163px;
   height: 163px;
 }
-
-.bio {
+.section {
   width: 600px;
   margin: auto;
   font-size: 20px;
   color: black;
   text-align: justify;
-  margin-bottom: 40px;
+  /* height: 0;
+  overflow: hidden; */
 }
-.bio:target {
+.section:target {
   height: auto;
 }
 .name {
