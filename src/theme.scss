@@ -24,7 +24,7 @@ $custom-theme: map_merge(
 @include angular-material-theme($custom-theme);
 
 $alt-primary: mat-palette($mat-gray, 900);
-$alt-accent: mat-palette($mat-lime, 300);
+$alt-accent: mat-palette($mat-cyan, A400);
 $alt-warn: mat-palette($mat-gray, 300);
 $background-color: map_get($mat-gray, 900);
 

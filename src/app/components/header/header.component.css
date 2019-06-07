@@ -1,8 +1,10 @@
+/* Navigation bar sets location from top and gives a drop shadow */
 mat-toolbar {
   margin-top: 1rem;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
 }
 
+/* Unordered list sets flex, removes list dots, and padding/margin */
 ul {
   display: flex;
   list-style: none;
@@ -10,31 +12,39 @@ ul {
   margin: 0;
 }
 
+/* Generic spacer pushes login, logout, and signup buttons to the right */
 .spacer {
   flex: 1 1 auto;
 }
 
+/* Removes link decoration and adds shadows to all anchor text */
 a {
   text-decoration: none;
   text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.6);
 }
 
+/* Adds shadows to all button text */
 button {
   text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.6);
 }
 
+/* Mindstorm word logo, sets font size, family, padding, and drop shadow */
 .logo {
-  font-size: 30px;
+  font-size: 35px;
+  /* font-family: 'Shadows Into Light', cursive; */
+  /* font-family: 'Loved by the King', cursive; */
+  /* font-family: 'Merienda', cursive; */
   padding: 1.5rem;
   box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.5);
 }
 
+/* Minstorm word logo increases font size on mouse hover */
 .logo:hover {
   font-size: 50px;
 }
 
+/* Logo image sets width and position */
 img {
   max-width: 100%;
   margin-left: 1rem;
-  z-index: 1;
 }

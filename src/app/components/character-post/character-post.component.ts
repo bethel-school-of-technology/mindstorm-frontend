@@ -17,28 +17,29 @@ import { Character } from '../../shared/models/character.model';
   styleUrls: ['./character-post.component.css']
 })
 export class CharacterPostComponent implements OnInit {
-  /*** @property characterTitle with empty string */
+
+  /** title empty string */
   title = '';
 
-  /*** @property characterDetail with empty string */
+  /** detail empty string */
   detail = '';
 
   /** Local reference of Character */
   character: Character;
 
-  /*** @property mode routed to character/create */
+  /** mode routed to character/create */
   private mode = 'character/create';
 
-  /*** @property characterId string */
+  /** characterId string */
   private characterId: string;
 
   /**
-   * authStatusSub Subscription from rxjs library
-   * and unsubscribes in the ngOnDestroy function.
+   * authStatusSub rxjs Subscription.
+   * Unsubscribes in the ngOnDestroy function.
    */
   private authStatusSub: Subscription;
 
-  /*** @property isLoading reference to mat-spinner */
+  /** isLoading reference to mat-spinner */
   isLoading = false;
 
   /** @ignore */
