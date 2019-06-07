@@ -16,28 +16,29 @@ import { Comment } from '../../shared/models/comment.model';
   styleUrls: ['./comment-list.component.css']
 })
 export class CommentListComponent implements OnInit, OnDestroy {
-  /*** @property comments references an array of comment data */
+
+  /** comments references an array of comment data */
   comments: Comment[] = [];
 
-  /*** @property dialog title */
+  /** Dialog title */
   title = 'confirmation-dialog';
 
-  /*** @property userId string */
+  /** userId string */
   userId: string;
 
-  /*** Checks a user's authentication status. */
+  /** Checks user authorization */
   userIsAuthenticated = false;
 
-  /*** @property isLoading reference to mat-spinner */
+  /** isLoading reference to mat-spinner */
   isLoading = false;
 
   /**
-   * commentSub Subscription from the rxjs library.
+   * commentSub rxjs Subscription.
    * Unsubscribes in the ngOnDestroy function.
    */
   private commentSub: Subscription;
 
-  /*** @property authStatusSub rxjs Subscription */
+  /** authStatusSub rxjs Subscription */
   private authStatusSub: Subscription;
 
   /** @ignore */
