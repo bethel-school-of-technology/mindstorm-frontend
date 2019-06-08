@@ -26,40 +26,41 @@ import { TavoComponent } from "./components/team/tavo/tavo.component";
 import { MartyComponent } from "./components/team/marty/marty.component";
 import { MainNavComponent } from "./main-nav/main-nav.component";
 import { LayoutModule } from "@angular/cdk/layout";
+import { AutofocusDirective } from './shared/auto-focus.directive';
 
 /** Angular Material imports. */
 import {
-  tInputModule,
+  MatInputModule,
   MatCardModule,
-MatButtonModule,
-  tToolbarModule,
-  tExpansionModule,
-  tDividerModule,
-  tProgressSpinnerModule,
-  tListModule,
-  tDialogModule,
-  tPaginatorModule,
-  tSidenavModule,
-  tTabsModule,
-  tIconModule,
+  MatButtonModule,
+  MatToolbarModule,
+  MatExpansionModule,
+  MatDividerModule,
+  MatProgressSpinnerModule,
+  MatListModule,
+  MatDialogModule,
+  MatPaginatorModule,
+  MatSidenavModule,
+  MatTabsModule,
+  MatIconModule,
   MatSlideToggleModule
 } from "@angular/material";
 
-  The bootstrapper module. */
-  odule({
-  clarations: [
-  AppComponent,
-  CharacterPostComponent,
+/** The bootstrapper module. */
+@NgModule({
+  declarations: [
+    AppComponent,
+    CharacterPostComponent,
     CharacterListComponent,
     StoryPostComponent,
     StoryListComponent,
     CommentListComponent,
-      CommentPostComponent,
-        SignUpComponent,
+    CommentPostComponent,
+    SignUpComponent,
     LoginComponent,
     ErrorComponent,
     ConfirmationDialogComponent,
-ProfilePageComponent,
+    ProfilePageComponent,
     TeamComponent,
     MartyComponent,
     MariaComponent,
@@ -69,6 +70,7 @@ ProfilePageComponent,
     ProfilePageComponent,
     AutofocusDirective
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -99,4 +101,4 @@ ProfilePageComponent,
   bootstrap: [AppComponent],
   entryComponents: [ErrorComponent, ConfirmationDialogComponent]
 })
-export class AppModule {}
+export class AppModule { }
