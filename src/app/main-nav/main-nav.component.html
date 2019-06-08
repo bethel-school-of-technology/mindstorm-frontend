@@ -72,25 +72,28 @@
       <!-- Mindstorm image logo -->
       <img
         class="logo-img"
-        src="../../../assets/images/logo-yellow.png"
+        src="../../assets/images/logo-yellow.png"
         width="150"
         height="150"
       />
       <!-- Nav buttons to character-list, character-post and story-post -->
       <mat-nav-list>
         <a
+          class="navlist-btn"
           *ngIf="userIsAuthenticated"
           routerLink="/character/create"
           routerLinkActive="mat-accent"
           >Add a Charcter trait</a
         >
         <a
+          class="navlist-btn"
           *ngIf="userIsAuthenticated"
           routerLink="/characters"
           routerLinkActive="mat-accent"
           >List of Character Traits</a
         >
         <a
+          class="navlist-btn"
           *ngIf="userIsAuthenticated"
           routerLink="/story/create/"
           routerLinkActive="mat-accent"
@@ -101,18 +104,20 @@
       <span class="spacer"></span>
       <mat-nav-list>
         <a
+          class="navlist-btn"
           *ngIf="!userIsAuthenticated"
           routerLink="/login"
           routerLinkActive="mat-accent"
           >Login</a
         >
         <a
+          class="navlist-btn"
           *ngIf="!userIsAuthenticated"
           routerLink="/signup"
           routerLinkActive="mat-accent"
           >Signup</a
         >
-        <a class="right-push" *ngIf="userIsAuthenticated" (click)="onLogout()"
+        <a class="navlist-btn" *ngIf="userIsAuthenticated" (click)="onLogout()"
           >Logout</a
         >
       </mat-nav-list>

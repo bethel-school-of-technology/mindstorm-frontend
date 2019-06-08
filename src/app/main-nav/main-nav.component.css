@@ -21,7 +21,6 @@ mat-toolbar {
   margin-top: 1rem;
 }
 
-/* Hides links to hamburger */
 .hidden {
   display: none;
 }
@@ -64,4 +63,11 @@ a {
   background-size: cover;
   background-image: url('../../assets/images/cloud.jpg');
   z-index: -2;
+}
+
+/* Hides anchors at certain screen size */
+@media (max-width: 950px) {
+  .navlist-btn {
+    visibility: hidden;
+  }
 }
