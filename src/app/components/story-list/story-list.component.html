@@ -1,32 +1,80 @@
-<mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
+<!-- Background color placement tag -->
 <mat-sidenav-container class="background"></mat-sidenav-container>
+
+<!-- Loading symbol -->
+<mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
+
+<!-- Mat-accordion contains list of stories -->
 <mat-accordion *ngIf="stories.length > 0 && !isLoading">
   <mat-expansion-panel *ngFor="let story of stories">
+    <!-- Expansion header contains story title and main content -->
     <mat-expansion-panel-header>
+      <!-- Generic spacer to force story title to the center-->
       <span class="spacer"></span>
       {{ story.storyTitle }}
     </mat-expansion-panel-header>
     <p>
       {{ story.storyBody }}
     </p>
-    <p>
-    </p>
-    <mat-card-content class="btn" *ngIf="userIsAuthenticated && userId === story.creator">
-      <a mat-raised-button color="accent" [routerLink]="['/story/edit', story.id]">Edit Story</a>
-      <button mat-raised-button color="warn" (click)="openDialog(story.id)">Delete Story</button>
+
+    <!-- Container for edit and delete buttons -->
+    <mat-card-content
+      class="btn-container"
+      *ngIf="userIsAuthenticated && userId === story.creator"
+    >
+      <a
+        mat-raised-button
+        class="btn"
+        color="accent"
+        [routerLink]="['/story/edit', story.id]"
+      >
+        <i class="material-icons">edit</i>
+        Edit Story
+      </a>
+      <button
+        mat-raised-button
+        class="btn"
+        color="warn"
+        (click)="openDialog(story.id)"
+      >
+        <i class="material-icons">delete</i>
+        Delete Story
+      </button>
     </mat-card-content>
-    <div class="story-image">
+
+    <!-- Image container -->
+    <div>
       <img [src]="story.imagePath" [alt]="story.storyTitle" />
     </div>
+
+    <!-- View Comments button -->
     <mat-action-row>
-      <a mat-raised-button routerLink="/comments">View Comments</a>
+      <a mat-raised-button class="btn" color="primary" routerLink="/comments">
+        View Comments
+      </a>
     </mat-action-row>
-    <mat-card-content>
+
+    <!-- Post comments component. Appears only if user is authenticated -->
+    <mat-card-content *ngIf="userIsAuthenticated">
       <app-comment-post></app-comment-post>
     </mat-card-content>
   </mat-expansion-panel>
 </mat-accordion>
-<mat-paginator [length]="totalStories" [pageSize]="storiesPerPage" [pageSizeOptions]="pageSizeOptions"
-  (page)="onPageChanged($event)" *ngIf="stories.length > 0">
+
+<!-- Paginator for determining number of stories per page -->
+<mat-paginator
+  [length]="totalStories"
+  [pageSize]="storiesPerPage"
+  [pageSizeOptions]="pageSizeOptions"
+  (page)="onPageChanged($event)"
+  *ngIf="stories.length > 0"
+>
 </mat-paginator>
-<p class="info-text mat-body-1" *ngIf="stories.length <= 0 && !isLoading">No Story added yet!</p>
+
+<!-- Paragraph shows only if there are no stories -->
+<mat-card-content
+  class="info-text mat-body-1"
+  *ngIf="stories.length <= 0 && !isLoading"
+>
+  No Story added yet!
+</mat-card-content>

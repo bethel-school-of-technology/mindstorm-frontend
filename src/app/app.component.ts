@@ -1,27 +1,29 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
-import { UserService } from "./components/user/user.service";
+import { UserService } from './shared/service/user.service';
 /**
  * The main component.
  */
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  otherTheme: boolean = false;
   constructor(private authService: UserService) {}
-
-  changeTheme() {
-    this.otherTheme = !this.otherTheme;
-  }
+  otherTheme = false;
 
   /**
    * title is referred to as frontend.
    */
-  title = "frontend";
+  title = 'Mindstorm';
 
+  /** Changes light theme to dark theme */
+  changeTheme() {
+    this.otherTheme = !this.otherTheme;
+  }
+
+  /** Keep user logged in after refresh */
   ngOnInit() {
     this.authService.autoAuthUser();
   }

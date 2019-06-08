@@ -1,20 +1,16 @@
 /**
  * The Story class.
- * See {@link StoryService} for its use in the service.
+ * See {@link StoryService} for use.
  */
 export class Story {
   /** The story id */
   id: string;
-
   /** The story title */
   storyTitle: string;
-
   /** The story details */
   storyBody: string;
-
-  /** The story image loader */
+  /** The story image */
   imagePath: string;
-
-  /** The story's creator */
+  /** The story creator */
   creator: string;
 }

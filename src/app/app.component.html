@@ -1,14 +1,19 @@
+<!-- References change from light them to dark theme -->
 <div [(class.alternative)]="otherTheme">
-  <div style="text-align:center">
-    <app-header></app-header>
-    <section class="toggle">
-      <i class="material-icons">brightness_5</i>
-      <mat-slide-toggle (click)="changeTheme()">
-        <i class="material-icons">brightness_3</i>
-      </mat-slide-toggle>
-    </section>
-    <router-outlet></router-outlet>
-    <mat-sidenav-container class="background"></mat-sidenav-container>
-    <mat-sidenav-container class="image"></mat-sidenav-container>
-  </div>
+  <!-- Main navigation -->
+  <app-main-nav>
+    <div style="text-align:center">
+      <mat-sidenav-container class="background"></mat-sidenav-container>
+      <!-- Light theme to dark theme toggle button -->
+      <section class="toggle">
+        <i class="material-icons">brightness_5</i>
+        <mat-slide-toggle (click)="changeTheme()">
+          <i class="material-icons">brightness_3</i>
+        </mat-slide-toggle>
+      </section>
+      <router-outlet></router-outlet>
+      <!-- Background image container -->
+      <mat-sidenav-container class="image"></mat-sidenav-container>
+    </div>
+  </app-main-nav>
 </div>

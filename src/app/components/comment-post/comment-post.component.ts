@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material';
 
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
-import { UserService } from '../user/user.service';
+import { UserService } from '../../shared/service/user.service';
 import { CommentService } from '../../shared/service/comment.service';
 import { Comment } from '../../shared/models/comment.model';
 
@@ -18,28 +18,28 @@ import { Comment } from '../../shared/models/comment.model';
   styleUrls: ['./comment-post.component.css']
 })
 export class CommentPostComponent implements OnInit {
-  /*** @property postTitle with empty string */
+  /** postTitle empty string */
   postTitle = '';
 
-  /*** @property postBody with empty string */
+  /** postBody empty string */
   postBody = '';
 
   /** Local reference of Comment */
   comment: Comment;
 
-  /*** @property mode set to comment/create route */
+  /** mode set to comment/create route */
   private mode = 'comment/create';
 
-  /*** @property commentId string */
+  /** commentId string */
   private commentId: string;
 
   /**
-   * authStatusSub Subscription from rxjs library
-   * and unsubscribes in the ngOnDestroy function.
+   * authStatusSub rxjs Subscription.
+   * Unsubscribes in the ngOnDestroy function.
    */
   private authStatusSub: Subscription;
 
-  /*** @property isLoading reference to mat-spinner */
+  /** isLoading reference to mat-spinner */
   isLoading = false;
 
   /*** @property dialog title */
@@ -51,33 +51,38 @@ export class CommentPostComponent implements OnInit {
     public route: ActivatedRoute,
     private userService: UserService,
     public dialog: MatDialog
-    ) { }
+  ) {}
 
   /**
    * Performs a GET by id function from the CommentService, getting a single
-   * comment. Routes to editComment or createComment mode, depending on the existence of an id.
+   * comment. Routes to comment/edit or comment/create mode, depending on the existence of an id.
    */
   ngOnInit() {
     this.authStatusSub = this.userService
-    .getAuthStatusListener()
-    .subscribe(authStatus => {
-      this.isLoading = false;
-    });
+      .getAuthStatusListener()
+      .subscribe(authStatus => {
+        this.isLoading = false;
+      });
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('commentId')) {
         this.mode = 'comment/edit';
         this.commentId = paramMap.get('commentId');
         this.isLoading = true;
-        this.commentService.getComment(this.commentId).subscribe(commentData => {
-          this.isLoading = false;
-          this.comment = {
-            id: commentData._id,
-            postTitle: commentData.postTitle,
-            postBody: commentData.postBody,
-            creator: commentData.creator
-          };
-        });
-      } else { this.mode = 'comment/create'; this.commentId = null; }
+        this.commentService
+          .getComment(this.commentId)
+          .subscribe(commentData => {
+            this.isLoading = false;
+            this.comment = {
+              id: commentData._id,
+              postTitle: commentData.postTitle,
+              postBody: commentData.postBody,
+              creator: commentData.creator
+            };
+          });
+      } else {
+        this.mode = 'comment/create';
+        this.commentId = null;
+      }
     });
   }
 
@@ -98,11 +103,16 @@ export class CommentPostComponent implements OnInit {
         }
         this.isLoading = true;
         if (this.mode === 'comment/create') {
-          this.commentService.addComment(form.value.postTitle, form.value.postBody,
+          this.commentService.addComment(
+            form.value.postTitle,
+            form.value.postBody,
             form.value
           );
         } else {
-          this.commentService.updateComment(this.commentId, form.value.postTitle, form.value.postBody,
+          this.commentService.updateComment(
+            this.commentId,
+            form.value.postTitle,
+            form.value.postBody,
             form.value
           );
         }

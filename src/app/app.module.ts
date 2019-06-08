@@ -1,23 +1,29 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
 
-import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { CharacterPostComponent } from "./components/character-post/character-post.component";
-import { CharacterListComponent } from "./components/character-list/character-list.component";
-import { StoryPostComponent } from "./components/story-post/story-post.component";
-import { StoryListComponent } from "./components/story-list/story-list.component";
-import { CommentPostComponent } from "./components/comment-post/comment-post.component";
-import { CommentListComponent } from "./components/comment-list/comment-list.component";
-import { HeaderComponent } from "./components/header/header.component";
-import { Interceptor } from "./components/user/interceptors";
-import { ErrorInterceptor } from "./error.interceptor";
-/**
- * Angular Material imports.
- */
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { CharacterPostComponent } from './components/character-post/character-post.component';
+import { CharacterListComponent } from './components/character-list/character-list.component';
+import { StoryPostComponent } from './components/story-post/story-post.component';
+import { StoryListComponent } from './components/story-list/story-list.component';
+import { CommentPostComponent } from './components/comment-post/comment-post.component';
+import { CommentListComponent } from './components/comment-list/comment-list.component';
+import { SignUpComponent } from './components/user/sign-up/sign-up.component';
+import { LoginComponent } from './components/user/login/login.component';
+import { ErrorComponent } from './error/error.component';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { ProfilePageComponent } from './components/profile-page/profile-page.component';
+import { Interceptor } from './components/user/interceptors';
+import { ErrorInterceptor } from './error.interceptor';
+import { AutofocusDirective } from './shared/auto-focus.directive';
+import { MainNavComponent } from './main-nav/main-nav.component';
+
+/** Angular Material imports. */
 import {
   MatInputModule,
   MatCardModule,
@@ -31,24 +37,16 @@ import {
   MatPaginatorModule,
   MatSidenavModule,
   MatTabsModule,
+  MatIconModule,
   MatSlideToggleModule
-} from "@angular/material";
+} from '@angular/material';
 
-import { SignUpComponent } from "./components/user/sign-up/sign-up.component";
-import { LoginComponent } from "./components/user/login/login.component";
-import { ErrorComponent } from "./error/error.component";
-import { ConfirmationDialogComponent } from "./components/confirmation-dialog/confirmation-dialog.component";
-import { ProfilePageComponent } from "./components/profile-page/profile-page.component";
-
-/**
- * The bootstrapper module.
- */
+/** The bootstrapper module. */
 @NgModule({
   declarations: [
     AppComponent,
     CharacterPostComponent,
     CharacterListComponent,
-    HeaderComponent,
     StoryPostComponent,
     StoryListComponent,
     CommentListComponent,
@@ -57,7 +55,9 @@ import { ProfilePageComponent } from "./components/profile-page/profile-page.com
     LoginComponent,
     ErrorComponent,
     ConfirmationDialogComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    MainNavComponent,
+    AutofocusDirective
   ],
   imports: [
     BrowserModule,
@@ -78,6 +78,8 @@ import { ProfilePageComponent } from "./components/profile-page/profile-page.com
     MatPaginatorModule,
     MatSidenavModule,
     MatTabsModule,
+    LayoutModule,
+    MatIconModule,
     MatSlideToggleModule
   ],
   providers: [
@@ -87,4 +89,4 @@ import { ProfilePageComponent } from "./components/profile-page/profile-page.com
   bootstrap: [AppComponent],
   entryComponents: [ErrorComponent, ConfirmationDialogComponent]
 })
-export class AppModule {}
+export class AppModule { }

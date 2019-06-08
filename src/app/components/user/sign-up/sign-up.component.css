@@ -1,45 +1,52 @@
+/* Sets distance of content from the top */
 :host {
   display: block;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
-div {
-  display: flex;
-  justify-content: space-around;
-}
 
-mat-card {
+/* Div container sets flex*/
+.container {
   display: flex;
   justify-content: center;
+}
+
+/* Sets opacity and width of entire form */
+mat-card {
+  display: flex;
+  width: 60%;
   opacity: 0.9;
 }
 
-form {
-  width: 100%;
-}
-
-mat-form-field {
-  width: 100%;
-}
-
+/* Loading symbol centered */
 mat-spinner {
   margin: auto;
 }
 
-mat-action-row {
-  display: flex;
-  justify-content: space-around;
+/* Sets form width */
+form {
   width: 100%;
 }
 
-button:hover {
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+/* Sets width of mat-form-field and textarea */
+mat-form-field {
+  width: 100%;
 }
 
-a:hover {
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+/* Sets space between Signup and Login buttons */
+mat-card-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
+/* Sets top space of anchor tag when buttons wrap to next row */
+a {
+  margin-top: 0.3rem;
+}
+
+/* Sets position of background color sidenav container */
 .background {
   position: fixed;
   height: 100%;
@@ -49,4 +56,9 @@ a:hover {
   left: 0;
   opacity: 0.5;
   z-index: -1;
+}
+
+/* All anchors and buttons are given drop shadows on mouse hover */
+.btn:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
 }

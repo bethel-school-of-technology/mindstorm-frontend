@@ -1,22 +1,14 @@
 /**
  * The Character class.
- * See {@link CharacterService} for service using it.
+ * See {@link CharacterService} for use.
  */
 export class Character {
-  /**
-   * Character trait id.
-   */
+  /** Character trait id */
   id: string;
-  /**
-   * Character trait title.
-   */
+  /** Character trait title */
   title: string;
-  /**
-   * Character trait detail.
-   */
+  /** Character trait details */
   detail: string;
-  /**
-   * The character trait's creator.
-   */
+  /** The character trait creator */
   creator: string;
 }

@@ -1,18 +1,38 @@
+<!-- Background color placement tag -->
 <mat-sidenav-container class="background"></mat-sidenav-container>
+<!-- Loading symbol -->
+<mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
 <mat-accordion multi="true" *ngIf="comments.length > 0">
-  <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
+  <!-- Contains comment title and main comment content -->
   <mat-expansion-panel *ngFor="let comment of comments">
     <mat-expansion-panel-header>
+      <!-- Generic spacer forces comment title to the center -->
       <span class="spacer"></span>
       {{ comment.postTitle }}
     </mat-expansion-panel-header>
     <p>
       {{ comment.postBody }}
     </p>
+    <!-- Contains Edit Comment and Delete Comment buttons -->
     <mat-action-row *ngIf="userIsAuthenticated && userId === comment.creator">
-      <a mat-button color="primary" [routerLink]="['/comment/edit', comment.id]">Edit Comment</a>
-      <button mat-button color="warn" (click)="openDialog(comment.id)">Delete Comment</button>
+      <a
+        mat-raised-button
+        class="btn"
+        color="accent"
+        [routerLink]="['/comment/edit', comment.id]"
+        >Edit Comment</a
+      >
+      <button
+        mat-raised-button
+        class="btn"
+        color="warn"
+        (click)="openDialog(comment.id)"
+      >
+        Delete Comment
+      </button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
-<p class="info-text mat-body-1" *ngIf="comments.length <= 0">No comments added yet!</p>
+<p class="info-text mat-body-1" *ngIf="comments.length <= 0">
+  No comments added yet!
+</p>

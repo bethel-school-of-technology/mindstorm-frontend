@@ -2,33 +2,28 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
-import { UserService } from '../user.service';
+import { UserService } from '../../../shared/service/user.service';
 
-/**
- * The Login Component.
- */
+/** The Login Component. */
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-
-  /*** @property isLoading for mat-spinner in the html file */
+  /** isLoading for mat-spinner loading symbol. */
   isLoading = false;
 
   /**
-   * authStatusSub Subscription from rxjs library
-   * and unsubscribes in the ngOnDestroy function.
+   * authStatusSub rxjs Subscription.
+   * Unsubscribes in the ngOnDestroy function.
    */
   private authStatusSub: Subscription;
 
   /** @Ignore */
-  constructor(public userService: UserService) { }
+  constructor(public userService: UserService) {}
 
-  /**
-   * Performs a listen function for the user's status.
-   */
+  /** Performs a listen function for the user's status. */
   ngOnInit() {
     this.authStatusSub = this.userService
       .getAuthStatusListener()

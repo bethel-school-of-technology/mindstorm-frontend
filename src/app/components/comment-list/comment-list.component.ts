@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material';
 import { Subscription } from 'rxjs';
 
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
-import { UserService } from '../user/user.service';
+import { UserService } from '../../shared/service/user.service';
 import { CommentService } from '../../shared/service/comment.service';
 import { Comment } from '../../shared/models/comment.model';
 
@@ -16,28 +16,28 @@ import { Comment } from '../../shared/models/comment.model';
   styleUrls: ['./comment-list.component.css']
 })
 export class CommentListComponent implements OnInit, OnDestroy {
-  /*** @property comments references an array of comment data */
+  /** comments references an array of comment data */
   comments: Comment[] = [];
 
-  /*** @property dialog title */
+  /** Dialog title */
   title = 'confirmation-dialog';
 
-  /*** @property userId string */
+  /** userId string */
   userId: string;
 
-  /*** Checks a user's authentication status. */
+  /** Checks user authorization */
   userIsAuthenticated = false;
 
-  /*** @property isLoading reference to mat-spinner */
+  /** isLoading reference to mat-spinner */
   isLoading = false;
 
   /**
-   * commentSub Subscription from the rxjs library.
+   * commentSub rxjs Subscription.
    * Unsubscribes in the ngOnDestroy function.
    */
   private commentSub: Subscription;
 
-  /*** @property authStatusSub rxjs Subscription */
+  /** authStatusSub rxjs Subscription */
   private authStatusSub: Subscription;
 
   /** @ignore */
@@ -45,7 +45,7 @@ export class CommentListComponent implements OnInit, OnDestroy {
     public commentService: CommentService,
     private userService: UserService,
     public dialog: MatDialog
-    ) { }
+  ) {}
 
   /**
    * This function performs a GET request from the CommentService for a list of comments from the database.
@@ -54,7 +54,8 @@ export class CommentListComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.commentService.getComments();
     this.userId = this.userService.getUserId();
-    this.commentSub = this.commentService.getCommentUpdateListener()
+    this.commentSub = this.commentService
+      .getCommentUpdateListener()
       .subscribe((comments: Comment[]) => {
         this.isLoading = false;
         this.comments = comments;

@@ -1,16 +1,33 @@
-.spacer {
-  flex: .5 0 auto;
+/* Sets distance of content from the top */
+:host {
+  display: block;
+  margin-top: 1rem;
 }
 
+/* Loading symbol centered */
+mat-spinner {
+  margin: auto;
+}
+
+/* Generic spacer forcing comment title to the center */
+.spacer {
+  flex: 0.5 0 auto;
+}
+
+/* Sets comment text to the left and recognizes new lines */
 p {
   white-space: pre-line;
   text-align: left;
 }
 
-mat-spinner {
-  margin: auto;
+/* Sets flex for Edit Comment and Delete Comment buttons */
+mat-action-row {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
+/* Sets position of background color sidenav container */
 .background {
   position: fixed;
   height: 100%;
@@ -20,4 +37,9 @@ mat-spinner {
   left: 0;
   opacity: 0.5;
   z-index: -1;
+}
+
+/* All anchors and buttons are given drop shadows on mouse hover */
+.btn:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
 }

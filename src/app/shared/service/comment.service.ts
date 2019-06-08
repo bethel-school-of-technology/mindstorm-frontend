@@ -21,18 +21,16 @@ const backendURL = environment.apiURL + '/comments/';
   providedIn: 'root'
 })
 export class CommentService {
-  /*** @property comments references an array of Comment data */
+  /** comments references an array of Comment data */
   private comments: Comment[] = [];
 
-  /*** @property commentsUpdated references a new Subject and Comment array */
+  /** commentsUpdated references a new Subject and Comment array */
   private commentsUpdated = new Subject<Comment[]>();
 
   /** @ignore */
   constructor(private http: HttpClient, private router: Router) { }
 
-  /**
-   * Performs a GET method to retrieve a list of comments from the database.
-   */
+  /** Performs a GET method to retrieve a list of comments. */
   getComments() {
     this.http.get<{ message: string; comments: any }>(backendURL)
       .pipe(map(commentData => {
@@ -51,15 +49,13 @@ export class CommentService {
       });
   }
 
-  /**
-   * Returns the commentsUpdated property to update the list of comments.
-   */
+  /** Returns the commentsUpdated property to update the list of comments. */
   getCommentUpdateListener() {
     return this.commentsUpdated.asObservable();
   }
 
   /**
-   * Performs an http DELETE method for deleting a comment by its id.
+   * Performs a DELETE method for deleting a comment by its id.
    * @param commentId string
    */
   deleteComment(commentId: string) {
@@ -72,7 +68,7 @@ export class CommentService {
   }
 
   /**
-   * Performs an http GET method to get a single comment by its id.
+   * Performs a GET method to get a comment by its id.
    * @param id string
    */
   getComment(id: string) {
@@ -85,7 +81,7 @@ export class CommentService {
   }
 
   /**
-   * Performs an http POST method for creating a new comment.
+   * Performs a POST method for creating a comment.
    * @param postTitle string
    * @param postBody string
    * @param creator string
@@ -103,7 +99,7 @@ export class CommentService {
   }
 
   /**
-   * Performs an http PUT method for editing a comment by its id.
+   * Performs a PUT method for editing a comment by its id.
    * @param id string
    * @param postTitle string
    * @param postBody string

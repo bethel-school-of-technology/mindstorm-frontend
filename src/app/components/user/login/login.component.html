@@ -1,12 +1,18 @@
+<!-- Background color placement tag -->
 <mat-sidenav-container class="background"></mat-sidenav-container>
-<div>
-  <span class="spacer"></span>
+
+<!-- Generic container of login form -->
+<div class="container">
+
   <mat-card>
-    <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
+      <!-- Loading symbol -->
+      <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
     <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
+      <!-- Input for email and invalid error message -->
       <mat-form-field>
         <input
           matInput
+          color="primary"
           name="email"
           ngModel
           type="email"
@@ -14,34 +20,41 @@
           #emailInput="ngModel"
           required
           email
-        />
+          appAutoFocus>
         <mat-error *ngIf="emailInput.invalid">
           Please enter a valid email.
         </mat-error>
       </mat-form-field>
+
+      <!-- Input for password and invalid error message -->
       <mat-form-field>
         <input
+          color="primary"
           type="password"
           name="password"
           ngModel
           matInput
           placeholder="Password"
           #passwordInput="ngModel"
-          required
-        />
+          required>
         <mat-error *ngIf="passwordInput.invalid">
           Please enter a valid password.
         </mat-error>
       </mat-form-field>
-      <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">
-        Login
-        <i class="material-icons">fingerprint</i>
-      </button>
-      <a mat-raised-button color="primary" routerLink="/signup">
-        <i class="material-icons">local_play</i>
-        No acccount? Signup!
-      </a>
+
+      <!-- Contains the Login and Signup buttons -->
+      <mat-card-content>
+        <button mat-raised-button class="btn" color="accent" type="submit" *ngIf="!isLoading">
+          <i class="material-icons">fingerprint</i>
+          Login
+        </button>
+        <a mat-raised-button class="btn" color="primary" routerLink="/signup">
+          <i class="material-icons">local_play</i>
+          No acccount? Signup!
+        </a>
+      </mat-card-content>
+
     </form>
   </mat-card>
-  <span class="spacer"></span>
+
 </div>

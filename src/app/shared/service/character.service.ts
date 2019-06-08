@@ -20,18 +20,16 @@ const backendURL = environment.apiURL + '/characters/';
   providedIn: 'root'
 })
 export class CharacterService {
-  /*** @property characters references an array of character data.*/
+  /** characters references an array of character data */
   private characters: Character[] = [];
 
-  /*** @property charactersUpdated references a new Subject and Character array */
+  /** charactersUpdated references a new Subject and Character array */
   private charactersUpdated = new Subject<{ characters: Character[] }>();
 
   /** @ignore */
   constructor(private http: HttpClient, private router: Router) { }
 
-  /**
-   * Performs a GET method to retrieve a list of character traits from the database.
-   */
+  /** Performs a GET method to retrieve a list of character traits. */
   getCharacters() {
     this.http
     .get<{ message: string; characters: any }>(backendURL)
@@ -56,16 +54,13 @@ export class CharacterService {
     });
   }
 
-  /**
-   * This function is used to return the charactersUpdated property and update
-   * the character trait list.
-   */
+  /** Returns the charactersUpdated property and updates the character trait list. */
   getCharacterUpdateListener() {
     return this.charactersUpdated.asObservable();
   }
 
   /**
-   * This function is used to get a character trait by its id using the http GET method.
+   * Performs a GET by id request for a character trait.
    * @param id string
    */
   getCharacter(id: string) {
@@ -78,7 +73,7 @@ export class CharacterService {
   }
 
   /**
-   * This function creates a new character trait using the http POST method.
+   * Creates a new character trait using the http POST method.
    * @param title string
    * @param detail string
    * @param creator string
@@ -98,7 +93,7 @@ export class CharacterService {
   }
 
   /**
-   * This function updates a character trait using the http PUT method.
+   * Updates a character trait using the http PUT method.
    * @param id string
    * @param title string
    * @param detail string
@@ -119,7 +114,7 @@ export class CharacterService {
   }
 
   /**
-   * This function deletes a character trait using the http DELETE method.
+   * Deletes a character trait using the http DELETE method.
    * @param characterId string
    */
   deleteCharacter(characterId: string) {
