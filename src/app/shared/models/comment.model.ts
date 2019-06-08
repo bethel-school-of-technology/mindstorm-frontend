@@ -1,22 +1,14 @@
 /**
  * The Comment class.
- * See {@link CommentService} for its use in the service.
+ * See {@link CommentService} for use.
  */
 export class Comment {
-  /**
-   * The comment id.
-   */
+  /** The comment id */
   id: string;
-  /**
-   * The comment title.
-   */
+  /** The comment title */
   postTitle: string;
-  /**
-   * The comment details.
-   */
+  /** The comment details */
   postBody: string;
-  /**
-   * The comment creator.
-   */
+  /** The comment creator */
   creator: string;
 }

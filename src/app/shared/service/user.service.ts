@@ -19,10 +19,19 @@ const backendURL = environment.apiURL + '/user/';
  */
 @Injectable({ providedIn: 'root' })
 export class UserService {
+  /** Checks user's authorization */
   private isAuthenticated = false;
+
+  /** token string used to get a token for verification */
   private token: string;
+
+  /** tokenTimer used to set login duration */
   private tokenTimer: any;
+
+  /** authStatusListener set to a new Subject, true or false */
   private authStatusListener = new Subject<boolean>();
+
+  /** userId string for the user's id */
   private userId: string;
 
   /** @ignore */
@@ -49,7 +58,7 @@ export class UserService {
   }
 
   /**
-   * Performs an http POST method for creating a user, as well as logging in the user.
+   * Performs a POST method for creating a user, as well as logging in the user once signed up.
    * @param email string
    * @param password string
    */
@@ -67,7 +76,7 @@ export class UserService {
   }
 
   /**
-   * Performs an http POST method for posting the token, user's id, and expiration time.
+   * Performs a POST method for posting the token, user's id, and time until expiration.
    * Subscribes to the private methods of setAuthTimer and saveAuthData.
    * @param email string
    * @param password string
@@ -124,9 +133,7 @@ export class UserService {
     }
   }
 
-  /**
-   * Performs the logout function by clearing the timer and user data.
-   */
+  /** Performs the logout function by clearing the timer and user data. */
   logout() {
     this.token = null;
     this.isAuthenticated = false;

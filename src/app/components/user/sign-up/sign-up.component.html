@@ -1,18 +1,18 @@
 <!-- Background color placement tag -->
 <mat-sidenav-container class="background"></mat-sidenav-container>
 
-<!-- Loading symbol -->
-<mat-spinner *ngIf="isLoading"></mat-spinner>
-
 <!-- Generic container of signup form -->
 <div class="container">
 
   <mat-card>
+      <!-- Loading symbol -->
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
     <form (submit)="onSignUp(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
 
       <!-- Input for email and invalid error message -->
       <mat-form-field>
         <input
+          color="primary"
           matInput
           name="email"
           ngModel
@@ -21,7 +21,7 @@
           #emailInput="ngModel"
           required
           email
-        />
+          appAutoFocus>
         <mat-error *ngIf="emailInput.invalid">
           Please enter a valid email.
         </mat-error>
@@ -30,14 +30,14 @@
       <!-- Input for password and invalid error message -->
       <mat-form-field>
         <input
+          color="primary"
           type="password"
           name="password"
           ngModel
           matInput
           placeholder="Password"
           #passwordInput="ngModel"
-          required
-        />
+          required>
         <mat-error *ngIf="passwordInput.invalid">
           Please enter a valid password.
         </mat-error>

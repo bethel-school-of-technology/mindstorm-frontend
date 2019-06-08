@@ -12,7 +12,6 @@ import { StoryPostComponent } from "./components/story-post/story-post.component
 import { StoryListComponent } from "./components/story-list/story-list.component";
 import { CommentPostComponent } from "./components/comment-post/comment-post.component";
 import { CommentListComponent } from "./components/comment-list/comment-list.component";
-import { HeaderComponent } from "./components/header/header.component";
 import { SignUpComponent } from "./components/user/sign-up/sign-up.component";
 import { LoginComponent } from "./components/user/login/login.component";
 import { ErrorComponent } from "./error/error.component";
@@ -28,50 +27,47 @@ import { MartyComponent } from "./components/team/marty/marty.component";
 import { MainNavComponent } from "./main-nav/main-nav.component";
 import { LayoutModule } from "@angular/cdk/layout";
 
-/**
- * Angular Material imports.
- */
+/** Angular Material imports. */
 import {
-  MatInputModule,
+  tInputModule,
   MatCardModule,
-  MatButtonModule,
-  MatToolbarModule,
-  MatExpansionModule,
-  MatDividerModule,
-  MatProgressSpinnerModule,
-  MatListModule,
-  MatDialogModule,
-  MatPaginatorModule,
-  MatSidenavModule,
-  MatTabsModule,
-  MatIconModule,
+MatButtonModule,
+  tToolbarModule,
+  tExpansionModule,
+  tDividerModule,
+  tProgressSpinnerModule,
+  tListModule,
+  tDialogModule,
+  tPaginatorModule,
+  tSidenavModule,
+  tTabsModule,
+  tIconModule,
   MatSlideToggleModule
 } from "@angular/material";
 
-//  * The bootstrapper module.
-//  */
-@NgModule({
-  declarations: [
-    AppComponent,
-    CharacterPostComponent,
+  The bootstrapper module. */
+  odule({
+  clarations: [
+  AppComponent,
+  CharacterPostComponent,
     CharacterListComponent,
-    HeaderComponent,
     StoryPostComponent,
     StoryListComponent,
     CommentListComponent,
-    CommentPostComponent,
-    SignUpComponent,
+      CommentPostComponent,
+        SignUpComponent,
     LoginComponent,
     ErrorComponent,
     ConfirmationDialogComponent,
-    ProfilePageComponent,
+ProfilePageComponent,
     TeamComponent,
     MartyComponent,
     MariaComponent,
     TavoComponent,
     JacobComponent,
     MainNavComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    AutofocusDirective
   ],
   imports: [
     BrowserModule,

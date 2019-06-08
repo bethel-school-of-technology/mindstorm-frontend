@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
-import { UserService } from '../user.service';
+import { UserService } from '../../../shared/service/user.service';
 
 /** The Login Component. */
 @Component({
@@ -11,7 +11,6 @@ import { UserService } from '../user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-
   /** isLoading for mat-spinner loading symbol. */
   isLoading = false;
 
@@ -22,7 +21,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   private authStatusSub: Subscription;
 
   /** @Ignore */
-  constructor(public userService: UserService) { }
+  constructor(public userService: UserService) {}
 
   /** Performs a listen function for the user's status. */
   ngOnInit() {

@@ -1,8 +1,10 @@
-<app-main-nav>
-  <div [(class.alternative)]="otherTheme">
+<!-- References change from light them to dark theme -->
+<div [(class.alternative)]="otherTheme">
+  <!-- Main navigation -->
+  <app-main-nav>
     <div style="text-align:center">
-      <!-- <app-header></app-header> -->
       <mat-sidenav-container class="background"></mat-sidenav-container>
+      <!-- Light theme to dark theme toggle button -->
       <section class="toggle">
         <i class="material-icons">brightness_5</i>
         <mat-slide-toggle (click)="changeTheme()">
@@ -10,7 +12,8 @@
         </mat-slide-toggle>
       </section>
       <router-outlet></router-outlet>
+      <!-- Background image container -->
       <mat-sidenav-container class="image"></mat-sidenav-container>
     </div>
-  </div>
-</app-main-nav>
+  </app-main-nav>
+</div>

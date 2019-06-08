@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { MatDialog, PageEvent } from '@angular/material';
 
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
-import { UserService } from '../user/user.service';
+import { UserService } from '../../shared/service/user.service';
 import { StoryService } from '../../shared/service/story.service';
 import { Story } from '../../shared/models/story.model';
 
@@ -16,7 +16,6 @@ import { Story } from '../../shared/models/story.model';
   styleUrls: ['./story-list.component.css']
 })
 export class StoryListComponent implements OnInit, OnDestroy {
-
   /** stories references an array of story data. */
   stories: Story[] = [];
 
@@ -58,7 +57,7 @@ export class StoryListComponent implements OnInit, OnDestroy {
     public storyService: StoryService,
     private userService: UserService,
     public dialog: MatDialog
-  ) { }
+  ) {}
 
   /**
    * Performs a GET request from StoryService for a list of stories from the database.
@@ -67,7 +66,8 @@ export class StoryListComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.storyService.getStories(this.storiesPerPage, this.currentPage);
     this.userId = this.userService.getUserId();
-    this.storySub = this.storyService.getStoryUpdateListener()
+    this.storySub = this.storyService
+      .getStoryUpdateListener()
       .subscribe((storyData: { stories: Story[]; storyCount: number }) => {
         this.isLoading = false;
         this.totalStories = storyData.storyCount;
@@ -106,12 +106,14 @@ export class StoryListComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.isLoading = true;
-        this.storyService.deleteStory(storyId).subscribe(() => {
-          this.storyService.getStories(this.storiesPerPage, this.currentPage);
-        },
+        this.storyService.deleteStory(storyId).subscribe(
+          () => {
+            this.storyService.getStories(this.storiesPerPage, this.currentPage);
+          },
           () => {
             this.isLoading = false;
-          });
+          }
+        );
       }
     });
   }

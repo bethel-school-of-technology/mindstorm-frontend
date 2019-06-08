@@ -4,11 +4,6 @@
   margin-top: 1rem;
 }
 
-/* Loading symbol centered */
-mat-spinner {
-  margin: auto;
-}
-
 /* Div container sets flex*/
 .container {
   display: flex;
@@ -20,6 +15,11 @@ mat-card {
   display: flex;
   width: 60%;
   opacity: 0.9;
+}
+
+/* Loading symbol centered */
+mat-spinner {
+  margin: auto;
 }
 
 /* Sets form width */

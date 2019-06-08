@@ -4,11 +4,6 @@
   margin-top: 1rem;
 }
 
-/* Loading symbol centered*/
-mat-spinner {
-  margin: auto;
-}
-
 /* Div container sets flex */
 .container {
   display: flex;
@@ -19,6 +14,11 @@ mat-spinner {
 mat-card {
   width: 50%;
   opacity: 0.9;
+}
+
+/* Loading symbol centered*/
+mat-spinner {
+  margin: auto;
 }
 
 /* Sets width of mat-form-field and textarea */
@@ -35,7 +35,13 @@ textarea {
 /* Sets space between Save Trait and Cancel buttons */
 mat-card-content {
   display: flex;
-  justify-content: space-between
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+/* Add Trait button */
+#add-trait-btn {
+  margin-bottom: 0.3rem;
 }
 
 /* Sets position of background color sidenav container */

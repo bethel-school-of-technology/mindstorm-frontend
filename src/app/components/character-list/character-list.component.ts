@@ -3,7 +3,7 @@ import { MatDialog, PageEvent } from '@angular/material';
 import { Subscription } from 'rxjs';
 
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
-import { UserService } from '../user/user.service';
+import { UserService } from '../../shared/service/user.service';
 import { CharacterService } from '../../shared/service/character.service';
 import { Character } from '../../shared/models/character.model';
 
@@ -16,14 +16,13 @@ import { Character } from '../../shared/models/character.model';
   styleUrls: ['./character-list.component.css']
 })
 export class CharacterListComponent implements OnInit, OnDestroy {
-
   /** characters references an array of character data */
   characters: Character[] = [];
 
   /** Dialog title */
   title = 'confirmation-dialog';
 
-  /** userId string */
+  /** userId string for the user's id */
   userId: string;
 
   /** Checks user's authorization */
@@ -49,7 +48,7 @@ export class CharacterListComponent implements OnInit, OnDestroy {
     public characterService: CharacterService,
     private userService: UserService,
     public dialog: MatDialog
-    ) { }
+  ) {}
 
   /**
    * ngOnInit function performs a GET request for list of character traits
@@ -59,11 +58,17 @@ export class CharacterListComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.characterService.getCharacters();
     this.userId = this.userService.getUserId();
-    this.characterSub = this.characterService.getCharacterUpdateListener()
-      .subscribe((characterData: { characters: Character[]; characterCount: number }) => {
-        this.isLoading = false;
-        this.characters = characterData.characters;
-      });
+    this.characterSub = this.characterService
+      .getCharacterUpdateListener()
+      .subscribe(
+        (characterData: {
+          characters: Character[];
+          characterCount: number;
+        }) => {
+          this.isLoading = false;
+          this.characters = characterData.characters;
+        }
+      );
     this.userIsAuthenticated = this.userService.getIsAuth();
     this.authStatusSub = this.userService
       .getAuthStatusListener()
