@@ -3,36 +3,55 @@
 
 <!-- Container for comment post form -->
 <mat-card>
-    <!-- Loading symbol -->
-    <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
-    <form (submit)="openDialog(commentForm)" #commentForm="ngForm" *ngIf="!isLoading">
+  <!-- Loading symbol -->
+  <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
+  <form
+    (submit)="openDialog(commentForm)"
+    #commentForm="ngForm"
+    *ngIf="!isLoading"
+  >
+    <!-- Input for comment title -->
+    <mat-form-field>
+      <input
+        matInput
+        color="primary"
+        type="text"
+        name="postTitle"
+        [ngModel]="comment?.postTitle"
+        required
+        minlength="3"
+        placeholder="Post your comment title here..."
+        #postTitle="ngModel"
+      />
+      <mat-error *ngIf="postTitle.invalid">Please Enter a Title</mat-error>
+    </mat-form-field>
 
-      <!-- Input for comment title -->
-      <mat-form-field>
-        <input matInput color="primary" type="text" name="postTitle" [ngModel]="comment?.postTitle" required minlength="3"
-          placeholder="Post your comment title here..." #postTitle="ngModel">
-        <mat-error *ngIf="postTitle.invalid">Please Enter a Title</mat-error>
-      </mat-form-field>
+    <!-- Textarea for main comment content -->
+    <mat-form-field>
+      <textarea
+        matInput
+        color="primary"
+        type="text"
+        name="postBody"
+        rows="4"
+        [ngModel]="comment?.postBody"
+        placeholder="Post your comment here..."
+        #postBody="ngModel"
+      >
+      </textarea>
+      <mat-error *ngIf="postBody.invalid">Please Enter a Comment</mat-error>
+    </mat-form-field>
 
-      <!-- Textarea for main comment content -->
-      <mat-form-field>
-        <textarea matInput color="primary" type="text" name="postBody" rows="4" [ngModel]="comment?.postBody"
-          placeholder="Post your comment here..." #postBody="ngModel">
-        </textarea>
-        <mat-error *ngIf="postBody.invalid">Please Enter a Comment</mat-error>
-      </mat-form-field>
-
-      <!-- Container for Save Comment and Cancel buttons -->
-      <mat-action-row>
-        <button mat-stroked-button class="btn" color="accent" type="submit">
-          <i class="material-icons">done</i>
-          Save Comment
-        </button>
-        <a mat-stroked-button class="btn" color="warn" routerLink="/comments">
-          <i class="material-icons">cancel</i>
-          Cancel Comment
-        </a>
-      </mat-action-row>
-
-    </form>
-  </mat-card>
+    <!-- Container for Save Comment and Cancel buttons -->
+    <mat-action-row>
+      <button mat-stroked-button class="btn" color="accent" type="submit">
+        <i class="material-icons">done</i>
+        Save Comment
+      </button>
+      <a mat-stroked-button class="btn" color="warn" routerLink="/comments">
+        <i class="material-icons">cancel</i>
+        Cancel Comment
+      </a>
+    </mat-action-row>
+  </form>
+</mat-card>

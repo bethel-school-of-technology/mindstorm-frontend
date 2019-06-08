@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
-import { UserService } from '../user.service';
+import { UserService } from '../../../shared/service/user.service';
 
 /** The Signup Component. */
 @Component({
@@ -11,7 +11,6 @@ import { UserService } from '../user.service';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit, OnDestroy {
-
   /** isLoading for mat-spinner loading symbol. */
   isLoading = false;
 

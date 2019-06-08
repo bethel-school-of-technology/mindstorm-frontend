@@ -13,7 +13,6 @@ import { StoryPostComponent } from './components/story-post/story-post.component
 import { StoryListComponent } from './components/story-list/story-list.component';
 import { CommentPostComponent } from './components/comment-post/comment-post.component';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
-import { HeaderComponent } from './components/header/header.component';
 import { SignUpComponent } from './components/user/sign-up/sign-up.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { ErrorComponent } from './error/error.component';
@@ -48,7 +47,6 @@ import {
     AppComponent,
     CharacterPostComponent,
     CharacterListComponent,
-    HeaderComponent,
     StoryPostComponent,
     StoryListComponent,
     CommentListComponent,
@@ -91,4 +89,4 @@ import {
   bootstrap: [AppComponent],
   entryComponents: [ErrorComponent, ConfirmationDialogComponent]
 })
-export class AppModule { }
+export class AppModule {}

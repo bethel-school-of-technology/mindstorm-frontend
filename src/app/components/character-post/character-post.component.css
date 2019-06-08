@@ -4,7 +4,6 @@
   margin-top: 1rem;
 }
 
-
 /* Div container sets flex */
 .container {
   display: flex;
@@ -36,7 +35,13 @@ textarea {
 /* Sets space between Save Trait and Cancel buttons */
 mat-card-content {
   display: flex;
-  justify-content: space-between
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+/* Add Trait button */
+#add-trait-btn {
+  margin-bottom: 0.3rem;
 }
 
 /* Sets position of background color sidenav container */

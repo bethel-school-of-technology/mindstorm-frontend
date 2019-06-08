@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute, ParamMap} from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Subscription } from 'rxjs';
 
-import { UserService } from '../user/user.service';
+import { UserService } from '../../shared/service/user.service';
 import { CharacterService } from '../../shared/service/character.service';
 import { Character } from '../../shared/models/character.model';
 
@@ -17,7 +17,6 @@ import { Character } from '../../shared/models/character.model';
   styleUrls: ['./character-post.component.css']
 })
 export class CharacterPostComponent implements OnInit {
-
   /** title empty string */
   title = '';
 
@@ -47,7 +46,7 @@ export class CharacterPostComponent implements OnInit {
     public characterService: CharacterService,
     public route: ActivatedRoute,
     private userService: UserService
-    ) { }
+  ) {}
 
   /**
    * Performs a GET by id function from the CharacterService, getting a single
@@ -55,25 +54,30 @@ export class CharacterPostComponent implements OnInit {
    */
   ngOnInit() {
     this.authStatusSub = this.userService
-    .getAuthStatusListener()
-    .subscribe(authStatus => {
-      this.isLoading = false;
-    });
+      .getAuthStatusListener()
+      .subscribe(authStatus => {
+        this.isLoading = false;
+      });
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('characterId')) {
         this.mode = 'character/edit';
         this.characterId = paramMap.get('characterId');
         this.isLoading = true;
-        this.characterService.getCharacter(this.characterId).subscribe(characterData => {
-          this.isLoading = false;
-          this.character = {
-            id: characterData._id,
-            title: characterData.title,
-            detail: characterData.detail,
-            creator: characterData.creator
-          };
-        });
-      } else { this.mode = 'character/create'; this.characterId = null; }
+        this.characterService
+          .getCharacter(this.characterId)
+          .subscribe(characterData => {
+            this.isLoading = false;
+            this.character = {
+              id: characterData._id,
+              title: characterData.title,
+              detail: characterData.detail,
+              creator: characterData.creator
+            };
+          });
+      } else {
+        this.mode = 'character/create';
+        this.characterId = null;
+      }
     });
   }
 
@@ -87,9 +91,18 @@ export class CharacterPostComponent implements OnInit {
     }
     this.isLoading = true;
     if (this.mode === 'character/create') {
-      this.characterService.addCharacter(form.value.title, form.value.detail, form.value);
+      this.characterService.addCharacter(
+        form.value.title,
+        form.value.detail,
+        form.value
+      );
     } else {
-      this.characterService.updateCharacter(this.characterId, form.value.title, form.value.detail, form.value);
+      this.characterService.updateCharacter(
+        this.characterId,
+        form.value.title,
+        form.value.detail,
+        form.value
+      );
     }
     form.resetForm();
   }
