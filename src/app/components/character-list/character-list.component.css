@@ -26,12 +26,11 @@ mat-card-title {
   text-align: left;
 }
 
-/* Sets character trait detail to the left and recognizes new lines */
+/* Sets character trait text to the left and recognizes new lines */
 p {
   white-space: pre-line;
   text-align: left;
 }
-
 
 /* Class container for Edit and Delete buttons */
 .btn-container {
@@ -49,6 +48,12 @@ hr {
 .list-btn-container {
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+/* Add Trait button */
+#add-trait-btn {
+  margin-bottom: 0.3rem;
 }
 
 /* Sets example list to the center */

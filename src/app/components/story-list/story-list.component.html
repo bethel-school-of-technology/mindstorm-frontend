@@ -7,7 +7,6 @@
 <!-- Mat-accordion contains list of stories -->
 <mat-accordion *ngIf="stories.length > 0 && !isLoading">
   <mat-expansion-panel *ngFor="let story of stories">
-
     <!-- Expansion header contains story title and main content -->
     <mat-expansion-panel-header>
       <!-- Generic spacer to force story title to the center-->
@@ -19,12 +18,25 @@
     </p>
 
     <!-- Container for edit and delete buttons -->
-    <mat-card-content class="btn-container" *ngIf="userIsAuthenticated && userId === story.creator">
-      <a mat-raised-button class="btn" color="accent" [routerLink]="['/story/edit', story.id]">
+    <mat-card-content
+      class="btn-container"
+      *ngIf="userIsAuthenticated && userId === story.creator"
+    >
+      <a
+        mat-raised-button
+        class="btn"
+        color="accent"
+        [routerLink]="['/story/edit', story.id]"
+      >
         <i class="material-icons">edit</i>
         Edit Story
       </a>
-      <button mat-raised-button class="btn" color="warn" (click)="openDialog(story.id)">
+      <button
+        mat-raised-button
+        class="btn"
+        color="warn"
+        (click)="openDialog(story.id)"
+      >
         <i class="material-icons">delete</i>
         Delete Story
       </button>
@@ -37,21 +49,32 @@
 
     <!-- View Comments button -->
     <mat-action-row>
-      <a mat-raised-button class="btn" color="primary" routerLink="/comments">View Comments</a>
+      <a mat-raised-button class="btn" color="primary" routerLink="/comments">
+        View Comments
+      </a>
     </mat-action-row>
 
     <!-- Post comments component. Appears only if user is authenticated -->
     <mat-card-content *ngIf="userIsAuthenticated">
       <app-comment-post></app-comment-post>
     </mat-card-content>
-
   </mat-expansion-panel>
 </mat-accordion>
 
 <!-- Paginator for determining number of stories per page -->
-<mat-paginator [length]="totalStories" [pageSize]="storiesPerPage" [pageSizeOptions]="pageSizeOptions"
-  (page)="onPageChanged($event)" *ngIf="stories.length > 0">
+<mat-paginator
+  [length]="totalStories"
+  [pageSize]="storiesPerPage"
+  [pageSizeOptions]="pageSizeOptions"
+  (page)="onPageChanged($event)"
+  *ngIf="stories.length > 0"
+>
 </mat-paginator>
 
 <!-- Paragraph shows only if there are no stories -->
-<mat-card-content class="info-text mat-body-1" *ngIf="stories.length <= 0 && !isLoading">No Story added yet!</mat-card-content>
+<mat-card-content
+  class="info-text mat-body-1"
+  *ngIf="stories.length <= 0 && !isLoading"
+>
+  No Story added yet!
+</mat-card-content>

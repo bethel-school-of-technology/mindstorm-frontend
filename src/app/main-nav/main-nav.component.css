@@ -4,7 +4,7 @@
 
 .sidenav {
   width: 200px;
-  box-shadow: 3px 0px 6px rgba(0,0,0.24);
+  box-shadow: 3px 0px 6px rgba(0, 0, 0.24);
 }
 
 .sidenav .mat-toolbar {
@@ -15,53 +15,41 @@
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
-  z-index: 1;
 }
+
 mat-toolbar {
   margin-top: 1rem;
 }
-/* .hidden {
-  display: none;
-} */
 
+/* Hides links to hamburger */
+.hidden {
+  display: none;
+}
+
+/* Generic spacer pushes Login, Signup, and Logout buttons to the far right */
 .spacer {
   flex: 1 1 auto;
 }
 
-/* mat-nav-list  {
-  display: flex;
-} */
-
-/* .right-push {
-  margin-left: 15rem;
-}
-.right-push-2 {
-  margin-left: 15rem;
-  z-index: 1;
-} */
-
+/* Refers to all anchors */
 a {
   text-decoration: none;
   text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.6);
   padding: 1rem;
 }
 
+/* Mindstorm word logo sets font-size, padding, and box-shadow */
 .logo {
-  font-size: 21px;
+  font-size: 22px;
   padding: 1.5rem;
   box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.5);
 }
 
-.logo:hover {
-  font-size: 50px;
-}
-ul {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.logo-img {
+  max-width: 100%;
 }
 
+/* Background image positioning */
 .img {
   position: absolute;
   top: 0;

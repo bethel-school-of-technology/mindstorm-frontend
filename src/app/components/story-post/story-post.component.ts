@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 import { mimeType } from './image-type.validator';
-import { UserService } from '../user/user.service';
+import { UserService } from '../../shared/service/user.service';
 import { StoryService } from '../../shared/service/story.service';
 import { Story } from '../../shared/models/story.model';
 
@@ -58,73 +58,71 @@ export class StoryPostComponent implements OnInit, OnDestroy {
     private userService: UserService,
     public route: ActivatedRoute,
     public dialog: MatDialog
-    ) { }
+  ) {}
 
   /**
    * Performs a GET by id function from the StoryService, getting a single
    * story. Routes to story/edit or story/create mode, depending on the existence of an id.
    */
-    ngOnInit() {
-      this.authStatusSub = this.userService
+  ngOnInit() {
+    this.authStatusSub = this.userService
       .getAuthStatusListener()
       .subscribe(authStatus => {
         this.isLoading = false;
       });
-      this.form = new FormGroup({
-        storyTitle: new FormControl(null, {
-          validators: [Validators.required, Validators.minLength(3)]
-        }),
-        storyBody: new FormControl(
-          null, {
-            validators: [Validators.required]
-          }),
-        image: new FormControl(
-          null, {
-            validators: [Validators.required],
-            asyncValidators: [mimeType]
-          })
-      });
-      this.route.paramMap.subscribe((paramMap: ParamMap) => {
-        if (paramMap.has('storyId')) {
-          this.mode = 'story/edit';
-          this.storyId = paramMap.get('storyId');
-          this.isLoading = true;
-          this.storyService.getStory(this.storyId).subscribe(storyData => {
-            this.isLoading = false;
-            this.story = {
-              id: storyData._id,
-              storyTitle: storyData.storyTitle,
-              storyBody: storyData.storyBody,
-              imagePath: storyData.imagePath,
-              creator: storyData.creator
-            };
-            this.form.setValue({
-              storyTitle: this.story.storyTitle,
-              storyBody: this.story.storyBody,
-              image: this.story.imagePath
-            });
+    this.form = new FormGroup({
+      storyTitle: new FormControl(null, {
+        validators: [Validators.required, Validators.minLength(3)]
+      }),
+      storyBody: new FormControl(null, {
+        validators: [Validators.required]
+      }),
+      image: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType]
+      })
+    });
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      if (paramMap.has('storyId')) {
+        this.mode = 'story/edit';
+        this.storyId = paramMap.get('storyId');
+        this.isLoading = true;
+        this.storyService.getStory(this.storyId).subscribe(storyData => {
+          this.isLoading = false;
+          this.story = {
+            id: storyData._id,
+            storyTitle: storyData.storyTitle,
+            storyBody: storyData.storyBody,
+            imagePath: storyData.imagePath,
+            creator: storyData.creator
+          };
+          this.form.setValue({
+            storyTitle: this.story.storyTitle,
+            storyBody: this.story.storyBody,
+            image: this.story.imagePath
           });
-        } else {
-          this.mode = 'story/create';
-          this.storyId = null;
-        }
-      });
-    }
+        });
+      } else {
+        this.mode = 'story/create';
+        this.storyId = null;
+      }
+    });
+  }
 
-    /**
-     * Loads an image.
-     * @param event Event
-     */
-    onImagePicked(event: Event) {
-      const file = (event.target as HTMLInputElement).files[0];
-      this.form.patchValue({ image: file });
-      this.form.get('image').updateValueAndValidity();
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.imagePreview = reader.result as string;
-      };
-      reader.readAsDataURL(file);
-    }
+  /**
+   * Loads an image.
+   * @param event Event
+   */
+  onImagePicked(event: Event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({ image: file });
+    this.form.get('image').updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string;
+    };
+    reader.readAsDataURL(file);
+  }
 
   /**
    * Opens a dialog popup when the "Save Your Story" button is clicked.
@@ -156,7 +154,7 @@ export class StoryPostComponent implements OnInit, OnDestroy {
           );
         }
         this.form.reset();
-        }
+      }
     });
   }
 

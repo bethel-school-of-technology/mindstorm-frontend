@@ -1,9 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import {
+  BreakpointObserver,
+  Breakpoints,
+  BreakpointState
+} from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
-import { UserService } from '../components/user/user.service';
+import { UserService } from '../shared/service/user.service';
 
 @Component({
   selector: 'app-main-nav',
@@ -11,16 +15,17 @@ import { UserService } from '../components/user/user.service';
   styleUrls: ['./main-nav.component.css']
 })
 export class MainNavComponent implements OnInit, OnDestroy {
-
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches)
-    );
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.Handset)
+    .pipe(map(result => result.matches));
 
-  constructor(private breakpointObserver: BreakpointObserver, private userService: UserService) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
     this.userIsAuthenticated = this.userService.getIsAuth();
@@ -38,5 +43,4 @@ export class MainNavComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.authListenerSubs.unsubscribe();
   }
-
 }

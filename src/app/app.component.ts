@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UserService } from './components/user/user.service';
+import { UserService } from './shared/service/user.service';
 /**
  * The main component.
  */
@@ -18,10 +18,12 @@ export class AppComponent implements OnInit {
    */
   title = 'Mindstorm';
 
+  /** Changes light theme to dark theme */
   changeTheme() {
     this.otherTheme = !this.otherTheme;
   }
 
+  /** Keep user logged in after refresh */
   ngOnInit() {
     this.authService.autoAuthUser();
   }
