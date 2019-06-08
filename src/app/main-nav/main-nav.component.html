@@ -12,6 +12,7 @@
         Traits</a>
       <a mat-list-item *ngIf="userIsAuthenticated" routerLink="/story/create/" routerLinkActive="mat-accent">Create a
         Story</a>
+      <a mat-list-item routerLink="/team" routerLinkActive="mat-accent">Our Team</a>
       <a mat-list-item *ngIf="!userIsAuthenticated" routerLink="/login" routerLinkActive="mat-accent">Login</a>
       <a mat-list-item *ngIf="!userIsAuthenticated" routerLink="/signup" routerLinkActive="mat-accent">Signup</a>
       <a mat-list-item *ngIf="userIsAuthenticated" (click)="onLogout()">Logout</a>
@@ -39,6 +40,11 @@
       </mat-nav-list>
       <!-- Generic spacer pushes Login, Signup and Logout buttons to the far right -->
       <span class="spacer"></span>
+
+      <a routerLink="/team" routerLinkActive="mat-accent">Our Team</a>
+
+      <span class="spacer"></span>
+
       <mat-nav-list>
         <a *ngIf="!userIsAuthenticated" routerLink="/login" routerLinkActive="mat-accent">Login</a>
         <a *ngIf="!userIsAuthenticated" routerLink="/signup" routerLinkActive="mat-accent">Signup</a>
