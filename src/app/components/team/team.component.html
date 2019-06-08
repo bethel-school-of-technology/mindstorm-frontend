@@ -1,0 +1,77 @@
+<mat-sidenav-container class="background"></mat-sidenav-container>
+<div class="team-section">
+  <h1>Our Team</h1>
+  <span class="border"></span>
+  <div class="pics">
+    <picture>
+      <img src="../../../assets/images/jacob.jpg" alt="jacob" (click)="showJacob = !showJacob" />
+    </picture>
+    <picture>
+      <img class="a" src="../../../assets/images/maria.jpg" alt="maria" (click)="showMaria = !showMaria" />
+    </picture>
+    <picture>
+      <img src="../../../assets/images/tavo.jpg" alt="tavo" (click)="showTavo = !showTavo" />
+    </picture>
+    <picture>
+      <img src="../../../assets/images/marty.jpg" alt="marty" (click)="showMarty = !showMarty" />
+    </picture>
+  </div>
+
+  <div class="bio" *ngIf="showJacob">
+    <h3 class="name">Jacob L Santos</h3>
+    <span class="border"></span>
+    <p>Redding, California</p>
+    <br>
+    <p>
+      Born and raised in California. He has lived in Fairfield (twenty-one years), Rohnert Park (five years), and
+      Redding (nine years). He started a ten year long career in the Grocery Business in 2004 with Raley’s
+      (Whoop-whoop!!) before leaving in 2014 to go into the education field. He has been a middle/high school Science
+      Teacher for the past four years, and is now stepping up to the plate to become a front-end junior developer. He
+      attended Bethel Supernatural School of Ministry where he met his now wife Cara. They are a happy couple who would
+      like to go on vacation together. The plan = no more grading papers over the weekend. Maybe they’ll go to Canada
+      and visit Cara’s family (Cara is a Canadian) in B.C. (British Columbia) or maybe they’ll go somewhere where no-one
+      knows them. Either way, vacation is on the horizons.
+    </p>
+    <br>
+    <a href="mailto:fascinatingwings@yahoo.com" target="_top">Contact me</a>
+  </div>
+
+  <div class="bio" *ngIf="showMaria!">
+    <h3 class="name">Maria Ziemer</h3>
+    <span class="border"></span>
+    <p>Cashton, Wisconsin</p>
+    <br>
+    <p>
+      Hi, I’m Maria Ziemer! I’m a junior web developer with skills in full stack development. My passion for language
+      and art led me to coding, where I enjoy bringing the same creativity into programming.
+    </p>
+    <br>
+    <a href="mailto:jn-01@centurytel.net" target="_top">Contact me</a>
+  </div>
+
+  <div class="bio" *ngIf="showTavo">
+    <h3 class="name">Tavo Cortez</h3>
+    <span class="border"></span>
+    <p>Visalia, California</p>
+    <br>
+    <p>
+      Why I code? I code because I love building things and working with computers. I have a strong passion for working
+      with children and technology and seeing underserved children have access to tech!
+    </p>
+    <br>
+    <a href="mailto:ocortez007@gmail.com" target="_top">Contact me</a>
+  </div>
+
+  <div class="bio" *ngIf="showMarty">
+    <h3 class="name">Martins Siksnis</h3>
+    <span class="border"></span>
+    <p>Oslo, Norway</p>
+    <br>
+    <p>
+      Bethel School of Technologies graduate. Passionate JavaScript front-end developer with a big heart for the
+      back-end as well. Favorite quote: “First, solve the problem. Then, write the code.”
+    </p>
+    <br>
+    <a href="mailto:msiksnis@gmail.com" target="_top">Contact me</a>
+  </div>
+</div>
