@@ -1,8 +1,8 @@
 <!-- References change from light them to dark theme -->
 <div [(class.alternative)]="otherTheme">
   <!-- Main navigation -->
-  <app-main-nav>
-    <div style="text-align:center">
+  <div style="text-align:center">
+    <app-main-nav>
       <mat-sidenav-container class="background"></mat-sidenav-container>
       <!-- Light theme to dark theme toggle button -->
       <section class="toggle">
@@ -14,6 +14,6 @@
       <router-outlet></router-outlet>
       <!-- Background image container -->
       <mat-sidenav-container class="image"></mat-sidenav-container>
-    </div>
-  </app-main-nav>
+    </app-main-nav>
+  </div>
 </div>
