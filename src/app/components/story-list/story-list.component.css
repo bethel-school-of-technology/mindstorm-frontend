@@ -11,7 +11,7 @@ mat-spinner {
 
 /* Generic spacer, forces story title to the center */
 .spacer {
-  flex: .5 0 auto;
+  flex: 0.5 0 auto;
 }
 
 mat-expansion-panel-header {
@@ -23,6 +23,7 @@ of new lines and pushes text to the left*/
 p {
   white-space: pre-line;
   text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Image width is set and creates a drop shadow */
@@ -43,18 +44,6 @@ mat-paginator {
   width: 100%;
   opacity: 0.7;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-}
-
-/* Sets position of background color sidenav container */
-.background {
-  position: fixed;
-  height: 100%;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  opacity: 0.5;
-  z-index: -1;
 }
 
 /* All anchors and buttons are given drop shadows on mouse hover */

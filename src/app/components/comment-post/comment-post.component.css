@@ -3,6 +3,11 @@ mat-spinner {
   margin: auto;
 }
 
+/* Sets input error messages to red for both light and dark color themes */
+.error {
+  color: rgb(241, 69, 69);
+}
+
 /* Sets width of mat-form-field and textarea */
 mat-form-field,
 textarea {
@@ -11,6 +16,7 @@ textarea {
 
 /* Sets height of textarea */
 textarea {
+  font-family: Arial, Helvetica, sans-serif;
   height: 10rem;
 }
 

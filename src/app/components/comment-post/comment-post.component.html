@@ -23,7 +23,9 @@
         placeholder="Post your comment title here..."
         #postTitle="ngModel"
       />
-      <mat-error *ngIf="postTitle.invalid">Please Enter a Title</mat-error>
+      <mat-error class="error" *ngIf="postTitle.invalid"
+        >Please enter a title</mat-error
+      >
     </mat-form-field>
 
     <!-- Textarea for main comment content -->
@@ -35,11 +37,14 @@
         name="postBody"
         rows="4"
         [ngModel]="comment?.postBody"
+        required
         placeholder="Post your comment here..."
         #postBody="ngModel"
       >
       </textarea>
-      <mat-error *ngIf="postBody.invalid">Please Enter a Comment</mat-error>
+      <mat-error class="error" *ngIf="postBody.invalid"
+        >Please enter some text</mat-error
+      >
     </mat-form-field>
 
     <!-- Container for Save Comment and Cancel buttons -->

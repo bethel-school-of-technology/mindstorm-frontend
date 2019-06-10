@@ -21,15 +21,21 @@ mat-spinner {
   margin: auto;
 }
 
+/* Sets story title error messages to red for both light and dark color themes */
+.error {
+  color: rgb(241, 69, 69);
+}
+
 /* Sets width of mat-form-field and textarea */
 mat-form-field,
 textarea {
   width: 100%;
 }
 
-/* Sets height of textarea */
+/* Sets height and font-family (for easier reading/editing) of textarea */
 textarea {
-  height: 15rem;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 25rem;
 }
 
 /* Sets flex on Pick Your Image button */
@@ -39,14 +45,14 @@ textarea {
 }
 
 /* Sets the file input field to invisible */
-input[type="file"] {
+input[type='file'] {
   visibility: hidden;
 }
 
 /* Sets size of the image preview container */
 .image-preview {
   height: 5rem;
-  margin-bottom: 1rem
+  margin-bottom: 1rem;
 }
 
 /* Sets height of image preview img */
@@ -57,19 +63,13 @@ input[type="file"] {
 /* Sets flex on Save Story and Cancel buttons */
 mat-card-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
-/* Sets position of background color sidenav container */
-.background {
-  position: fixed;
-  height: 100%;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  opacity: 0.5;
-  z-index: -1;
+/* Sets top space of anchor tag when buttons wrap to next row */
+a {
+  margin-top: 0.3rem;
 }
 
 /* All anchors and buttons are given drop shadows on mouse hover */
