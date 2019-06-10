@@ -3,41 +3,35 @@
   display: block;
   margin-top: 1rem;
 }
-
 /* Loading symbol centered */
 mat-spinner {
   margin: auto;
 }
-
 /* Generic spacer, forces story title to the center */
 .spacer {
   flex: 0.5 0 auto;
 }
-
 mat-expansion-panel-header {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
-
 /* Paragraph for story content, sets recognition
-of new lines and pushes text to the left*/
+of new lines, pushes text to the left and sets font-family to Arial
+for greater legibility */
 p {
   white-space: pre-line;
   text-align: left;
   font-family: Arial, Helvetica, sans-serif;
 }
-
 /* Image width is set and creates a drop shadow */
 img {
   width: 100%;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
-
 /* Container for the Edit Story and Delete Story buttons */
 .btn-container {
   display: flex;
   justify-content: space-around;
 }
-
 /* Number of stories per page, sets width,
 opacity, and creates a drop shadow*/
 mat-paginator {
@@ -45,7 +39,6 @@ mat-paginator {
   opacity: 0.7;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
-
 /* All anchors and buttons are given drop shadows on mouse hover */
 .btn:hover {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);

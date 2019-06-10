@@ -3,7 +3,6 @@
   <mat-card *ngIf="characters.length > 0 && !isLoading">
     <!-- Loading symbol -->
     <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
-
     <mat-card-content *ngFor="let character of characters">
       <!-- Container for character trait title and detail -->
       <mat-card-content
@@ -17,7 +16,6 @@
             {{ character.detail }}
           </p>
         </mat-card-content>
-
         <!-- btn class container for Edit and Delete buttons -->
         <mat-card-content class="btn-container">
           <a
@@ -40,12 +38,10 @@
             Delete
           </button>
         </mat-card-content>
-
         <!-- Line divider -->
         <hr />
       </mat-card-content>
     </mat-card-content>
-
     <!-- Container for adding a character trait and getting an example list of traits buttons -->
     <mat-card-content class="list-btn-container">
       <a
@@ -69,7 +65,6 @@
         <i class="material-icons">near_me</i>
         Trait Examples
       </button>
-
       <!-- Container for list of character trait examples -->
     </mat-card-content>
     <div class="list" *ngIf="show">

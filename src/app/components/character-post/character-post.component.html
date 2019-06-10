@@ -22,11 +22,10 @@
           #title="ngModel"
           appAutoFocus
         />
-        <mat-error class="error" color="primary" *ngIf="title.invalid"
-          >Please enter a title for your character trait</mat-error
-        >
+        <mat-error class="error" color="primary" *ngIf="title.invalid">
+          Please enter a title for your character trait
+        </mat-error>
       </mat-form-field>
-
       <!-- Textarea for character detail -->
       <mat-form-field>
         <textarea
@@ -41,7 +40,6 @@
         >
         </textarea>
       </mat-form-field>
-
       <!-- Container for Save Character Trait and Cancel buttons -->
       <mat-card-content>
         <button

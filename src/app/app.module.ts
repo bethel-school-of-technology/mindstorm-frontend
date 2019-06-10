@@ -70,7 +70,6 @@ import {
     ProfilePageComponent,
     AutofocusDirective
   ],
-
   imports: [
     BrowserModule,
     AppRoutingModule,

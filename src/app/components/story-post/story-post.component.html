@@ -18,7 +18,6 @@
           Please enter a title
         </mat-error>
       </mat-form-field>
-
       <!-- Textarea for main story content -->
       <mat-form-field>
         <textarea
@@ -32,7 +31,6 @@
           Please enter some text
         </mat-error>
       </mat-form-field>
-
       <!-- Pick Your Image button -->
       <div class="btn-image">
         <button
@@ -46,12 +44,10 @@
           Pick Your Image
         </button>
       </div>
-
       <!-- Input file set to invisible -->
       <div>
         <input type="file" #filePicker (change)="onImagePicked($event)" />
       </div>
-
       <!-- Image previewer -->
       <div
         class="image-preview"
@@ -59,7 +55,6 @@
       >
         <img [src]="imagePreview" [alt]="form.value.storyTitle" />
       </div>
-
       <!-- Contains the Save Story and Cancel buttons -->
       <mat-card-content>
         <button mat-raised-button class="btn" color="accent" type="submit">

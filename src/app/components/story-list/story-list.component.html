@@ -1,6 +1,5 @@
 <!-- Loading symbol -->
 <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
-
 <!-- Mat-accordion contains list of stories -->
 <mat-accordion *ngIf="stories.length > 0 && !isLoading">
   <mat-expansion-panel *ngFor="let story of stories">
@@ -13,7 +12,6 @@
     <p>
       {{ story.storyBody }}
     </p>
-
     <!-- Container for edit and delete buttons -->
     <mat-card-content
       class="btn-container"
@@ -38,26 +36,22 @@
         Delete Story
       </button>
     </mat-card-content>
-
     <!-- Image container -->
     <div>
       <img [src]="story.imagePath" [alt]="story.storyTitle" />
     </div>
-
     <!-- View Comments button -->
     <mat-action-row>
       <a mat-raised-button class="btn" color="primary" routerLink="/comments">
         View Comments
       </a>
     </mat-action-row>
-
     <!-- Post comments component. Appears only if user is authenticated -->
     <mat-card-content *ngIf="userIsAuthenticated">
       <app-comment-post></app-comment-post>
     </mat-card-content>
   </mat-expansion-panel>
 </mat-accordion>
-
 <!-- Paginator for determining number of stories per page -->
 <mat-paginator
   [length]="totalStories"
@@ -67,7 +61,6 @@
   *ngIf="stories.length > 0"
 >
 </mat-paginator>
-
 <!-- Paragraph shows only if there are no stories -->
 <mat-card-content
   class="info-text mat-body-1"
