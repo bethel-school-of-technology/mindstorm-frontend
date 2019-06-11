@@ -32,6 +32,11 @@ mat-form-field {
   width: 100%;
 }
 
+/* Sets input error messages to red for both light and dark color themes */
+.error {
+  color: rgb(241, 69, 69);
+}
+
 /* Sets space between Login and Signup buttons */
 mat-card-content {
   display: flex;
@@ -43,18 +48,6 @@ mat-card-content {
 /* Sets top space of anchor tag when buttons wrap to next row */
 a {
   margin-top: 0.3rem;
-}
-
-/* Sets position of background color sidenav container */
-.background {
-  position: fixed;
-  height: 100%;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  opacity: 0.5;
-  z-index: -1;
 }
 
 /* All anchors and buttons are given drop shadows on mouse hover */

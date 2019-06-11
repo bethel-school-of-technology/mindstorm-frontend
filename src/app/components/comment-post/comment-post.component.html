@@ -1,6 +1,5 @@
 <!-- Background color placement tag -->
 <mat-sidenav-container class="background"></mat-sidenav-container>
-
 <!-- Container for comment post form -->
 <mat-card>
   <!-- Loading symbol -->
@@ -23,9 +22,10 @@
         placeholder="Post your comment title here..."
         #postTitle="ngModel"
       />
-      <mat-error *ngIf="postTitle.invalid">Please Enter a Title</mat-error>
+      <mat-error class="error" *ngIf="postTitle.invalid">
+        Please enter a title
+      </mat-error>
     </mat-form-field>
-
     <!-- Textarea for main comment content -->
     <mat-form-field>
       <textarea
@@ -35,13 +35,15 @@
         name="postBody"
         rows="4"
         [ngModel]="comment?.postBody"
+        required
         placeholder="Post your comment here..."
         #postBody="ngModel"
       >
       </textarea>
-      <mat-error *ngIf="postBody.invalid">Please Enter a Comment</mat-error>
+      <mat-error class="error" *ngIf="postBody.invalid">
+        Please enter some text
+      </mat-error>
     </mat-form-field>
-
     <!-- Container for Save Comment and Cancel buttons -->
     <mat-action-row>
       <button mat-stroked-button class="btn" color="accent" type="submit">
