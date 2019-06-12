@@ -1,4 +1,4 @@
-/* Sets toggle theme's flex, space from the top, and pushes it to the right*/
+/* Sets toggle theme's flex, space from the top, and pushes it to the right */
 section {
   display: flex;
   justify-content: flex-end;
@@ -20,7 +20,7 @@ i {
   opacity: 0.5;
   z-index: -1;
 }
-/* Background image positioning */
+/* Sets position of background image container */
 .image {
   position: fixed;
   top: 0;

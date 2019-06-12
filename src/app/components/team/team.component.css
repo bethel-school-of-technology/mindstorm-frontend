@@ -1,14 +1,17 @@
+/* Sets page position */
 * {
   max-width: 100%;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
 }
+/* Team image container sets position and space */
 .team-section {
   overflow: hidden;
   text-align: center;
   padding: 10px;
 }
+/* h1 title not seen? */
 .team-section h1 {
   text-transform: uppercase;
   margin-bottom: 40px;
@@ -16,6 +19,13 @@
   font-size: 40px;
   text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
 }
+/* Syntax Cyborgs image made responsive */
+.team-logo {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 2rem;
+}
+/* Sets black line between team logo and team member images*/
 .border {
   display: block;
   margin: auto;
@@ -24,14 +34,12 @@
   background: black;
   margin-bottom: 40px;
 }
-.team-logo {
-  max-width: 100%;
-  height: 100%;
-  margin-bottom: 2rem;
-}
+/* Refers to div class containing team member images */
 .pics {
   margin-bottom: 60px;
 }
+/* Refers to div class containing team member images and
+picture containers, positioned and styled */
 .pics picture {
   display: inline-block;
   margin: 0 30px;
@@ -40,17 +48,19 @@
   overflow: hidden;
   border-radius: 50%;
 }
-.pics picture img {
+/* Sets team member images to grayscale and sets up for hover effect */
+.pics picture .team-pic {
   width: 100%;
   filter: grayscale(100%);
   transition: 0.4s all;
 }
-.pics picture:hover > img {
+/* On hover, team member images become colored */
+.pics picture:hover > .team-pic {
   filter: none;
   width: 203px;
   height: 203px;
 }
-
+/* Team members' bios, positioned and styled */
 .bio {
   width: 600px;
   margin: auto;
@@ -59,9 +69,11 @@
   text-align: justify;
   margin-bottom: 40px;
 }
+/* Team member's bios height, targeted */
 .bio:target {
   height: auto;
 }
+/* Names of team members, positioned and styled */
 .name {
   display: block;
   margin-bottom: 30px;
