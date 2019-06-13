@@ -20,11 +20,7 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
 import { Interceptor } from './components/user/interceptors';
 import { ErrorInterceptor } from './error.interceptor';
 import { TeamComponent } from './components/team/team.component';
-import { JacobComponent } from './components/team/jacob/jacob.component';
-import { MariaComponent } from './components/team/maria/maria.component';
-import { TavoComponent } from './components/team/tavo/tavo.component';
-import { MartyComponent } from './components/team/marty/marty.component';
-import { MainNavComponent } from './main-nav/main-nav.component';
+import { HeaderComponent } from './components/header/header.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { AutofocusDirective } from './shared/auto-focus.directive';
 
@@ -43,7 +39,8 @@ import {
   MatSidenavModule,
   MatTabsModule,
   MatIconModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatMenuModule
 } from '@angular/material';
 
 /** The bootstrapper module. */
@@ -62,12 +59,8 @@ import {
     ConfirmationDialogComponent,
     ProfilePageComponent,
     TeamComponent,
-    MartyComponent,
-    MariaComponent,
-    TavoComponent,
-    JacobComponent,
-    MainNavComponent,
     ProfilePageComponent,
+    HeaderComponent,
     AutofocusDirective
   ],
   imports: [
@@ -91,7 +84,8 @@ import {
     MatTabsModule,
     LayoutModule,
     MatIconModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatMenuModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },

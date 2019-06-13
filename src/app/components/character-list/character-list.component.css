@@ -41,7 +41,7 @@ hr {
 /* Refers to Add a Character Trait and Trait Examples buttons */
 .list-btn-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 /* Add Trait button */

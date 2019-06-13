@@ -1,36 +1,45 @@
 <div class="team-section">
+  <!-- Syntax Cyborgs team logo image -->
   <img
     class="team-logo"
     src="../../../assets/images/syntax-cyborgs.png"
     width="300"
     height="300"
   />
+  <!-- Black line for divider -->
   <span class="border"></span>
   <div class="pics">
+    <!-- Jacob's picture -->
     <picture>
       <img
+        class="team-pic"
         src="../../../assets/images/jacob.jpg"
         alt="jacob"
         (click)="showJacob = !showJacob"
       />
     </picture>
+    <!-- Maria's picture -->
     <picture>
       <img
-        class="a"
+        class="team-pic"
         src="../../../assets/images/maria.jpg"
         alt="maria"
         (click)="showMaria = !showMaria"
       />
     </picture>
+    <!-- Tavo's picture -->
     <picture>
       <img
+        class="team-pic"
         src="../../../assets/images/tavo.jpg"
         alt="tavo"
         (click)="showTavo = !showTavo"
       />
     </picture>
+    <!-- Marty's picture -->
     <picture>
       <img
+        class="team-pic"
         src="../../../assets/images/marty.jpg"
         alt="marty"
         (click)="showMarty = !showMarty"
@@ -38,6 +47,7 @@
     </picture>
   </div>
 
+  <!-- Jacob's bio -->
   <div class="bio" *ngIf="showJacob">
     <h3 class="name">Jacob L Santos</h3>
     <span class="border"></span>
@@ -61,6 +71,7 @@
     <a href="mailto:fascinatingwings@yahoo.com" target="_top">Contact me</a>
   </div>
 
+  <!-- Maria's bio -->
   <div class="bio" *ngIf="showMaria!">
     <h3 class="name">Maria Ziemer</h3>
     <span class="border"></span>
@@ -68,13 +79,16 @@
     <br />
     <p>
       Hi, I’m Maria Ziemer! I’m a junior web developer with skills in full stack
-      development. My passion for language and art led me to coding, where I
-      enjoy bringing the same creativity into programming.
+      development, with a particular interest in the front-end side of things. I
+      love writing stories, reading, drawing both digitally and by hand, and, of
+      course, playing computer games! My passion for language and art led me to
+      coding, where I enjoy bringing the same creativity into programming.
     </p>
     <br />
     <a href="mailto:jn-01@centurytel.net" target="_top">Contact me</a>
   </div>
 
+  <!-- Tavo's bio -->
   <div class="bio" *ngIf="showTavo">
     <h3 class="name">Tavo Cortez</h3>
     <span class="border"></span>
@@ -89,6 +103,7 @@
     <a href="mailto:ocortez007@gmail.com" target="_top">Contact me</a>
   </div>
 
+  <!-- Marty's bio -->
   <div class="bio" *ngIf="showMarty">
     <h3 class="name">Martins Siksnis</h3>
     <span class="border"></span>
