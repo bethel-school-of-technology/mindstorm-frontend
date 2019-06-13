@@ -3,14 +3,14 @@
  * See {@link StoryService} for use.
  */
 export class Story {
-  /** The story id */
+  /** Story id */
   id: string;
-  /** The story title */
+  /** Story title */
   storyTitle: string;
-  /** The story details */
+  /** Story details */
   storyBody: string;
-  /** The story image */
+  /** Story image */
   imagePath: string;
-  /** The story creator */
+  /** Story creator */
   creator: string;
 }

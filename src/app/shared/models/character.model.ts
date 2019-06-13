@@ -9,6 +9,6 @@ export class Character {
   title: string;
   /** Character trait details */
   detail: string;
-  /** The character trait creator */
+  /** Character trait creator */
   creator: string;
 }
