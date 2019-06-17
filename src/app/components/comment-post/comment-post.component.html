@@ -19,7 +19,7 @@
         [ngModel]="comment?.postTitle"
         required
         minlength="3"
-        placeholder="Post your comment title here..."
+        placeholder="Post subject title..."
         #postTitle="ngModel"
       />
       <mat-error class="error" *ngIf="postTitle.invalid">
@@ -36,7 +36,7 @@
         rows="4"
         [ngModel]="comment?.postBody"
         required
-        placeholder="Post your comment here..."
+        placeholder="Post a comment..."
         #postBody="ngModel"
       >
       </textarea>
@@ -45,7 +45,7 @@
       </mat-error>
     </mat-form-field>
     <!-- Container for Save Comment and Cancel buttons -->
-    <mat-action-row>
+    <mat-card-content>
       <button mat-stroked-button class="btn" color="accent" type="submit">
         <i class="material-icons">done</i>
         Save Comment
@@ -54,6 +54,6 @@
         <i class="material-icons">cancel</i>
         Cancel Comment
       </a>
-    </mat-action-row>
+    </mat-card-content>
   </form>
 </mat-card>

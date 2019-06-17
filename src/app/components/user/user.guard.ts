@@ -26,7 +26,6 @@ export class UserGuard implements CanActivate {
     const isAuth = this.userService.getIsAuth();
     if (!isAuth) {
       this.router.navigate(['/login']);
-      alert('Please login or signup.');
     }
     return isAuth;
   }

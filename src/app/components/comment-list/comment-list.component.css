@@ -7,6 +7,15 @@
 mat-spinner {
   margin: auto;
 }
+/* Comment title is given a drop shadow */
+mat-expansion-panel-header {
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+/* Expansion panel inside mat-accordion is forcibly centered */
+mat-expansion-panel {
+  margin-left: 20%;
+  margin-right: 20%;
+}
 /* Generic spacer forcing comment title to the center */
 .spacer {
   flex: 0.5 0 auto;
@@ -24,11 +33,14 @@ mat-action-row {
   justify-content: space-around;
   flex-wrap: wrap;
 }
-/* Sets top space of anchor tag when buttons wrap to next row */
-a {
-  margin-bottom: 0.3rem;
-}
 /* All anchors and buttons are given drop shadows on mouse hover */
 .btn:hover {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+}
+/* For mobile devices, content fills the screen */
+@media (max-width: 450px) {
+  mat-expansion-panel {
+    width: 100%;
+    margin-left: 0;
+  }
 }
