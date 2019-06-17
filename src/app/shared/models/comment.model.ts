@@ -3,12 +3,12 @@
  * See {@link CommentService} for use.
  */
 export class Comment {
-  /** The comment id */
+  /** Comment id */
   id: string;
-  /** The comment title */
+  /** Comment title */
   postTitle: string;
-  /** The comment details */
+  /** Comment details */
   postBody: string;
-  /** The comment creator */
+  /** Comment creator */
   creator: string;
 }

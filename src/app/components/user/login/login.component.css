@@ -22,34 +22,29 @@ mat-spinner {
   margin: auto;
 }
 
-/* Sets form width */
+/* Sets Login form width */
 form {
   width: 100%;
 }
-
-/* Sets width of mat-form-field and textarea */
+/* Sets width of mat-form-field */
 mat-form-field {
   width: 100%;
 }
-
 /* Sets input error messages to red for both light and dark color themes */
 .error {
   color: rgb(241, 69, 69);
 }
-
-/* Sets space between Login and Signup buttons */
+/* Sets flex and width of Login and Signup buttons */
 mat-card-content {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
 }
-
 /* Sets top space of anchor tag when buttons wrap to next row */
 a {
   margin-top: 0.3rem;
 }
-
 /* All anchors and buttons are given drop shadows on mouse hover */
 .btn:hover {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);

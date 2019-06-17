@@ -3,8 +3,8 @@
  * See {@link UserService} for use.
  */
 export class User {
-  /** The user email */
+  /** User email */
   email: string;
-  /** The user password */
+  /** User password */
   password: string;
 }

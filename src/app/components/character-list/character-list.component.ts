@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MatDialog, PageEvent } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { Subscription } from 'rxjs';
 
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
