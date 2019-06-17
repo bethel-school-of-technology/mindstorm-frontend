@@ -2,12 +2,23 @@
 <mat-toolbar color="primary">
   <!-- Hamburger menu appears at a certain media query screen size -->
   <mat-menu #headerMenu="matMenu">
-    <!-- Link to team page -->
-    <a mat-button routerLink="/team" routerLinkActive="mat-accent">
+    <!-- Link to Home page, which is the story-list -->
+    <a mat-button routerLink="/">
       <i class="material-icons">
-        people
+        home
       </i>
-      Our Team
+      Home
+    </a>
+    <br />
+    <!-- Link to story-post -->
+    <a
+      mat-button
+      *ngIf="userIsAuthenticated"
+      routerLink="/story/create"
+      routerLinkActive="mat-accent"
+    >
+      <i class="material-icons">import_contacts</i>
+      Create a Story
     </a>
     <!-- Link to character-post -->
     <a
@@ -29,16 +40,12 @@
       <i class="material-icons">list</i>
       Character Traits
     </a>
-    <br />
-    <!-- Link to story-post -->
-    <a
-      mat-button
-      *ngIf="userIsAuthenticated"
-      routerLink="/story/create"
-      routerLinkActive="mat-accent"
-    >
-      <i class="material-icons">import_contacts</i>
-      Create a Story
+    <!-- Link to team page -->
+    <a mat-button routerLink="/team" routerLinkActive="mat-accent">
+      <i class="material-icons">
+        people
+      </i>
+      Our Team
     </a>
     <br />
     <!-- Link to login -->
@@ -83,15 +90,29 @@
 
   <!-- List of navigation links -->
   <ul class="no-menu-container">
-    <!-- Link to the team page -->
     <li>
-      <a mat-button routerLink="/team" routerLinkActive="mat-accent">
+      <!-- Link to Home page, which is the story-list -->
+      <a mat-button routerLink="/">
         <i class="material-icons">
-          people
+          home
         </i>
-        Our Team
+        Home
       </a>
     </li>
+
+    <li>
+      <!-- Link to story-post -->
+      <a
+        mat-button
+        *ngIf="userIsAuthenticated"
+        routerLink="/story/create"
+        routerLinkActive="mat-accent"
+      >
+        <i class="material-icons">import_contacts</i>
+        Create a Story
+      </a>
+    </li>
+
     <li>
       <!-- Link to character-post -->
       <a
@@ -118,16 +139,13 @@
       </a>
     </li>
 
+    <!-- Link to the team page -->
     <li>
-      <!-- Link to story-post -->
-      <a
-        mat-button
-        *ngIf="userIsAuthenticated"
-        routerLink="/story/create"
-        routerLinkActive="mat-accent"
-      >
-        <i class="material-icons">import_contacts</i>
-        Create a Story
+      <a mat-button routerLink="/team" routerLinkActive="mat-accent">
+        <i class="material-icons">
+          people
+        </i>
+        Our Team
       </a>
     </li>
   </ul>

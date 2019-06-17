@@ -11,6 +11,12 @@ mat-spinner {
 .spacer {
   flex: 0.5 0 auto;
 }
+/* Expansion panel inside mat-accordion is forcibly centered */
+mat-expansion-panel {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+/* Story title is given a drop shadow */
 mat-expansion-panel-header {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
@@ -27,19 +33,40 @@ img {
   width: 100%;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
-/* Container for the Edit Story and Delete Story buttons */
+/* Container sets flex for Edit Story and Delete Story buttons */
 .btn-container {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+}
+/* Div container that sets paginator's position */
+.page-container {
+  display: flex;
+  justify-content: center;
+}
+/* Sets flex for View Comments button */
+mat-action-row {
+  display: flex;
+  justify-content: center;
 }
 /* Number of stories per page, sets width,
 opacity, and creates a drop shadow*/
 mat-paginator {
-  width: 100%;
+  width: 60%;
   opacity: 0.7;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
 }
 /* All anchors and buttons are given drop shadows on mouse hover */
 .btn:hover {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+}
+/* For mobile devices, content fills the screen */
+@media (max-width: 450px) {
+  mat-expansion-panel {
+    width: 100%;
+    margin-left: 0;
+  }
+  mat-paginator {
+    width: 100%;
+  }
 }
