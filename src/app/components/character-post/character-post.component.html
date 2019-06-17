@@ -1,3 +1,56 @@
-<p>
-  character-post works!
-</p>
+<!-- Generic container for character post form -->
+<div class="container">
+  <mat-card>
+    <!-- Loading symbol -->
+    <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
+    <form
+      (submit)="onSaveCharacter(characterForm)"
+      #characterForm="ngForm"
+      *ngIf="!isLoading"
+    >
+      <!-- Input for character title -->
+      <mat-form-field>
+        <input
+          matInput
+          color="primary"
+          type="text"
+          name="title"
+          [ngModel]="character?.title"
+          required
+          minlength="3"
+          placeholder="Post Trait..."
+          #title="ngModel"
+          appAutoFocus
+        />
+        <mat-error class="error" color="primary" *ngIf="title.invalid">
+          Please enter a title for your character trait
+        </mat-error>
+      </mat-form-field>
+      <!-- Textarea for character detail -->
+      <mat-form-field>
+        <textarea
+          matInput
+          color="primary"
+          type="text"
+          name="detail"
+          rows="4"
+          [ngModel]="character?.detail"
+          placeholder="Post Details..."
+          #detail="ngModel"
+        >
+        </textarea>
+      </mat-form-field>
+      <!-- Container for Save Character Trait and Cancel buttons -->
+      <mat-card-content>
+        <button mat-raised-button class="btn" color="accent" type="submit">
+          <i class="material-icons">add_circle</i>
+          Add Trait
+        </button>
+        <a mat-raised-button class="btn" color="warn" routerLink="/characters">
+          <i class="material-icons">cancel</i>
+          Cancel
+        </a>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>

@@ -1,5 +1,19 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <app-header></app-header>
-
-<router-outlet></router-outlet>
+<!-- References change from light theme to dark theme -->
+<div [(class.alternative)]="otherTheme">
+  <div style="text-align:center">
+    <!-- Navigation bar -->
+    <app-header></app-header>
+    <!-- Light theme to dark theme toggle button -->
+    <section class="toggle">
+      <i class="material-icons">brightness_5</i>
+      <mat-slide-toggle (click)="changeTheme()">
+        <i class="material-icons">brightness_3</i>
+      </mat-slide-toggle>
+    </section>
+    <router-outlet></router-outlet>
+    <!-- Background image container -->
+    <mat-sidenav-container class="image"></mat-sidenav-container>
+    <!-- Background color container -->
+    <mat-sidenav-container class="background"></mat-sidenav-container>
+  </div>
+</div>

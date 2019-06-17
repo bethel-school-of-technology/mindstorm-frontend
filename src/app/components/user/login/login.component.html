@@ -1,0 +1,64 @@
+<!-- Generic container of Login form -->
+<div class="container">
+  <mat-card>
+    <!-- Loading symbol -->
+    <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
+    <!-- Form of user email and password for logging in -->
+    <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
+      <!-- Input for email and invalid error message -->
+      <mat-form-field>
+        <input
+          matInput
+          color="primary"
+          name="email"
+          ngModel
+          type="email"
+          placeholder="E-Mail"
+          #emailInput="ngModel"
+          required
+          email
+          appAutoFocus
+        />
+        <mat-error class="error" *ngIf="emailInput.invalid">
+          Please enter a valid email.
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Input for password and invalid error message -->
+      <mat-form-field>
+        <input
+          matInput
+          color="primary"
+          type="password"
+          name="password"
+          ngModel
+          matInput
+          placeholder="Password"
+          #passwordInput="ngModel"
+          required
+        />
+        <mat-error class="error" *ngIf="passwordInput.invalid">
+          Please enter a valid password.
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Contains the Login and Signup buttons -->
+      <mat-card-content>
+        <button
+          mat-raised-button
+          class="btn"
+          color="accent"
+          type="submit"
+          *ngIf="!isLoading"
+        >
+          <i class="material-icons">fingerprint</i>
+          Login
+        </button>
+        <a mat-raised-button class="btn" color="primary" routerLink="/signup">
+          <i class="material-icons">local_play</i>
+          No acccount? Signup!
+        </a>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>

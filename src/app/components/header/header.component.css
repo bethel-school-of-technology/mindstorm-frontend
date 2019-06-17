@@ -1,0 +1,63 @@
+/* Navigation bar sets location from top and gives a drop shadow */
+mat-toolbar {
+  margin-top: 1rem;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.6);
+}
+/* Unordered list sets flex, removes list dots, and padding/margin */
+ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* Generic spacer pushes login, logout, and signup buttons to the right */
+.spacer {
+  flex: 1 1 auto;
+}
+/* Removes link decoration and adds shadows to all anchor text */
+a {
+  text-decoration: none;
+  text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.6);
+}
+/* Adds shadows to all button text */
+button {
+  text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.6);
+}
+/* Mindstorm word logo, sets font size, family, padding, and drop shadow */
+.logo {
+  font-size: 35px;
+  padding: 1.5rem;
+  box-shadow: 7px 7px 10px rgba(0, 0, 0, 0.5);
+}
+/* For tablets, hides and removes the links in the header,
+and sets MindStorm word logo position */
+@media (max-width: 1200px) {
+  .no-menu-container {
+    display: none;
+  }
+  .logo {
+    margin-left: 1rem;
+  }
+}
+/* For mobile devices, hides and removes the links in the header,
+sets MindStorm word logo size and position, and sets menu's position */
+@media (max-width: 450px) {
+  .no-menu-container {
+    display: none;
+  }
+  .logo {
+    font-size: 20px;
+    margin-left: -1rem;
+  }
+  mat-menu {
+    margin-left: -2rem;
+  }
+}
+/* For screens larger than 1200px, hides and removes the mat-menu
+container and hamburger menu icon */
+@media (min-width: 1200px) {
+  mat-menu,
+  .menu-icon {
+    display: none;
+  }
+}

@@ -1,0 +1,71 @@
+<!-- Generic container for story post form -->
+<div class="container">
+  <mat-card>
+    <!-- Loading symbol -->
+    <mat-spinner color="accent" *ngIf="isLoading"></mat-spinner>
+    <form [formGroup]="form" (submit)="openDialog()" *ngIf="!isLoading">
+      <!-- Input for story title -->
+      <mat-form-field>
+        <input
+          matInput
+          color="primary"
+          type="text"
+          formControlName="storyTitle"
+          placeholder="Post a title for your story..."
+          appAutoFocus
+        />
+        <mat-error class="error" *ngIf="form.get('storyTitle').invalid">
+          Please enter a title
+        </mat-error>
+      </mat-form-field>
+      <!-- Textarea for main story content -->
+      <mat-form-field>
+        <textarea
+          matInput
+          color="primary"
+          rows="4"
+          formControlName="storyBody"
+          placeholder="Write your story..."
+        ></textarea>
+        <mat-error class="error" *ngIf="form.get('storyBody').invalid">
+          Please enter some text
+        </mat-error>
+      </mat-form-field>
+      <!-- Pick Your Image button -->
+      <div class="btn-image">
+        <button
+          mat-raised-button
+          class="btn"
+          color="primary"
+          type="button"
+          (click)="filePicker.click()"
+        >
+          <i class="material-icons">add_photo_alternate</i>
+          Pick Your Image
+        </button>
+      </div>
+      <!-- Input file set to invisible -->
+      <div>
+        <input type="file" #filePicker (change)="onImagePicked($event)" />
+      </div>
+      <!-- Image previewer -->
+      <div
+        class="image-preview"
+        *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid"
+      >
+        <img [src]="imagePreview" [alt]="form.value.storyTitle" />
+      </div>
+      <!-- Contains the Save Story and Cancel buttons -->
+      <mat-card-content>
+        <button mat-raised-button class="btn" color="accent" type="submit">
+          <i class="material-icons">cloud_upload</i>
+          Save Story
+        </button>
+        <a mat-raised-button class="btn" color="warn" routerLink="/">
+          <i class="material-icons">cancel</i>
+          Cancel
+        </a>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>

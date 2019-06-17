@@ -1,3 +1,181 @@
-<p>
-  header works!
-</p>
+<!-- Navagation bar -->
+<mat-toolbar color="primary">
+  <!-- Hamburger menu appears at a certain media query screen size -->
+  <mat-menu #headerMenu="matMenu">
+    <!-- Link to Home page, which is the story-list -->
+    <a mat-button routerLink="/">
+      <i class="material-icons">
+        home
+      </i>
+      Home
+    </a>
+    <br />
+    <!-- Link to story-post -->
+    <a
+      mat-button
+      *ngIf="userIsAuthenticated"
+      routerLink="/story/create"
+      routerLinkActive="mat-accent"
+    >
+      <i class="material-icons">import_contacts</i>
+      Create a Story
+    </a>
+    <!-- Link to character-post -->
+    <a
+      mat-button
+      *ngIf="userIsAuthenticated"
+      routerLink="/character/create"
+      routerLinkActive="mat-accent"
+    >
+      <i class="material-icons">perm_identity</i>
+      Add Character Trait
+    </a>
+    <!-- Link to character-list -->
+    <a
+      mat-button
+      *ngIf="userIsAuthenticated"
+      routerLink="/characters"
+      routerLinkActive="mat-accent"
+    >
+      <i class="material-icons">list</i>
+      Character Traits
+    </a>
+    <!-- Link to team page -->
+    <a mat-button routerLink="/team" routerLinkActive="mat-accent">
+      <i class="material-icons">
+        people
+      </i>
+      Our Team
+    </a>
+    <br />
+    <!-- Link to login -->
+    <a
+      mat-button
+      routerLink="/login"
+      routerLinkActive="mat-accent"
+      *ngIf="!userIsAuthenticated"
+    >
+      <i class="material-icons">fingerprint</i>
+      Login
+    </a>
+    <br />
+    <!-- Link to signup -->
+    <a
+      mat-button
+      routerLink="/signup"
+      routerLinkActive="mat-accent"
+      *ngIf="!userIsAuthenticated"
+    >
+      <i class="material-icons">storage</i>
+      Signup
+    </a>
+    <br />
+    <!-- Button for logout -->
+    <button mat-button *ngIf="userIsAuthenticated" (click)="onLogout()">
+      <i class="material-icons">account_circle</i>
+      Logout
+    </button>
+  </mat-menu>
+  <!-- Menu icon, triggers the onOpenMenu function -->
+  <button class="menu-icon" mat-button [matMenuTriggerFor]="headerMenu">
+    <i class="material-icons">menu</i>
+  </button>
+
+  <!-- MindStorm logo button to main page with list of stories -->
+  <span>
+    <a mat-flat-button color="accent" class="logo" routerLink="/">MindStorm</a>
+  </span>
+  <!-- MindStorm logo image -->
+  <img src="../../../assets/images/logo-yellow.png" width="150" height="150" />
+
+  <!-- List of navigation links -->
+  <ul class="no-menu-container">
+    <li>
+      <!-- Link to Home page, which is the story-list -->
+      <a mat-button routerLink="/">
+        <i class="material-icons">
+          home
+        </i>
+        Home
+      </a>
+    </li>
+
+    <li>
+      <!-- Link to story-post -->
+      <a
+        mat-button
+        *ngIf="userIsAuthenticated"
+        routerLink="/story/create"
+        routerLinkActive="mat-accent"
+      >
+        <i class="material-icons">import_contacts</i>
+        Create a Story
+      </a>
+    </li>
+
+    <li>
+      <!-- Link to character-post -->
+      <a
+        mat-button
+        *ngIf="userIsAuthenticated"
+        routerLink="/character/create"
+        routerLinkActive="mat-accent"
+      >
+        <i class="material-icons">perm_identity</i>
+        Add Character Trait
+      </a>
+    </li>
+
+    <li>
+      <!-- Link to character-list -->
+      <a
+        mat-button
+        *ngIf="userIsAuthenticated"
+        routerLink="/characters"
+        routerLinkActive="mat-accent"
+      >
+        <i class="material-icons">list</i>
+        Character Traits
+      </a>
+    </li>
+
+    <!-- Link to the team page -->
+    <li>
+      <a mat-button routerLink="/team" routerLinkActive="mat-accent">
+        <i class="material-icons">
+          people
+        </i>
+        Our Team
+      </a>
+    </li>
+  </ul>
+
+  <!-- Generic spacer to force login, logout, and signup buttons to the right -->
+  <span class="spacer"></span>
+
+  <!-- <span class="spacer"></span> -->
+
+  <ul class="no-menu-container">
+    <li *ngIf="!userIsAuthenticated">
+      <!-- Link to login -->
+      <a mat-button routerLink="/login" routerLinkActive="mat-accent">
+        <i class="material-icons">fingerprint</i>
+        Login
+      </a>
+    </li>
+
+    <li *ngIf="!userIsAuthenticated">
+      <!-- Link to signup -->
+      <a mat-button routerLink="/signup" routerLinkActive="mat-accent">
+        <i class="material-icons">storage</i>
+        Signup
+      </a>
+    </li>
+
+    <li *ngIf="userIsAuthenticated">
+      <!-- Button for logout -->
+      <button mat-button (click)="onLogout()">Logout</button>
+      <i class="material-icons">account_circle</i>
+    </li>
+  </ul>
+</mat-toolbar>

@@ -1,0 +1,49 @@
+/* Sets distance of content from the top */
+:host {
+  display: block;
+  margin-top: 1rem;
+}
+/* Div container sets flex */
+.container {
+  display: flex;
+  justify-content: center;
+}
+/* Sets opacity and width of entire form */
+mat-card {
+  width: 50%;
+  opacity: 0.9;
+}
+/* Loading symbol centered*/
+mat-spinner {
+  margin: auto;
+}
+/* Sets character Title error messages to red for both light and dark color themes */
+.error {
+  color: rgb(241, 69, 69);
+}
+/* Sets width of mat-form-field and textarea */
+mat-form-field,
+textarea {
+  width: 100%;
+}
+/* Sets height of textarea */
+textarea {
+  font-family: Arial, Helvetica, sans-serif;
+  height: 15rem;
+}
+/* Sets space between Save Trait and Cancel buttons */
+mat-card-content {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+/* All anchors and buttons are given drop shadows on mouse hover */
+.btn:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+}
+/* For mobile devices, content fills the screen */
+@media (max-width: 450px) {
+  mat-card {
+    width: 100%;
+  }
+}
